@@ -1,0 +1,2700 @@
+
+;; Function std::basic_ostream<char>::operator<< (_ZNSolsEPFRSoS_E, funcdef_no=2313, decl_uid=47902, cgraph_uid=781, symbol_order=818)
+
+Points-to analysis
+
+Constraints:
+
+ANYTHING = &ANYTHING
+ESCAPED = *ESCAPED
+ESCAPED = ESCAPED + UNKNOWN
+*ESCAPED = NONLOCAL
+NONLOCAL = &NONLOCAL
+NONLOCAL = &ESCAPED
+INTEGER = &ANYTHING
+this = &NONLOCAL
+__pf = &NONLOCAL
+callescape(10) = NONLOCAL
+CALLUSED(11) = callescape(10)
+callarg(13) = this
+callarg(13) = callarg(13) + UNKNOWN
+callarg(13) = *callarg(13) + UNKNOWN
+CALLUSED(11) = callarg(13)
+*callarg(13) = callescape(10)
+CALLCLOBBERED(12) = callarg(13)
+callescape(10) = callarg(13)
+ESCAPED = this
+_6 = NONLOCAL
+_6 = callarg(13)
+
+Collapsing static cycles and doing variable substitution
+Building predecessor graph
+Detecting pointer and location equivalences
+
+
+// The constraint graph before var-substitution in dot format:
+strict digraph {
+  node [
+    shape = box
+  ]
+  edge [
+    fontsize = "12"
+  ]
+
+  // List of nodes and complex constraints in the constraint graph:
+"NULL";
+"ANYTHING"[label="ANYTHING = { 2 }"];
+"STRING";
+"ESCAPED";
+"NONLOCAL"[label="NONLOCAL = { 4 5 }"];
+"STOREDANYTHING";
+"INTEGER"[label="INTEGER = { 2 }"];
+"this"[label="this = { 5 }"];
+"__pf"[label="__pf = { 5 }"];
+"callescape(10)";
+"CALLUSED(11)";
+"CALLCLOBBERED(12)";
+"callarg(13)";
+"_6";
+"_ZNSolsEPFRSoS_E";
+"*NULL";
+"*ANYTHING";
+"*STRING";
+"*ESCAPED";
+"*NONLOCAL";
+"*STOREDANYTHING";
+"*INTEGER";
+"*this";
+"*__pf";
+"*callescape(10)";
+"*CALLUSED(11)";
+"*CALLCLOBBERED(12)";
+"*callarg(13)";
+"*_6";
+"*_ZNSolsEPFRSoS_E";
+
+  // Edges in the constraint graph:
+"this" -> "ESCAPED";
+"*ESCAPED" -> "ESCAPED";
+"NONLOCAL" -> "callescape(10)";
+"callarg(13)" -> "callescape(10)";
+"callescape(10)" -> "CALLUSED(11)";
+"callarg(13)" -> "CALLUSED(11)";
+"callarg(13)" -> "CALLCLOBBERED(12)";
+"this" -> "callarg(13)";
+"NONLOCAL" -> "_6";
+"callarg(13)" -> "_6";
+"NONLOCAL" -> "*ESCAPED";
+"callescape(10)" -> "*callarg(13)";
+}
+
+
+Rewriting constraints and unifying variables
+Uniting pointer but not location equivalent variables
+Finding indirect cycles
+
+
+// The constraint graph before solve-graph in dot format:
+strict digraph {
+  node [
+    shape = box
+  ]
+  edge [
+    fontsize = "12"
+  ]
+
+  // List of nodes and complex constraints in the constraint graph:
+"NULL";
+"ANYTHING";
+"STRING";
+"ESCAPED" [label="\N\nESCAPED = ESCAPED + UNKNOWN\lESCAPED = *ESCAPED\l*ESCAPED = NONLOCAL\l"];
+"NONLOCAL";
+"STOREDANYTHING";
+"INTEGER";
+"this";
+"callescape(10)";
+"callarg(13)" [label="\N\ncallarg(13) = callarg(13) + UNKNOWN\lcallarg(13) = *callarg(13) + UNKNOWN\l*callarg(13) = callescape(10)\l"];
+"_ZNSolsEPFRSoS_E";
+
+  // Edges in the constraint graph:
+"NONLOCAL" -> "callescape(10)";
+"STOREDANYTHING" -> "ESCAPED";
+"STOREDANYTHING" -> "callarg(13)";
+"this" -> "ESCAPED";
+"this" -> "callarg(13)";
+"callarg(13)" -> "callescape(10)";
+}
+
+
+Solving graph
+
+
+// The constraint graph after solve-graph in dot format:
+strict digraph {
+  node [
+    shape = box
+  ]
+  edge [
+    fontsize = "12"
+  ]
+
+  // List of nodes and complex constraints in the constraint graph:
+"NULL";
+"ANYTHING";
+"STRING";
+"ESCAPED" [label="\N\nESCAPED = ESCAPED + UNKNOWN\lESCAPED = *ESCAPED\l*ESCAPED = NONLOCAL\l"];
+"NONLOCAL";
+"STOREDANYTHING";
+"INTEGER";
+"this";
+"callescape(10)";
+"callarg(13)" [label="\N\ncallarg(13) = callarg(13) + UNKNOWN\lcallarg(13) = *callarg(13) + UNKNOWN\l*callarg(13) = callescape(10)\l"];
+"_ZNSolsEPFRSoS_E";
+
+  // Edges in the constraint graph:
+"NONLOCAL" -> "ESCAPED";
+"NONLOCAL" -> "callescape(10)";
+"STOREDANYTHING" -> "ESCAPED";
+"STOREDANYTHING" -> "callarg(13)";
+"this" -> "ESCAPED";
+"this" -> "callarg(13)";
+"callescape(10)" -> "ESCAPED";
+"callarg(13)" -> "callescape(10)";
+}
+
+
+
+Points-to sets
+
+ANYTHING = { ANYTHING }
+ESCAPED = { ESCAPED NONLOCAL }
+NONLOCAL = { ESCAPED NONLOCAL }
+STOREDANYTHING = { }
+INTEGER = { ANYTHING }
+this = { NONLOCAL }
+__pf = { NONLOCAL } same as this
+callescape(10) = { ESCAPED NONLOCAL }
+CALLUSED(11) = { ESCAPED NONLOCAL } same as callescape(10)
+CALLCLOBBERED(12) = { ESCAPED NONLOCAL } same as callarg(13)
+callarg(13) = { ESCAPED NONLOCAL }
+_6 = { ESCAPED NONLOCAL } same as callescape(10)
+_ZNSolsEPFRSoS_E = { }
+
+
+Alias information for std::basic_ostream<_CharT, _Traits>::__ostream_type& std::basic_ostream<_CharT, _Traits>::operator<<(__ostream_type& (*)(__ostream_type&)) [with _CharT = char; _Traits = std::char_traits<char>]
+
+Aliased symbols
+
+
+Call clobber information
+
+ESCAPED, points-to non-local, points-to vars: { }
+
+Flow-insensitive points-to information
+
+__pf_2(D), points-to non-local, points-to NULL, points-to vars: { }
+this_4(D), points-to non-local, points-to vars: { }
+_6, points-to non-local, points-to escaped, points-to NULL, points-to vars: { }
+
+struct __ostream_type & std::basic_ostream<char>::operator<< (struct basic_ostream * const this, struct __ostream_type & (*<T7eb4>) (struct __ostream_type &) __pf)
+{
+  struct __ostream_type & _6;
+
+  <bb 2> :
+  _6 = __pf_2(D) (this_4(D));
+  return _6;
+
+}
+
+
+
+;; Function std::flush<char, std::char_traits<char> > (_ZSt5flushIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_, funcdef_no=2416, decl_uid=48124, cgraph_uid=884, symbol_order=921)
+
+Points-to analysis
+
+Constraints:
+
+ANYTHING = &ANYTHING
+ESCAPED = *ESCAPED
+ESCAPED = ESCAPED + UNKNOWN
+*ESCAPED = NONLOCAL
+NONLOCAL = &NONLOCAL
+NONLOCAL = &ESCAPED
+INTEGER = &ANYTHING
+__os = &NONLOCAL
+callescape(10) = NONLOCAL
+CALLUSED(11) = callescape(10)
+callarg(13) = __os
+callarg(13) = callarg(13) + UNKNOWN
+callarg(13) = *callarg(13) + UNKNOWN
+CALLUSED(11) = callarg(13)
+*callarg(13) = callescape(10)
+CALLCLOBBERED(12) = callarg(13)
+callescape(10) = callarg(13)
+ESCAPED = __os
+_4 = NONLOCAL
+_4 = callarg(13)
+
+Collapsing static cycles and doing variable substitution
+Building predecessor graph
+Detecting pointer and location equivalences
+
+
+// The constraint graph before var-substitution in dot format:
+strict digraph {
+  node [
+    shape = box
+  ]
+  edge [
+    fontsize = "12"
+  ]
+
+  // List of nodes and complex constraints in the constraint graph:
+"NULL";
+"ANYTHING"[label="ANYTHING = { 2 }"];
+"STRING";
+"ESCAPED";
+"NONLOCAL"[label="NONLOCAL = { 4 5 }"];
+"STOREDANYTHING";
+"INTEGER"[label="INTEGER = { 2 }"];
+"__os"[label="__os = { 5 }"];
+"_ZNSo5flushEv";
+"callescape(10)";
+"CALLUSED(11)";
+"CALLCLOBBERED(12)";
+"callarg(13)";
+"_4";
+"_ZSt5flushIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_";
+"*NULL";
+"*ANYTHING";
+"*STRING";
+"*ESCAPED";
+"*NONLOCAL";
+"*STOREDANYTHING";
+"*INTEGER";
+"*__os";
+"*_ZNSo5flushEv";
+"*callescape(10)";
+"*CALLUSED(11)";
+"*CALLCLOBBERED(12)";
+"*callarg(13)";
+"*_4";
+"*_ZSt5flushIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_";
+
+  // Edges in the constraint graph:
+"__os" -> "ESCAPED";
+"*ESCAPED" -> "ESCAPED";
+"NONLOCAL" -> "callescape(10)";
+"callarg(13)" -> "callescape(10)";
+"callescape(10)" -> "CALLUSED(11)";
+"callarg(13)" -> "CALLUSED(11)";
+"callarg(13)" -> "CALLCLOBBERED(12)";
+"__os" -> "callarg(13)";
+"NONLOCAL" -> "_4";
+"callarg(13)" -> "_4";
+"NONLOCAL" -> "*ESCAPED";
+"callescape(10)" -> "*callarg(13)";
+}
+
+
+Rewriting constraints and unifying variables
+Uniting pointer but not location equivalent variables
+Finding indirect cycles
+
+
+// The constraint graph before solve-graph in dot format:
+strict digraph {
+  node [
+    shape = box
+  ]
+  edge [
+    fontsize = "12"
+  ]
+
+  // List of nodes and complex constraints in the constraint graph:
+"NULL";
+"ANYTHING";
+"STRING";
+"ESCAPED" [label="\N\nESCAPED = ESCAPED + UNKNOWN\lESCAPED = *ESCAPED\l*ESCAPED = NONLOCAL\l"];
+"NONLOCAL";
+"STOREDANYTHING";
+"INTEGER";
+"__os";
+"_ZNSo5flushEv";
+"callescape(10)";
+"callarg(13)" [label="\N\ncallarg(13) = callarg(13) + UNKNOWN\lcallarg(13) = *callarg(13) + UNKNOWN\l*callarg(13) = callescape(10)\l"];
+"_ZSt5flushIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_";
+
+  // Edges in the constraint graph:
+"NONLOCAL" -> "callescape(10)";
+"STOREDANYTHING" -> "ESCAPED";
+"STOREDANYTHING" -> "callarg(13)";
+"__os" -> "ESCAPED";
+"__os" -> "callarg(13)";
+"callarg(13)" -> "callescape(10)";
+}
+
+
+Solving graph
+
+
+// The constraint graph after solve-graph in dot format:
+strict digraph {
+  node [
+    shape = box
+  ]
+  edge [
+    fontsize = "12"
+  ]
+
+  // List of nodes and complex constraints in the constraint graph:
+"NULL";
+"ANYTHING";
+"STRING";
+"ESCAPED" [label="\N\nESCAPED = ESCAPED + UNKNOWN\lESCAPED = *ESCAPED\l*ESCAPED = NONLOCAL\l"];
+"NONLOCAL";
+"STOREDANYTHING";
+"INTEGER";
+"__os";
+"_ZNSo5flushEv";
+"callescape(10)";
+"callarg(13)" [label="\N\ncallarg(13) = callarg(13) + UNKNOWN\lcallarg(13) = *callarg(13) + UNKNOWN\l*callarg(13) = callescape(10)\l"];
+"_ZSt5flushIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_";
+
+  // Edges in the constraint graph:
+"NONLOCAL" -> "ESCAPED";
+"NONLOCAL" -> "callescape(10)";
+"STOREDANYTHING" -> "ESCAPED";
+"STOREDANYTHING" -> "callarg(13)";
+"__os" -> "ESCAPED";
+"__os" -> "callarg(13)";
+"callescape(10)" -> "ESCAPED";
+"callarg(13)" -> "callescape(10)";
+}
+
+
+
+Points-to sets
+
+ANYTHING = { ANYTHING }
+ESCAPED = { ESCAPED NONLOCAL }
+NONLOCAL = { ESCAPED NONLOCAL }
+STOREDANYTHING = { }
+INTEGER = { ANYTHING }
+__os = { NONLOCAL }
+_ZNSo5flushEv = { }
+callescape(10) = { ESCAPED NONLOCAL }
+CALLUSED(11) = { ESCAPED NONLOCAL } same as callescape(10)
+CALLCLOBBERED(12) = { ESCAPED NONLOCAL } same as callarg(13)
+callarg(13) = { ESCAPED NONLOCAL }
+_4 = { ESCAPED NONLOCAL } same as callescape(10)
+_ZSt5flushIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_ = { }
+
+
+Alias information for std::basic_ostream<_CharT, _Traits>& std::flush(basic_ostream<_CharT, _Traits>&) [with _CharT = char; _Traits = char_traits<char>]
+
+Aliased symbols
+
+
+Call clobber information
+
+ESCAPED, points-to non-local, points-to vars: { }
+
+Flow-insensitive points-to information
+
+__os_2(D), points-to non-local, points-to vars: { }
+_4, points-to non-local, points-to escaped, points-to NULL, points-to vars: { }
+
+struct basic_ostream & std::flush<char, std::char_traits<char> > (struct basic_ostream & __os)
+{
+  struct basic_ostream & _4;
+
+  <bb 2> :
+  _4 = std::basic_ostream<char>::flush (__os_2(D));
+  return _4;
+
+}
+
+
+
+;; Function std::ctype<char>::widen (_ZNKSt5ctypeIcE5widenEc, funcdef_no=1805, decl_uid=43499, cgraph_uid=510, symbol_order=546)
+
+Points-to analysis
+
+Constraints:
+
+ANYTHING = &ANYTHING
+ESCAPED = *ESCAPED
+ESCAPED = ESCAPED + UNKNOWN
+*ESCAPED = NONLOCAL
+NONLOCAL = &NONLOCAL
+NONLOCAL = &ESCAPED
+INTEGER = &ANYTHING
+this = &NONLOCAL
+__c = &NONLOCAL
+_1 = *this + 448
+__c.1_2 = __c
+_3 = __c.1_2
+_17 = *this + UNKNOWN
+callescape(15) = NONLOCAL
+CALLUSED(16) = callescape(15)
+callarg(18) = this
+callarg(18) = callarg(18) + UNKNOWN
+callarg(18) = *callarg(18) + UNKNOWN
+CALLUSED(16) = callarg(18)
+*callarg(18) = callescape(15)
+CALLCLOBBERED(17) = callarg(18)
+callescape(15) = callarg(18)
+ESCAPED = this
+_4 = *this
+_6 = *_4 + 384
+_7 = __c
+callescape(22) = NONLOCAL
+CALLUSED(23) = callescape(22)
+callarg(25) = this
+callarg(25) = callarg(25) + UNKNOWN
+callarg(25) = *callarg(25) + UNKNOWN
+CALLUSED(23) = callarg(25)
+*callarg(25) = callescape(22)
+CALLCLOBBERED(24) = callarg(25)
+callescape(22) = callarg(25)
+ESCAPED = this
+callarg(26) = _7
+callarg(26) = callarg(26) + UNKNOWN
+callarg(26) = *callarg(26) + UNKNOWN
+CALLUSED(23) = callarg(26)
+*callarg(26) = callescape(22)
+CALLCLOBBERED(24) = callarg(26)
+callescape(22) = callarg(26)
+ESCAPED = _7
+_15 = NONLOCAL
+_15 = callarg(25)
+_15 = callarg(26)
+_8 = _17
+_8 = _15
+
+Collapsing static cycles and doing variable substitution
+Building predecessor graph
+Detecting pointer and location equivalences
+
+
+// The constraint graph before var-substitution in dot format:
+strict digraph {
+  node [
+    shape = box
+  ]
+  edge [
+    fontsize = "12"
+  ]
+
+  // List of nodes and complex constraints in the constraint graph:
+"NULL";
+"ANYTHING"[label="ANYTHING = { 2 }"];
+"STRING";
+"ESCAPED";
+"NONLOCAL"[label="NONLOCAL = { 4 5 }"];
+"STOREDANYTHING";
+"INTEGER"[label="INTEGER = { 2 }"];
+"this"[label="this = { 5 }"];
+"__c"[label="__c = { 5 }"];
+"_1";
+"__c.1_2";
+"_3";
+"_17";
+"_ZNKSt5ctypeIcE13_M_widen_initEv";
+"callescape(15)";
+"CALLUSED(16)";
+"CALLCLOBBERED(17)";
+"callarg(18)";
+"_4";
+"_6";
+"_7";
+"callescape(22)";
+"CALLUSED(23)";
+"CALLCLOBBERED(24)";
+"callarg(25)";
+"callarg(26)";
+"_15";
+"_8";
+"_ZNKSt5ctypeIcE5widenEc";
+"*NULL";
+"*ANYTHING";
+"*STRING";
+"*ESCAPED";
+"*NONLOCAL";
+"*STOREDANYTHING";
+"*INTEGER";
+"*this";
+"*__c";
+"*_1";
+"*__c.1_2";
+"*_3";
+"*_17";
+"*_ZNKSt5ctypeIcE13_M_widen_initEv";
+"*callescape(15)";
+"*CALLUSED(16)";
+"*CALLCLOBBERED(17)";
+"*callarg(18)";
+"*_4";
+"*_6";
+"*_7";
+"*callescape(22)";
+"*CALLUSED(23)";
+"*CALLCLOBBERED(24)";
+"*callarg(25)";
+"*callarg(26)";
+"*_15";
+"*_8";
+"*_ZNKSt5ctypeIcE5widenEc";
+
+  // Edges in the constraint graph:
+"this" -> "ESCAPED";
+"_7" -> "ESCAPED";
+"*ESCAPED" -> "ESCAPED";
+"__c" -> "__c.1_2";
+"__c.1_2" -> "_3";
+"NONLOCAL" -> "callescape(15)";
+"callarg(18)" -> "callescape(15)";
+"callescape(15)" -> "CALLUSED(16)";
+"callarg(18)" -> "CALLUSED(16)";
+"callarg(18)" -> "CALLCLOBBERED(17)";
+"this" -> "callarg(18)";
+"*this" -> "_4";
+"__c" -> "_7";
+"NONLOCAL" -> "callescape(22)";
+"callarg(25)" -> "callescape(22)";
+"callarg(26)" -> "callescape(22)";
+"callescape(22)" -> "CALLUSED(23)";
+"callarg(25)" -> "CALLUSED(23)";
+"callarg(26)" -> "CALLUSED(23)";
+"callarg(25)" -> "CALLCLOBBERED(24)";
+"callarg(26)" -> "CALLCLOBBERED(24)";
+"this" -> "callarg(25)";
+"_7" -> "callarg(26)";
+"NONLOCAL" -> "_15";
+"callarg(25)" -> "_15";
+"callarg(26)" -> "_15";
+"_17" -> "_8";
+"_15" -> "_8";
+"NONLOCAL" -> "*ESCAPED";
+"callescape(15)" -> "*callarg(18)";
+"callescape(22)" -> "*callarg(25)";
+"callescape(22)" -> "*callarg(26)";
+}
+
+
+Rewriting constraints and unifying variables
+Uniting pointer but not location equivalent variables
+Finding indirect cycles
+
+
+// The constraint graph before solve-graph in dot format:
+strict digraph {
+  node [
+    shape = box
+  ]
+  edge [
+    fontsize = "12"
+  ]
+
+  // List of nodes and complex constraints in the constraint graph:
+"NULL";
+"ANYTHING";
+"STRING";
+"ESCAPED" [label="\N\nESCAPED = ESCAPED + UNKNOWN\lESCAPED = *ESCAPED\l*ESCAPED = NONLOCAL\l"];
+"NONLOCAL";
+"STOREDANYTHING";
+"INTEGER";
+"this" [label="\N\n_1 = *this + 448\l_17 = *this + UNKNOWN\l_4 = *this\l"];
+"_1";
+"_17";
+"_ZNKSt5ctypeIcE13_M_widen_initEv";
+"callescape(15)";
+"callarg(18)" [label="\N\ncallarg(18) = callarg(18) + UNKNOWN\lcallarg(18) = *callarg(18) + UNKNOWN\l*callarg(18) = callescape(15)\l"];
+"_4" [label="\N\n_6 = *_4 + 384\l"];
+"_6";
+"callescape(22)";
+"CALLCLOBBERED(24)";
+"callarg(25)" [label="\N\ncallarg(25) = callarg(25) + UNKNOWN\lcallarg(25) = *callarg(25) + UNKNOWN\l*callarg(25) = callescape(22)\l"];
+"callarg(26)" [label="\N\ncallarg(26) = callarg(26) + UNKNOWN\lcallarg(26) = *callarg(26) + UNKNOWN\l*callarg(26) = callescape(22)\l"];
+"_8";
+"_ZNKSt5ctypeIcE5widenEc";
+
+  // Edges in the constraint graph:
+"NONLOCAL" -> "callescape(15)";
+"NONLOCAL" -> "callescape(22)";
+"STOREDANYTHING" -> "ESCAPED";
+"STOREDANYTHING" -> "_1";
+"STOREDANYTHING" -> "_17";
+"STOREDANYTHING" -> "callarg(18)";
+"STOREDANYTHING" -> "_6";
+"STOREDANYTHING" -> "callarg(25)";
+"STOREDANYTHING" -> "callarg(26)";
+"this" -> "ESCAPED";
+"this" -> "callarg(18)";
+"this" -> "callarg(25)";
+"this" -> "callarg(26)";
+"_17" -> "_8";
+"callarg(18)" -> "callescape(15)";
+"callescape(22)" -> "_8";
+"callarg(25)" -> "callescape(22)";
+"callarg(25)" -> "CALLCLOBBERED(24)";
+"callarg(26)" -> "callescape(22)";
+"callarg(26)" -> "CALLCLOBBERED(24)";
+}
+
+
+Solving graph
+
+
+// The constraint graph after solve-graph in dot format:
+strict digraph {
+  node [
+    shape = box
+  ]
+  edge [
+    fontsize = "12"
+  ]
+
+  // List of nodes and complex constraints in the constraint graph:
+"NULL";
+"ANYTHING";
+"STRING";
+"ESCAPED" [label="\N\nESCAPED = ESCAPED + UNKNOWN\lESCAPED = *ESCAPED\l*ESCAPED = NONLOCAL\l"];
+"NONLOCAL";
+"STOREDANYTHING";
+"INTEGER";
+"this" [label="\N\n_1 = *this + 448\l_17 = *this + UNKNOWN\l_4 = *this\l"];
+"_1";
+"_17";
+"_ZNKSt5ctypeIcE13_M_widen_initEv";
+"callescape(15)";
+"callarg(18)" [label="\N\ncallarg(18) = callarg(18) + UNKNOWN\lcallarg(18) = *callarg(18) + UNKNOWN\l*callarg(18) = callescape(15)\l"];
+"_4" [label="\N\n_6 = *_4 + 384\l"];
+"_6";
+"callescape(22)";
+"CALLCLOBBERED(24)";
+"callarg(25)" [label="\N\ncallarg(25) = callarg(25) + UNKNOWN\lcallarg(25) = *callarg(25) + UNKNOWN\l*callarg(25) = callescape(22)\l"];
+"callarg(26)" [label="\N\ncallarg(26) = callarg(26) + UNKNOWN\lcallarg(26) = *callarg(26) + UNKNOWN\l*callarg(26) = callescape(22)\l"];
+"_8";
+"_ZNKSt5ctypeIcE5widenEc";
+
+  // Edges in the constraint graph:
+"NONLOCAL" -> "ESCAPED";
+"NONLOCAL" -> "callescape(15)";
+"NONLOCAL" -> "callescape(22)";
+"STOREDANYTHING" -> "ESCAPED";
+"STOREDANYTHING" -> "_1";
+"STOREDANYTHING" -> "_17";
+"STOREDANYTHING" -> "callarg(18)";
+"STOREDANYTHING" -> "_6";
+"STOREDANYTHING" -> "callarg(25)";
+"STOREDANYTHING" -> "callarg(26)";
+"this" -> "ESCAPED";
+"this" -> "callarg(18)";
+"this" -> "callarg(25)";
+"this" -> "callarg(26)";
+"_17" -> "_8";
+"callescape(15)" -> "ESCAPED";
+"callarg(18)" -> "callescape(15)";
+"callescape(22)" -> "ESCAPED";
+"callescape(22)" -> "_8";
+"callarg(25)" -> "callescape(22)";
+"callarg(25)" -> "CALLCLOBBERED(24)";
+"callarg(26)" -> "callescape(22)";
+"callarg(26)" -> "CALLCLOBBERED(24)";
+}
+
+
+
+Points-to sets
+
+ANYTHING = { ANYTHING }
+ESCAPED = { ESCAPED NONLOCAL }
+NONLOCAL = { ESCAPED NONLOCAL }
+STOREDANYTHING = { }
+INTEGER = { ANYTHING }
+this = { NONLOCAL }
+__c = { NONLOCAL } same as this
+_1 = { ESCAPED NONLOCAL }
+__c.1_2 = { NONLOCAL } same as this
+_3 = { NONLOCAL } same as this
+_17 = { ESCAPED NONLOCAL }
+_ZNKSt5ctypeIcE13_M_widen_initEv = { }
+callescape(15) = { ESCAPED NONLOCAL }
+CALLUSED(16) = { ESCAPED NONLOCAL } same as callescape(15)
+CALLCLOBBERED(17) = { ESCAPED NONLOCAL } same as callarg(18)
+callarg(18) = { ESCAPED NONLOCAL }
+_4 = { ESCAPED NONLOCAL }
+_6 = { ESCAPED NONLOCAL }
+_7 = { NONLOCAL } same as this
+callescape(22) = { ESCAPED NONLOCAL }
+CALLUSED(23) = { ESCAPED NONLOCAL } same as callescape(22)
+CALLCLOBBERED(24) = { ESCAPED NONLOCAL }
+callarg(25) = { ESCAPED NONLOCAL }
+callarg(26) = { ESCAPED NONLOCAL }
+_15 = { ESCAPED NONLOCAL } same as callescape(22)
+_8 = { ESCAPED NONLOCAL }
+_ZNKSt5ctypeIcE5widenEc = { }
+
+
+Alias information for std::ctype<char>::char_type std::ctype<char>::widen(char) const
+
+Aliased symbols
+
+
+Call clobber information
+
+ESCAPED, points-to non-local, points-to vars: { }
+
+Flow-insensitive points-to information
+
+_4, points-to non-local, points-to escaped, points-to NULL, points-to vars: { }
+_6, points-to non-local, points-to escaped, points-to NULL, points-to vars: { }
+this_11(D), points-to non-local, points-to vars: { }
+
+char_type std::ctype<char>::widen (const struct ctype * const this, char __c)
+{
+  char _1;
+  unsigned char __c.1_2;
+  int _3;
+  int (*) () * _4;
+  int (*) () _6;
+  int _7;
+  char_type _8;
+  char_type _15;
+  char_type _17;
+
+  <bb 2> :
+  _1 = this_11(D)->_M_widen_ok;
+  if (_1 != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  __c.1_2 = (unsigned char) __c_13(D);
+  _3 = (int) __c.1_2;
+  _17 = this_11(D)->_M_widen[_3];
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  std::ctype<char>::_M_widen_init (this_11(D));
+  _4 = this_11(D)->D.43629._vptr.facet;
+  _6 = MEM[(int (*) () *)_4 + 48B];
+  _7 = (int) __c_13(D);
+  _15 = OBJ_TYPE_REF(_6;(const struct ctype)this_11(D)->6B) (this_11(D), _7);
+
+  <bb 5> :
+  # _8 = PHI <_17(3), _15(4)>
+  return _8;
+
+}
+
+
+
+;; Function std::ctype<char>::do_widen (_ZNKSt5ctypeIcE8do_widenEc, funcdef_no=1810, decl_uid=43557, cgraph_uid=515, symbol_order=551)
+
+Points-to analysis
+
+Constraints:
+
+ANYTHING = &ANYTHING
+ESCAPED = *ESCAPED
+ESCAPED = ESCAPED + UNKNOWN
+*ESCAPED = NONLOCAL
+NONLOCAL = &NONLOCAL
+NONLOCAL = &ESCAPED
+INTEGER = &ANYTHING
+this = &NONLOCAL
+__c = &NONLOCAL
+
+Collapsing static cycles and doing variable substitution
+Building predecessor graph
+Detecting pointer and location equivalences
+
+
+// The constraint graph before var-substitution in dot format:
+strict digraph {
+  node [
+    shape = box
+  ]
+  edge [
+    fontsize = "12"
+  ]
+
+  // List of nodes and complex constraints in the constraint graph:
+"NULL";
+"ANYTHING"[label="ANYTHING = { 2 }"];
+"STRING";
+"ESCAPED";
+"NONLOCAL"[label="NONLOCAL = { 4 5 }"];
+"STOREDANYTHING";
+"INTEGER"[label="INTEGER = { 2 }"];
+"this"[label="this = { 5 }"];
+"__c"[label="__c = { 5 }"];
+"_ZNKSt5ctypeIcE8do_widenEc";
+"*NULL";
+"*ANYTHING";
+"*STRING";
+"*ESCAPED";
+"*NONLOCAL";
+"*STOREDANYTHING";
+"*INTEGER";
+"*this";
+"*__c";
+"*_ZNKSt5ctypeIcE8do_widenEc";
+
+  // Edges in the constraint graph:
+"*ESCAPED" -> "ESCAPED";
+"NONLOCAL" -> "*ESCAPED";
+}
+
+
+Rewriting constraints and unifying variables
+Uniting pointer but not location equivalent variables
+Finding indirect cycles
+
+
+// The constraint graph before solve-graph in dot format:
+strict digraph {
+  node [
+    shape = box
+  ]
+  edge [
+    fontsize = "12"
+  ]
+
+  // List of nodes and complex constraints in the constraint graph:
+"NULL";
+"ANYTHING";
+"STRING";
+"ESCAPED" [label="\N\nESCAPED = ESCAPED + UNKNOWN\lESCAPED = *ESCAPED\l*ESCAPED = NONLOCAL\l"];
+"NONLOCAL";
+"STOREDANYTHING";
+"INTEGER";
+"this";
+"_ZNKSt5ctypeIcE8do_widenEc";
+
+  // Edges in the constraint graph:
+"STOREDANYTHING" -> "ESCAPED";
+}
+
+
+Solving graph
+
+
+// The constraint graph after solve-graph in dot format:
+strict digraph {
+  node [
+    shape = box
+  ]
+  edge [
+    fontsize = "12"
+  ]
+
+  // List of nodes and complex constraints in the constraint graph:
+"NULL";
+"ANYTHING";
+"STRING";
+"ESCAPED" [label="\N\nESCAPED = ESCAPED + UNKNOWN\lESCAPED = *ESCAPED\l*ESCAPED = NONLOCAL\l"];
+"NONLOCAL";
+"STOREDANYTHING";
+"INTEGER";
+"this";
+"_ZNKSt5ctypeIcE8do_widenEc";
+
+  // Edges in the constraint graph:
+"STOREDANYTHING" -> "ESCAPED";
+}
+
+
+
+Points-to sets
+
+ANYTHING = { ANYTHING }
+ESCAPED = { }
+NONLOCAL = { ESCAPED NONLOCAL }
+STOREDANYTHING = { }
+INTEGER = { ANYTHING }
+this = { NONLOCAL }
+__c = { NONLOCAL } same as this
+_ZNKSt5ctypeIcE8do_widenEc = { }
+
+
+Alias information for virtual std::ctype<char>::char_type std::ctype<char>::do_widen(char) const
+
+Aliased symbols
+
+
+Call clobber information
+
+ESCAPED, points-to vars: { }
+
+Flow-insensitive points-to information
+
+
+char_type std::ctype<char>::do_widen (const struct ctype * const this, char __c)
+{
+  <bb 2> :
+  return __c_1(D);
+
+}
+
+
+
+;; Function main (main, funcdef_no=2057, decl_uid=50632, cgraph_uid=525, symbol_order=562)
+
+Points-to analysis
+
+Constraints:
+
+ANYTHING = &ANYTHING
+ESCAPED = *ESCAPED
+ESCAPED = ESCAPED + UNKNOWN
+*ESCAPED = NONLOCAL
+NONLOCAL = &NONLOCAL
+NONLOCAL = &ESCAPED
+INTEGER = &ANYTHING
+callescape(9) = NONLOCAL
+CALLUSED(10) = callescape(9)
+_ZSt3cin.0+64 = NONLOCAL
+_ZSt3cin.64+64 = NONLOCAL
+_ZSt3cin.128+64 = NONLOCAL
+_ZSt3cin.192+224 = NONLOCAL
+_ZSt3cin.448+64 = NONLOCAL
+_ZSt3cin.512+64 = NONLOCAL
+_ZSt3cin.576+1120 = NONLOCAL
+_ZSt3cin.1728+64 = NONLOCAL
+_ZSt3cin.1792+64 = NONLOCAL
+_ZSt3cin.1856+64 = NONLOCAL
+_ZSt3cin.1920+16 = NONLOCAL
+_ZSt3cin.1984+64 = NONLOCAL
+_ZSt3cin.2048+64 = NONLOCAL
+_ZSt3cin.2112+64 = NONLOCAL
+_ZSt3cin.2176+64 = NONLOCAL
+callarg(12) = &_ZSt3cin.0+64
+callarg(12) = callarg(12) + UNKNOWN
+callarg(12) = *callarg(12) + UNKNOWN
+CALLUSED(10) = callarg(12)
+*callarg(12) = callescape(9)
+CALLCLOBBERED(11) = callarg(12)
+callescape(9) = callarg(12)
+ESCAPED = &_ZSt3cin.0+64
+callarg(28) = &n
+callarg(28) = callarg(28) + UNKNOWN
+callarg(28) = *callarg(28) + UNKNOWN
+CALLUSED(10) = callarg(28)
+*callarg(28) = callescape(9)
+CALLCLOBBERED(11) = callarg(28)
+callescape(9) = callarg(28)
+ESCAPED = &n
+f_16 = i_3 + UNKNOWN
+f_16 = f_4 + UNKNOWN
+i_17 = i_3 + UNKNOWN
+i_17 = &NONLOCAL
+i_3 = &NONLOCAL
+i_3 = i_17
+f_4 = &NONLOCAL
+f_4 = f_16
+n.0_1 = n
+callescape(36) = NONLOCAL
+CALLUSED(37) = callescape(36)
+_ZSt4cout.0+64 = NONLOCAL
+_ZSt4cout.64+64 = NONLOCAL
+_ZSt4cout.128+224 = NONLOCAL
+_ZSt4cout.384+64 = NONLOCAL
+_ZSt4cout.448+64 = NONLOCAL
+_ZSt4cout.512+1120 = NONLOCAL
+_ZSt4cout.1664+64 = NONLOCAL
+_ZSt4cout.1728+64 = NONLOCAL
+_ZSt4cout.1792+64 = NONLOCAL
+_ZSt4cout.1856+16 = NONLOCAL
+_ZSt4cout.1920+64 = NONLOCAL
+_ZSt4cout.1984+64 = NONLOCAL
+_ZSt4cout.2048+64 = NONLOCAL
+_ZSt4cout.2112+64 = NONLOCAL
+callarg(39) = &_ZSt4cout.0+64
+callarg(39) = callarg(39) + UNKNOWN
+callarg(39) = *callarg(39) + UNKNOWN
+CALLUSED(37) = callarg(39)
+*callarg(39) = callescape(36)
+CALLCLOBBERED(38) = callarg(39)
+callescape(36) = callarg(39)
+ESCAPED = &_ZSt4cout.0+64
+callarg(54) = f_4
+callarg(54) = callarg(54) + UNKNOWN
+callarg(54) = *callarg(54) + UNKNOWN
+CALLUSED(37) = callarg(54)
+*callarg(54) = callescape(36)
+CALLCLOBBERED(38) = callarg(54)
+callescape(36) = callarg(54)
+ESCAPED = f_4
+_12 = NONLOCAL
+_12 = callarg(39)
+_12 = callarg(54)
+callescape(57) = NONLOCAL
+CALLUSED(58) = callescape(57)
+callarg(60) = _12
+callarg(60) = callarg(60) + UNKNOWN
+callarg(60) = *callarg(60) + UNKNOWN
+CALLUSED(58) = callarg(60)
+*callarg(60) = callescape(57)
+CALLCLOBBERED(59) = callarg(60)
+callescape(57) = callarg(60)
+ESCAPED = _12
+_19 = NONLOCAL
+_19 = callarg(60)
+
+Collapsing static cycles and doing variable substitution
+Building predecessor graph
+Detecting pointer and location equivalences
+
+
+// The constraint graph before var-substitution in dot format:
+strict digraph {
+  node [
+    shape = box
+  ]
+  edge [
+    fontsize = "12"
+  ]
+
+  // List of nodes and complex constraints in the constraint graph:
+"NULL";
+"ANYTHING"[label="ANYTHING = { 2 }"];
+"STRING";
+"ESCAPED"[label="ESCAPED = { 8 23 24 }"];
+"NONLOCAL"[label="NONLOCAL = { 4 5 }"];
+"STOREDANYTHING";
+"INTEGER"[label="INTEGER = { 2 }"];
+"_ZSt3cin.0+64";
+"_ZSt3cin.64+64";
+"_ZSt3cin.128+64";
+"_ZSt3cin.192+224";
+"_ZSt3cin.448+64";
+"_ZSt3cin.512+64";
+"_ZSt3cin.576+1120";
+"_ZSt3cin.1728+64";
+"_ZSt3cin.1792+64";
+"_ZSt3cin.1856+64";
+"_ZSt3cin.1920+16";
+"_ZSt3cin.1984+64";
+"_ZSt3cin.2048+64";
+"_ZSt3cin.2112+64";
+"_ZSt3cin.2176+64";
+"n";
+"_ZSt4cout.0+64";
+"_ZSt4cout.64+64";
+"_ZSt4cout.128+224";
+"_ZSt4cout.384+64";
+"_ZSt4cout.448+64";
+"_ZSt4cout.512+1120";
+"_ZSt4cout.1664+64";
+"_ZSt4cout.1728+64";
+"_ZSt4cout.1792+64";
+"_ZSt4cout.1856+16";
+"_ZSt4cout.1920+64";
+"_ZSt4cout.1984+64";
+"_ZSt4cout.2048+64";
+"_ZSt4cout.2112+64";
+"_ZNSirsERi";
+"callescape(9)";
+"CALLUSED(10)";
+"CALLCLOBBERED(11)";
+"callarg(12)"[label="callarg(12) = { 8 }"];
+"callarg(28)"[label="callarg(28) = { 23 }"];
+"f_16";
+"i_3"[label="i_3 = { 5 }"];
+"f_4"[label="f_4 = { 5 }"];
+"i_17"[label="i_17 = { 5 }"];
+"n.0_1";
+"_ZNSolsEi";
+"callescape(36)";
+"CALLUSED(37)";
+"CALLCLOBBERED(38)";
+"callarg(39)"[label="callarg(39) = { 24 }"];
+"callarg(54)";
+"_12";
+"_ZSt4endlIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_";
+"callescape(57)";
+"CALLUSED(58)";
+"CALLCLOBBERED(59)";
+"callarg(60)";
+"_19";
+"main";
+"*NULL";
+"*ANYTHING";
+"*STRING";
+"*STOREDANYTHING";
+"*INTEGER";
+"*_ZSt3cin.0+64";
+"*_ZSt3cin.64+64";
+"*_ZSt3cin.128+64";
+"*_ZSt3cin.192+224";
+"*_ZSt3cin.448+64";
+"*_ZSt3cin.512+64";
+"*_ZSt3cin.576+1120";
+"*_ZSt3cin.1728+64";
+"*_ZSt3cin.1792+64";
+"*_ZSt3cin.1856+64";
+"*_ZSt3cin.1920+16";
+"*_ZSt3cin.1984+64";
+"*_ZSt3cin.2048+64";
+"*_ZSt3cin.2112+64";
+"*_ZSt3cin.2176+64";
+"*n";
+"*_ZSt4cout.0+64";
+"*_ZSt4cout.64+64";
+"*_ZSt4cout.128+224";
+"*_ZSt4cout.384+64";
+"*_ZSt4cout.448+64";
+"*_ZSt4cout.512+1120";
+"*_ZSt4cout.1664+64";
+"*_ZSt4cout.1728+64";
+"*_ZSt4cout.1792+64";
+"*_ZSt4cout.1856+16";
+"*_ZSt4cout.1920+64";
+"*_ZSt4cout.1984+64";
+"*_ZSt4cout.2048+64";
+"*_ZSt4cout.2112+64";
+"*_ZNSirsERi";
+"*callescape(9)";
+"*CALLUSED(10)";
+"*CALLCLOBBERED(11)";
+"*callarg(12)";
+"*callarg(28)";
+"*f_16";
+"*i_3";
+"*f_4";
+"*i_17";
+"*n.0_1";
+"*_ZNSolsEi";
+"*callescape(36)";
+"*CALLUSED(37)";
+"*CALLCLOBBERED(38)";
+"*callarg(39)";
+"*callarg(54)";
+"*_ZSt4endlIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_";
+"*callescape(57)";
+"*CALLUSED(58)";
+"*CALLCLOBBERED(59)";
+"*callarg(60)";
+"*_19";
+"*main";
+
+  // Edges in the constraint graph:
+"NONLOCAL" -> "ESCAPED";
+"f_4" -> "ESCAPED";
+"_12" -> "ESCAPED";
+"ESCAPED" -> "ESCAPED";
+"NONLOCAL" -> "_ZSt3cin.0+64";
+"NONLOCAL" -> "_ZSt3cin.64+64";
+"NONLOCAL" -> "_ZSt3cin.128+64";
+"NONLOCAL" -> "_ZSt3cin.192+224";
+"NONLOCAL" -> "_ZSt3cin.448+64";
+"NONLOCAL" -> "_ZSt3cin.512+64";
+"NONLOCAL" -> "_ZSt3cin.576+1120";
+"NONLOCAL" -> "_ZSt3cin.1728+64";
+"NONLOCAL" -> "_ZSt3cin.1792+64";
+"NONLOCAL" -> "_ZSt3cin.1856+64";
+"NONLOCAL" -> "_ZSt3cin.1920+16";
+"NONLOCAL" -> "_ZSt3cin.1984+64";
+"NONLOCAL" -> "_ZSt3cin.2048+64";
+"NONLOCAL" -> "_ZSt3cin.2112+64";
+"NONLOCAL" -> "_ZSt3cin.2176+64";
+"NONLOCAL" -> "_ZSt4cout.0+64";
+"NONLOCAL" -> "_ZSt4cout.64+64";
+"NONLOCAL" -> "_ZSt4cout.128+224";
+"NONLOCAL" -> "_ZSt4cout.384+64";
+"NONLOCAL" -> "_ZSt4cout.448+64";
+"NONLOCAL" -> "_ZSt4cout.512+1120";
+"NONLOCAL" -> "_ZSt4cout.1664+64";
+"NONLOCAL" -> "_ZSt4cout.1728+64";
+"NONLOCAL" -> "_ZSt4cout.1792+64";
+"NONLOCAL" -> "_ZSt4cout.1856+16";
+"NONLOCAL" -> "_ZSt4cout.1920+64";
+"NONLOCAL" -> "_ZSt4cout.1984+64";
+"NONLOCAL" -> "_ZSt4cout.2048+64";
+"NONLOCAL" -> "_ZSt4cout.2112+64";
+"NONLOCAL" -> "callescape(9)";
+"callarg(12)" -> "callescape(9)";
+"callarg(28)" -> "callescape(9)";
+"callescape(9)" -> "CALLUSED(10)";
+"callarg(12)" -> "CALLUSED(10)";
+"callarg(28)" -> "CALLUSED(10)";
+"callarg(12)" -> "CALLCLOBBERED(11)";
+"callarg(28)" -> "CALLCLOBBERED(11)";
+"i_17" -> "i_3";
+"f_16" -> "f_4";
+"n" -> "n.0_1";
+"NONLOCAL" -> "callescape(36)";
+"callarg(39)" -> "callescape(36)";
+"callarg(54)" -> "callescape(36)";
+"callescape(36)" -> "CALLUSED(37)";
+"callarg(39)" -> "CALLUSED(37)";
+"callarg(54)" -> "CALLUSED(37)";
+"callarg(39)" -> "CALLCLOBBERED(38)";
+"callarg(54)" -> "CALLCLOBBERED(38)";
+"f_4" -> "callarg(54)";
+"NONLOCAL" -> "_12";
+"callarg(39)" -> "_12";
+"callarg(54)" -> "_12";
+"NONLOCAL" -> "callescape(57)";
+"callarg(60)" -> "callescape(57)";
+"callescape(57)" -> "CALLUSED(58)";
+"callarg(60)" -> "CALLUSED(58)";
+"callarg(60)" -> "CALLCLOBBERED(59)";
+"_12" -> "callarg(60)";
+"NONLOCAL" -> "_19";
+"callarg(60)" -> "_19";
+"callescape(9)" -> "*callarg(12)";
+"callescape(9)" -> "*callarg(28)";
+"callescape(36)" -> "*callarg(39)";
+"callescape(36)" -> "*callarg(54)";
+"callescape(57)" -> "*callarg(60)";
+}
+
+
+Rewriting constraints and unifying variables
+Uniting pointer but not location equivalent variables
+Finding indirect cycles
+
+
+// The constraint graph before solve-graph in dot format:
+strict digraph {
+  node [
+    shape = box
+  ]
+  edge [
+    fontsize = "12"
+  ]
+
+  // List of nodes and complex constraints in the constraint graph:
+"NULL";
+"ANYTHING";
+"STRING";
+"ESCAPED" [label="\N\nESCAPED = ESCAPED + UNKNOWN\lESCAPED = *ESCAPED\l*ESCAPED = NONLOCAL\l"];
+"NONLOCAL";
+"STOREDANYTHING";
+"INTEGER";
+"_ZSt3cin.0+64";
+"_ZSt3cin.64+64";
+"_ZSt3cin.128+64";
+"_ZSt3cin.192+224";
+"_ZSt3cin.448+64";
+"_ZSt3cin.512+64";
+"_ZSt3cin.576+1120";
+"_ZSt3cin.1728+64";
+"_ZSt3cin.1792+64";
+"_ZSt3cin.1856+64";
+"_ZSt3cin.1920+16";
+"_ZSt3cin.1984+64";
+"_ZSt3cin.2048+64";
+"_ZSt3cin.2112+64";
+"_ZSt3cin.2176+64";
+"_ZSt4cout.0+64";
+"_ZSt4cout.64+64";
+"_ZSt4cout.128+224";
+"_ZSt4cout.384+64";
+"_ZSt4cout.448+64";
+"_ZSt4cout.512+1120";
+"_ZSt4cout.1664+64";
+"_ZSt4cout.1728+64";
+"_ZSt4cout.1792+64";
+"_ZSt4cout.1856+16";
+"_ZSt4cout.1920+64";
+"_ZSt4cout.1984+64";
+"_ZSt4cout.2048+64";
+"_ZSt4cout.2112+64";
+"_ZNSirsERi";
+"callescape(9)";
+"CALLCLOBBERED(11)";
+"callarg(12)" [label="\N\ncallarg(12) = callarg(12) + UNKNOWN\lcallarg(12) = *callarg(12) + UNKNOWN\l*callarg(12) = callescape(9)\l"];
+"callarg(28)" [label="\N\ncallarg(28) = callarg(28) + UNKNOWN\lcallarg(28) = *callarg(28) + UNKNOWN\l*callarg(28) = callescape(9)\l"];
+"f_16";
+"i_3" [label="\N\nf_16 = i_3 + UNKNOWN\li_3 = i_3 + UNKNOWN\l"];
+"f_4" [label="\N\nf_16 = f_4 + UNKNOWN\l"];
+"n.0_1";
+"_ZNSolsEi";
+"callescape(36)";
+"CALLCLOBBERED(38)";
+"callarg(39)" [label="\N\ncallarg(39) = callarg(39) + UNKNOWN\lcallarg(39) = *callarg(39) + UNKNOWN\l*callarg(39) = callescape(36)\l"];
+"callarg(54)" [label="\N\ncallarg(54) = callarg(54) + UNKNOWN\lcallarg(54) = *callarg(54) + UNKNOWN\l*callarg(54) = callescape(36)\l"];
+"_ZSt4endlIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_";
+"callescape(57)" [label="\N\ncallescape(57) = callescape(57) + UNKNOWN\lcallescape(57) = *callescape(57) + UNKNOWN\l*callescape(57) = callescape(57)\l"];
+"main";
+
+  // Edges in the constraint graph:
+"NONLOCAL" -> "_ZSt3cin.0+64";
+"NONLOCAL" -> "_ZSt3cin.64+64";
+"NONLOCAL" -> "_ZSt3cin.128+64";
+"NONLOCAL" -> "_ZSt3cin.192+224";
+"NONLOCAL" -> "_ZSt3cin.448+64";
+"NONLOCAL" -> "_ZSt3cin.512+64";
+"NONLOCAL" -> "_ZSt3cin.576+1120";
+"NONLOCAL" -> "_ZSt3cin.1728+64";
+"NONLOCAL" -> "_ZSt3cin.1792+64";
+"NONLOCAL" -> "_ZSt3cin.1856+64";
+"NONLOCAL" -> "_ZSt3cin.1920+16";
+"NONLOCAL" -> "_ZSt3cin.1984+64";
+"NONLOCAL" -> "_ZSt3cin.2048+64";
+"NONLOCAL" -> "_ZSt3cin.2112+64";
+"NONLOCAL" -> "_ZSt3cin.2176+64";
+"NONLOCAL" -> "_ZSt4cout.0+64";
+"NONLOCAL" -> "_ZSt4cout.64+64";
+"NONLOCAL" -> "_ZSt4cout.128+224";
+"NONLOCAL" -> "_ZSt4cout.384+64";
+"NONLOCAL" -> "_ZSt4cout.448+64";
+"NONLOCAL" -> "_ZSt4cout.512+1120";
+"NONLOCAL" -> "_ZSt4cout.1664+64";
+"NONLOCAL" -> "_ZSt4cout.1728+64";
+"NONLOCAL" -> "_ZSt4cout.1792+64";
+"NONLOCAL" -> "_ZSt4cout.1856+16";
+"NONLOCAL" -> "_ZSt4cout.1920+64";
+"NONLOCAL" -> "_ZSt4cout.1984+64";
+"NONLOCAL" -> "_ZSt4cout.2048+64";
+"NONLOCAL" -> "_ZSt4cout.2112+64";
+"NONLOCAL" -> "callescape(9)";
+"NONLOCAL" -> "callescape(36)";
+"NONLOCAL" -> "callescape(57)";
+"STOREDANYTHING" -> "ESCAPED";
+"STOREDANYTHING" -> "_ZSt3cin.0+64";
+"STOREDANYTHING" -> "_ZSt3cin.64+64";
+"STOREDANYTHING" -> "_ZSt3cin.128+64";
+"STOREDANYTHING" -> "_ZSt3cin.192+224";
+"STOREDANYTHING" -> "_ZSt3cin.448+64";
+"STOREDANYTHING" -> "_ZSt3cin.512+64";
+"STOREDANYTHING" -> "_ZSt3cin.576+1120";
+"STOREDANYTHING" -> "_ZSt3cin.1728+64";
+"STOREDANYTHING" -> "_ZSt3cin.1792+64";
+"STOREDANYTHING" -> "_ZSt3cin.1856+64";
+"STOREDANYTHING" -> "_ZSt3cin.1920+16";
+"STOREDANYTHING" -> "_ZSt3cin.1984+64";
+"STOREDANYTHING" -> "_ZSt3cin.2048+64";
+"STOREDANYTHING" -> "_ZSt3cin.2112+64";
+"STOREDANYTHING" -> "_ZSt3cin.2176+64";
+"STOREDANYTHING" -> "n.0_1";
+"STOREDANYTHING" -> "_ZSt4cout.0+64";
+"STOREDANYTHING" -> "_ZSt4cout.64+64";
+"STOREDANYTHING" -> "_ZSt4cout.128+224";
+"STOREDANYTHING" -> "_ZSt4cout.384+64";
+"STOREDANYTHING" -> "_ZSt4cout.448+64";
+"STOREDANYTHING" -> "_ZSt4cout.512+1120";
+"STOREDANYTHING" -> "_ZSt4cout.1664+64";
+"STOREDANYTHING" -> "_ZSt4cout.1728+64";
+"STOREDANYTHING" -> "_ZSt4cout.1792+64";
+"STOREDANYTHING" -> "_ZSt4cout.1856+16";
+"STOREDANYTHING" -> "_ZSt4cout.1920+64";
+"STOREDANYTHING" -> "_ZSt4cout.1984+64";
+"STOREDANYTHING" -> "_ZSt4cout.2048+64";
+"STOREDANYTHING" -> "_ZSt4cout.2112+64";
+"STOREDANYTHING" -> "callarg(12)";
+"STOREDANYTHING" -> "callarg(28)";
+"STOREDANYTHING" -> "f_16";
+"STOREDANYTHING" -> "i_3";
+"STOREDANYTHING" -> "callarg(39)";
+"STOREDANYTHING" -> "callarg(54)";
+"STOREDANYTHING" -> "callescape(57)";
+"callarg(12)" -> "callescape(9)";
+"callarg(12)" -> "CALLCLOBBERED(11)";
+"callarg(28)" -> "callescape(9)";
+"callarg(28)" -> "CALLCLOBBERED(11)";
+"f_16" -> "f_4";
+"f_4" -> "ESCAPED";
+"f_4" -> "callarg(54)";
+"callescape(36)" -> "ESCAPED";
+"callescape(36)" -> "callescape(57)";
+"callarg(39)" -> "callescape(36)";
+"callarg(39)" -> "CALLCLOBBERED(38)";
+"callarg(54)" -> "callescape(36)";
+"callarg(54)" -> "CALLCLOBBERED(38)";
+}
+
+
+Solving graph
+
+
+// The constraint graph after solve-graph in dot format:
+strict digraph {
+  node [
+    shape = box
+  ]
+  edge [
+    fontsize = "12"
+  ]
+
+  // List of nodes and complex constraints in the constraint graph:
+"NULL";
+"ANYTHING";
+"STRING";
+"ESCAPED" [label="\N\nESCAPED = ESCAPED + UNKNOWN\lESCAPED = *ESCAPED\l*ESCAPED = NONLOCAL\l"];
+"NONLOCAL";
+"STOREDANYTHING";
+"INTEGER";
+"_ZSt3cin.0+64";
+"_ZSt3cin.64+64";
+"_ZSt3cin.128+64";
+"_ZSt3cin.192+224";
+"_ZSt3cin.448+64";
+"_ZSt3cin.512+64";
+"_ZSt3cin.576+1120";
+"_ZSt3cin.1728+64";
+"_ZSt3cin.1792+64";
+"_ZSt3cin.1856+64";
+"_ZSt3cin.1920+16";
+"_ZSt3cin.1984+64";
+"_ZSt3cin.2048+64";
+"_ZSt3cin.2112+64";
+"_ZSt3cin.2176+64";
+"_ZSt4cout.0+64";
+"_ZSt4cout.64+64";
+"_ZSt4cout.128+224";
+"_ZSt4cout.384+64";
+"_ZSt4cout.448+64";
+"_ZSt4cout.512+1120";
+"_ZSt4cout.1664+64";
+"_ZSt4cout.1728+64";
+"_ZSt4cout.1792+64";
+"_ZSt4cout.1856+16";
+"_ZSt4cout.1920+64";
+"_ZSt4cout.1984+64";
+"_ZSt4cout.2048+64";
+"_ZSt4cout.2112+64";
+"_ZNSirsERi";
+"callescape(9)";
+"CALLCLOBBERED(11)";
+"callarg(12)" [label="\N\ncallarg(12) = callarg(12) + UNKNOWN\lcallarg(12) = *callarg(12) + UNKNOWN\l*callarg(12) = callescape(9)\l"];
+"callarg(28)" [label="\N\ncallarg(28) = callarg(28) + UNKNOWN\lcallarg(28) = *callarg(28) + UNKNOWN\l*callarg(28) = callescape(9)\l"];
+"f_16";
+"i_3" [label="\N\nf_16 = i_3 + UNKNOWN\li_3 = i_3 + UNKNOWN\l"];
+"f_4" [label="\N\nf_16 = f_4 + UNKNOWN\l"];
+"n.0_1";
+"_ZNSolsEi";
+"callescape(36)";
+"CALLCLOBBERED(38)";
+"callarg(39)" [label="\N\ncallarg(39) = callarg(39) + UNKNOWN\lcallarg(39) = *callarg(39) + UNKNOWN\l*callarg(39) = callescape(36)\l"];
+"callarg(54)" [label="\N\ncallarg(54) = callarg(54) + UNKNOWN\lcallarg(54) = *callarg(54) + UNKNOWN\l*callarg(54) = callescape(36)\l"];
+"_ZSt4endlIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_";
+"callescape(57)" [label="\N\ncallescape(57) = callescape(57) + UNKNOWN\lcallescape(57) = *callescape(57) + UNKNOWN\l*callescape(57) = callescape(57)\l"];
+"main";
+
+  // Edges in the constraint graph:
+"NONLOCAL" -> "ESCAPED";
+"NONLOCAL" -> "_ZSt3cin.0+64";
+"NONLOCAL" -> "_ZSt3cin.64+64";
+"NONLOCAL" -> "_ZSt3cin.128+64";
+"NONLOCAL" -> "_ZSt3cin.192+224";
+"NONLOCAL" -> "_ZSt3cin.448+64";
+"NONLOCAL" -> "_ZSt3cin.512+64";
+"NONLOCAL" -> "_ZSt3cin.576+1120";
+"NONLOCAL" -> "_ZSt3cin.1728+64";
+"NONLOCAL" -> "_ZSt3cin.1792+64";
+"NONLOCAL" -> "_ZSt3cin.1856+64";
+"NONLOCAL" -> "_ZSt3cin.1920+16";
+"NONLOCAL" -> "_ZSt3cin.1984+64";
+"NONLOCAL" -> "_ZSt3cin.2048+64";
+"NONLOCAL" -> "_ZSt3cin.2112+64";
+"NONLOCAL" -> "_ZSt3cin.2176+64";
+"NONLOCAL" -> "_ZSt4cout.0+64";
+"NONLOCAL" -> "_ZSt4cout.64+64";
+"NONLOCAL" -> "_ZSt4cout.128+224";
+"NONLOCAL" -> "_ZSt4cout.384+64";
+"NONLOCAL" -> "_ZSt4cout.448+64";
+"NONLOCAL" -> "_ZSt4cout.512+1120";
+"NONLOCAL" -> "_ZSt4cout.1664+64";
+"NONLOCAL" -> "_ZSt4cout.1728+64";
+"NONLOCAL" -> "_ZSt4cout.1792+64";
+"NONLOCAL" -> "_ZSt4cout.1856+16";
+"NONLOCAL" -> "_ZSt4cout.1920+64";
+"NONLOCAL" -> "_ZSt4cout.1984+64";
+"NONLOCAL" -> "_ZSt4cout.2048+64";
+"NONLOCAL" -> "_ZSt4cout.2112+64";
+"NONLOCAL" -> "callescape(9)";
+"NONLOCAL" -> "n.0_1";
+"NONLOCAL" -> "callescape(36)";
+"NONLOCAL" -> "callescape(57)";
+"STOREDANYTHING" -> "ESCAPED";
+"STOREDANYTHING" -> "_ZSt3cin.0+64";
+"STOREDANYTHING" -> "_ZSt3cin.64+64";
+"STOREDANYTHING" -> "_ZSt3cin.128+64";
+"STOREDANYTHING" -> "_ZSt3cin.192+224";
+"STOREDANYTHING" -> "_ZSt3cin.448+64";
+"STOREDANYTHING" -> "_ZSt3cin.512+64";
+"STOREDANYTHING" -> "_ZSt3cin.576+1120";
+"STOREDANYTHING" -> "_ZSt3cin.1728+64";
+"STOREDANYTHING" -> "_ZSt3cin.1792+64";
+"STOREDANYTHING" -> "_ZSt3cin.1856+64";
+"STOREDANYTHING" -> "_ZSt3cin.1920+16";
+"STOREDANYTHING" -> "_ZSt3cin.1984+64";
+"STOREDANYTHING" -> "_ZSt3cin.2048+64";
+"STOREDANYTHING" -> "_ZSt3cin.2112+64";
+"STOREDANYTHING" -> "_ZSt3cin.2176+64";
+"STOREDANYTHING" -> "n.0_1";
+"STOREDANYTHING" -> "_ZSt4cout.0+64";
+"STOREDANYTHING" -> "_ZSt4cout.64+64";
+"STOREDANYTHING" -> "_ZSt4cout.128+224";
+"STOREDANYTHING" -> "_ZSt4cout.384+64";
+"STOREDANYTHING" -> "_ZSt4cout.448+64";
+"STOREDANYTHING" -> "_ZSt4cout.512+1120";
+"STOREDANYTHING" -> "_ZSt4cout.1664+64";
+"STOREDANYTHING" -> "_ZSt4cout.1728+64";
+"STOREDANYTHING" -> "_ZSt4cout.1792+64";
+"STOREDANYTHING" -> "_ZSt4cout.1856+16";
+"STOREDANYTHING" -> "_ZSt4cout.1920+64";
+"STOREDANYTHING" -> "_ZSt4cout.1984+64";
+"STOREDANYTHING" -> "_ZSt4cout.2048+64";
+"STOREDANYTHING" -> "_ZSt4cout.2112+64";
+"STOREDANYTHING" -> "callarg(12)";
+"STOREDANYTHING" -> "callarg(28)";
+"STOREDANYTHING" -> "f_16";
+"STOREDANYTHING" -> "i_3";
+"STOREDANYTHING" -> "callarg(39)";
+"STOREDANYTHING" -> "callarg(54)";
+"STOREDANYTHING" -> "callescape(57)";
+"_ZSt3cin.0+64" -> "ESCAPED";
+"_ZSt3cin.0+64" -> "callarg(12)";
+"_ZSt3cin.64+64" -> "ESCAPED";
+"_ZSt3cin.64+64" -> "callarg(12)";
+"_ZSt3cin.128+64" -> "ESCAPED";
+"_ZSt3cin.128+64" -> "callarg(12)";
+"_ZSt3cin.192+224" -> "ESCAPED";
+"_ZSt3cin.192+224" -> "callarg(12)";
+"_ZSt3cin.448+64" -> "ESCAPED";
+"_ZSt3cin.448+64" -> "callarg(12)";
+"_ZSt3cin.512+64" -> "ESCAPED";
+"_ZSt3cin.512+64" -> "callarg(12)";
+"_ZSt3cin.576+1120" -> "ESCAPED";
+"_ZSt3cin.576+1120" -> "callarg(12)";
+"_ZSt3cin.1728+64" -> "ESCAPED";
+"_ZSt3cin.1728+64" -> "callarg(12)";
+"_ZSt3cin.1792+64" -> "ESCAPED";
+"_ZSt3cin.1792+64" -> "callarg(12)";
+"_ZSt3cin.1856+64" -> "ESCAPED";
+"_ZSt3cin.1856+64" -> "callarg(12)";
+"_ZSt3cin.1920+16" -> "ESCAPED";
+"_ZSt3cin.1920+16" -> "callarg(12)";
+"_ZSt3cin.1984+64" -> "ESCAPED";
+"_ZSt3cin.1984+64" -> "callarg(12)";
+"_ZSt3cin.2048+64" -> "ESCAPED";
+"_ZSt3cin.2048+64" -> "callarg(12)";
+"_ZSt3cin.2112+64" -> "ESCAPED";
+"_ZSt3cin.2112+64" -> "callarg(12)";
+"_ZSt3cin.2176+64" -> "ESCAPED";
+"_ZSt3cin.2176+64" -> "callarg(12)";
+"_ZSt4cout.0+64" -> "ESCAPED";
+"_ZSt4cout.0+64" -> "callarg(39)";
+"_ZSt4cout.64+64" -> "ESCAPED";
+"_ZSt4cout.64+64" -> "callarg(39)";
+"_ZSt4cout.128+224" -> "ESCAPED";
+"_ZSt4cout.128+224" -> "callarg(39)";
+"_ZSt4cout.384+64" -> "ESCAPED";
+"_ZSt4cout.384+64" -> "callarg(39)";
+"_ZSt4cout.448+64" -> "ESCAPED";
+"_ZSt4cout.448+64" -> "callarg(39)";
+"_ZSt4cout.512+1120" -> "ESCAPED";
+"_ZSt4cout.512+1120" -> "callarg(39)";
+"_ZSt4cout.1664+64" -> "ESCAPED";
+"_ZSt4cout.1664+64" -> "callarg(39)";
+"_ZSt4cout.1728+64" -> "ESCAPED";
+"_ZSt4cout.1728+64" -> "callarg(39)";
+"_ZSt4cout.1792+64" -> "ESCAPED";
+"_ZSt4cout.1792+64" -> "callarg(39)";
+"_ZSt4cout.1856+16" -> "ESCAPED";
+"_ZSt4cout.1856+16" -> "callarg(39)";
+"_ZSt4cout.1920+64" -> "ESCAPED";
+"_ZSt4cout.1920+64" -> "callarg(39)";
+"_ZSt4cout.1984+64" -> "ESCAPED";
+"_ZSt4cout.1984+64" -> "callarg(39)";
+"_ZSt4cout.2048+64" -> "ESCAPED";
+"_ZSt4cout.2048+64" -> "callarg(39)";
+"_ZSt4cout.2112+64" -> "ESCAPED";
+"_ZSt4cout.2112+64" -> "callarg(39)";
+"callescape(9)" -> "ESCAPED";
+"callescape(9)" -> "_ZSt3cin.0+64";
+"callescape(9)" -> "_ZSt3cin.64+64";
+"callescape(9)" -> "_ZSt3cin.128+64";
+"callescape(9)" -> "_ZSt3cin.192+224";
+"callescape(9)" -> "_ZSt3cin.448+64";
+"callescape(9)" -> "_ZSt3cin.512+64";
+"callescape(9)" -> "_ZSt3cin.576+1120";
+"callescape(9)" -> "_ZSt3cin.1728+64";
+"callescape(9)" -> "_ZSt3cin.1792+64";
+"callescape(9)" -> "_ZSt3cin.1856+64";
+"callescape(9)" -> "_ZSt3cin.1920+16";
+"callescape(9)" -> "_ZSt3cin.1984+64";
+"callescape(9)" -> "_ZSt3cin.2048+64";
+"callescape(9)" -> "_ZSt3cin.2112+64";
+"callescape(9)" -> "_ZSt3cin.2176+64";
+"callescape(9)" -> "n.0_1";
+"callarg(12)" -> "callescape(9)";
+"callarg(12)" -> "CALLCLOBBERED(11)";
+"callarg(28)" -> "callescape(9)";
+"callarg(28)" -> "CALLCLOBBERED(11)";
+"f_16" -> "f_4";
+"f_4" -> "ESCAPED";
+"f_4" -> "callarg(54)";
+"n.0_1" -> "ESCAPED";
+"n.0_1" -> "callarg(28)";
+"callescape(36)" -> "ESCAPED";
+"callescape(36)" -> "_ZSt4cout.0+64";
+"callescape(36)" -> "_ZSt4cout.64+64";
+"callescape(36)" -> "_ZSt4cout.128+224";
+"callescape(36)" -> "_ZSt4cout.384+64";
+"callescape(36)" -> "_ZSt4cout.448+64";
+"callescape(36)" -> "_ZSt4cout.512+1120";
+"callescape(36)" -> "_ZSt4cout.1664+64";
+"callescape(36)" -> "_ZSt4cout.1728+64";
+"callescape(36)" -> "_ZSt4cout.1792+64";
+"callescape(36)" -> "_ZSt4cout.1856+16";
+"callescape(36)" -> "_ZSt4cout.1920+64";
+"callescape(36)" -> "_ZSt4cout.1984+64";
+"callescape(36)" -> "_ZSt4cout.2048+64";
+"callescape(36)" -> "_ZSt4cout.2112+64";
+"callescape(36)" -> "callescape(57)";
+"callarg(39)" -> "callescape(36)";
+"callarg(39)" -> "CALLCLOBBERED(38)";
+"callarg(54)" -> "callescape(36)";
+"callarg(54)" -> "CALLCLOBBERED(38)";
+"callescape(57)" -> "ESCAPED";
+}
+
+
+
+Points-to sets
+
+ANYTHING = { ANYTHING }
+ESCAPED = { ESCAPED NONLOCAL _ZSt3cin.0+64 _ZSt3cin.64+64 _ZSt3cin.128+64 _ZSt3cin.192+224 _ZSt3cin.448+64 _ZSt3cin.512+64 _ZSt3cin.576+1120 _ZSt3cin.1728+64 _ZSt3cin.1792+64 _ZSt3cin.1856+64 _ZSt3cin.1920+16 _ZSt3cin.1984+64 _ZSt3cin.2048+64 _ZSt3cin.2112+64 _ZSt3cin.2176+64 n _ZSt4cout.0+64 _ZSt4cout.64+64 _ZSt4cout.128+224 _ZSt4cout.384+64 _ZSt4cout.448+64 _ZSt4cout.512+1120 _ZSt4cout.1664+64 _ZSt4cout.1728+64 _ZSt4cout.1792+64 _ZSt4cout.1856+16 _ZSt4cout.1920+64 _ZSt4cout.1984+64 _ZSt4cout.2048+64 _ZSt4cout.2112+64 }
+NONLOCAL = { ESCAPED NONLOCAL }
+STOREDANYTHING = { }
+INTEGER = { ANYTHING }
+_ZSt3cin.0+64 = { ESCAPED NONLOCAL _ZSt3cin.0+64 _ZSt3cin.64+64 _ZSt3cin.128+64 _ZSt3cin.192+224 _ZSt3cin.448+64 _ZSt3cin.512+64 _ZSt3cin.576+1120 _ZSt3cin.1728+64 _ZSt3cin.1792+64 _ZSt3cin.1856+64 _ZSt3cin.1920+16 _ZSt3cin.1984+64 _ZSt3cin.2048+64 _ZSt3cin.2112+64 _ZSt3cin.2176+64 n }
+_ZSt3cin.64+64 = { ESCAPED NONLOCAL _ZSt3cin.0+64 _ZSt3cin.64+64 _ZSt3cin.128+64 _ZSt3cin.192+224 _ZSt3cin.448+64 _ZSt3cin.512+64 _ZSt3cin.576+1120 _ZSt3cin.1728+64 _ZSt3cin.1792+64 _ZSt3cin.1856+64 _ZSt3cin.1920+16 _ZSt3cin.1984+64 _ZSt3cin.2048+64 _ZSt3cin.2112+64 _ZSt3cin.2176+64 n }
+_ZSt3cin.128+64 = { ESCAPED NONLOCAL _ZSt3cin.0+64 _ZSt3cin.64+64 _ZSt3cin.128+64 _ZSt3cin.192+224 _ZSt3cin.448+64 _ZSt3cin.512+64 _ZSt3cin.576+1120 _ZSt3cin.1728+64 _ZSt3cin.1792+64 _ZSt3cin.1856+64 _ZSt3cin.1920+16 _ZSt3cin.1984+64 _ZSt3cin.2048+64 _ZSt3cin.2112+64 _ZSt3cin.2176+64 n }
+_ZSt3cin.192+224 = { ESCAPED NONLOCAL _ZSt3cin.0+64 _ZSt3cin.64+64 _ZSt3cin.128+64 _ZSt3cin.192+224 _ZSt3cin.448+64 _ZSt3cin.512+64 _ZSt3cin.576+1120 _ZSt3cin.1728+64 _ZSt3cin.1792+64 _ZSt3cin.1856+64 _ZSt3cin.1920+16 _ZSt3cin.1984+64 _ZSt3cin.2048+64 _ZSt3cin.2112+64 _ZSt3cin.2176+64 n }
+_ZSt3cin.448+64 = { ESCAPED NONLOCAL _ZSt3cin.0+64 _ZSt3cin.64+64 _ZSt3cin.128+64 _ZSt3cin.192+224 _ZSt3cin.448+64 _ZSt3cin.512+64 _ZSt3cin.576+1120 _ZSt3cin.1728+64 _ZSt3cin.1792+64 _ZSt3cin.1856+64 _ZSt3cin.1920+16 _ZSt3cin.1984+64 _ZSt3cin.2048+64 _ZSt3cin.2112+64 _ZSt3cin.2176+64 n }
+_ZSt3cin.512+64 = { ESCAPED NONLOCAL _ZSt3cin.0+64 _ZSt3cin.64+64 _ZSt3cin.128+64 _ZSt3cin.192+224 _ZSt3cin.448+64 _ZSt3cin.512+64 _ZSt3cin.576+1120 _ZSt3cin.1728+64 _ZSt3cin.1792+64 _ZSt3cin.1856+64 _ZSt3cin.1920+16 _ZSt3cin.1984+64 _ZSt3cin.2048+64 _ZSt3cin.2112+64 _ZSt3cin.2176+64 n }
+_ZSt3cin.576+1120 = { ESCAPED NONLOCAL _ZSt3cin.0+64 _ZSt3cin.64+64 _ZSt3cin.128+64 _ZSt3cin.192+224 _ZSt3cin.448+64 _ZSt3cin.512+64 _ZSt3cin.576+1120 _ZSt3cin.1728+64 _ZSt3cin.1792+64 _ZSt3cin.1856+64 _ZSt3cin.1920+16 _ZSt3cin.1984+64 _ZSt3cin.2048+64 _ZSt3cin.2112+64 _ZSt3cin.2176+64 n }
+_ZSt3cin.1728+64 = { ESCAPED NONLOCAL _ZSt3cin.0+64 _ZSt3cin.64+64 _ZSt3cin.128+64 _ZSt3cin.192+224 _ZSt3cin.448+64 _ZSt3cin.512+64 _ZSt3cin.576+1120 _ZSt3cin.1728+64 _ZSt3cin.1792+64 _ZSt3cin.1856+64 _ZSt3cin.1920+16 _ZSt3cin.1984+64 _ZSt3cin.2048+64 _ZSt3cin.2112+64 _ZSt3cin.2176+64 n }
+_ZSt3cin.1792+64 = { ESCAPED NONLOCAL _ZSt3cin.0+64 _ZSt3cin.64+64 _ZSt3cin.128+64 _ZSt3cin.192+224 _ZSt3cin.448+64 _ZSt3cin.512+64 _ZSt3cin.576+1120 _ZSt3cin.1728+64 _ZSt3cin.1792+64 _ZSt3cin.1856+64 _ZSt3cin.1920+16 _ZSt3cin.1984+64 _ZSt3cin.2048+64 _ZSt3cin.2112+64 _ZSt3cin.2176+64 n }
+_ZSt3cin.1856+64 = { ESCAPED NONLOCAL _ZSt3cin.0+64 _ZSt3cin.64+64 _ZSt3cin.128+64 _ZSt3cin.192+224 _ZSt3cin.448+64 _ZSt3cin.512+64 _ZSt3cin.576+1120 _ZSt3cin.1728+64 _ZSt3cin.1792+64 _ZSt3cin.1856+64 _ZSt3cin.1920+16 _ZSt3cin.1984+64 _ZSt3cin.2048+64 _ZSt3cin.2112+64 _ZSt3cin.2176+64 n }
+_ZSt3cin.1920+16 = { ESCAPED NONLOCAL _ZSt3cin.0+64 _ZSt3cin.64+64 _ZSt3cin.128+64 _ZSt3cin.192+224 _ZSt3cin.448+64 _ZSt3cin.512+64 _ZSt3cin.576+1120 _ZSt3cin.1728+64 _ZSt3cin.1792+64 _ZSt3cin.1856+64 _ZSt3cin.1920+16 _ZSt3cin.1984+64 _ZSt3cin.2048+64 _ZSt3cin.2112+64 _ZSt3cin.2176+64 n }
+_ZSt3cin.1984+64 = { ESCAPED NONLOCAL _ZSt3cin.0+64 _ZSt3cin.64+64 _ZSt3cin.128+64 _ZSt3cin.192+224 _ZSt3cin.448+64 _ZSt3cin.512+64 _ZSt3cin.576+1120 _ZSt3cin.1728+64 _ZSt3cin.1792+64 _ZSt3cin.1856+64 _ZSt3cin.1920+16 _ZSt3cin.1984+64 _ZSt3cin.2048+64 _ZSt3cin.2112+64 _ZSt3cin.2176+64 n }
+_ZSt3cin.2048+64 = { ESCAPED NONLOCAL _ZSt3cin.0+64 _ZSt3cin.64+64 _ZSt3cin.128+64 _ZSt3cin.192+224 _ZSt3cin.448+64 _ZSt3cin.512+64 _ZSt3cin.576+1120 _ZSt3cin.1728+64 _ZSt3cin.1792+64 _ZSt3cin.1856+64 _ZSt3cin.1920+16 _ZSt3cin.1984+64 _ZSt3cin.2048+64 _ZSt3cin.2112+64 _ZSt3cin.2176+64 n }
+_ZSt3cin.2112+64 = { ESCAPED NONLOCAL _ZSt3cin.0+64 _ZSt3cin.64+64 _ZSt3cin.128+64 _ZSt3cin.192+224 _ZSt3cin.448+64 _ZSt3cin.512+64 _ZSt3cin.576+1120 _ZSt3cin.1728+64 _ZSt3cin.1792+64 _ZSt3cin.1856+64 _ZSt3cin.1920+16 _ZSt3cin.1984+64 _ZSt3cin.2048+64 _ZSt3cin.2112+64 _ZSt3cin.2176+64 n }
+_ZSt3cin.2176+64 = { ESCAPED NONLOCAL _ZSt3cin.0+64 _ZSt3cin.64+64 _ZSt3cin.128+64 _ZSt3cin.192+224 _ZSt3cin.448+64 _ZSt3cin.512+64 _ZSt3cin.576+1120 _ZSt3cin.1728+64 _ZSt3cin.1792+64 _ZSt3cin.1856+64 _ZSt3cin.1920+16 _ZSt3cin.1984+64 _ZSt3cin.2048+64 _ZSt3cin.2112+64 _ZSt3cin.2176+64 n }
+n = { ESCAPED NONLOCAL _ZSt3cin.0+64 _ZSt3cin.64+64 _ZSt3cin.128+64 _ZSt3cin.192+224 _ZSt3cin.448+64 _ZSt3cin.512+64 _ZSt3cin.576+1120 _ZSt3cin.1728+64 _ZSt3cin.1792+64 _ZSt3cin.1856+64 _ZSt3cin.1920+16 _ZSt3cin.1984+64 _ZSt3cin.2048+64 _ZSt3cin.2112+64 _ZSt3cin.2176+64 n } same as n.0_1
+_ZSt4cout.0+64 = { ESCAPED NONLOCAL _ZSt4cout.0+64 _ZSt4cout.64+64 _ZSt4cout.128+224 _ZSt4cout.384+64 _ZSt4cout.448+64 _ZSt4cout.512+1120 _ZSt4cout.1664+64 _ZSt4cout.1728+64 _ZSt4cout.1792+64 _ZSt4cout.1856+16 _ZSt4cout.1920+64 _ZSt4cout.1984+64 _ZSt4cout.2048+64 _ZSt4cout.2112+64 }
+_ZSt4cout.64+64 = { ESCAPED NONLOCAL _ZSt4cout.0+64 _ZSt4cout.64+64 _ZSt4cout.128+224 _ZSt4cout.384+64 _ZSt4cout.448+64 _ZSt4cout.512+1120 _ZSt4cout.1664+64 _ZSt4cout.1728+64 _ZSt4cout.1792+64 _ZSt4cout.1856+16 _ZSt4cout.1920+64 _ZSt4cout.1984+64 _ZSt4cout.2048+64 _ZSt4cout.2112+64 }
+_ZSt4cout.128+224 = { ESCAPED NONLOCAL _ZSt4cout.0+64 _ZSt4cout.64+64 _ZSt4cout.128+224 _ZSt4cout.384+64 _ZSt4cout.448+64 _ZSt4cout.512+1120 _ZSt4cout.1664+64 _ZSt4cout.1728+64 _ZSt4cout.1792+64 _ZSt4cout.1856+16 _ZSt4cout.1920+64 _ZSt4cout.1984+64 _ZSt4cout.2048+64 _ZSt4cout.2112+64 }
+_ZSt4cout.384+64 = { ESCAPED NONLOCAL _ZSt4cout.0+64 _ZSt4cout.64+64 _ZSt4cout.128+224 _ZSt4cout.384+64 _ZSt4cout.448+64 _ZSt4cout.512+1120 _ZSt4cout.1664+64 _ZSt4cout.1728+64 _ZSt4cout.1792+64 _ZSt4cout.1856+16 _ZSt4cout.1920+64 _ZSt4cout.1984+64 _ZSt4cout.2048+64 _ZSt4cout.2112+64 }
+_ZSt4cout.448+64 = { ESCAPED NONLOCAL _ZSt4cout.0+64 _ZSt4cout.64+64 _ZSt4cout.128+224 _ZSt4cout.384+64 _ZSt4cout.448+64 _ZSt4cout.512+1120 _ZSt4cout.1664+64 _ZSt4cout.1728+64 _ZSt4cout.1792+64 _ZSt4cout.1856+16 _ZSt4cout.1920+64 _ZSt4cout.1984+64 _ZSt4cout.2048+64 _ZSt4cout.2112+64 }
+_ZSt4cout.512+1120 = { ESCAPED NONLOCAL _ZSt4cout.0+64 _ZSt4cout.64+64 _ZSt4cout.128+224 _ZSt4cout.384+64 _ZSt4cout.448+64 _ZSt4cout.512+1120 _ZSt4cout.1664+64 _ZSt4cout.1728+64 _ZSt4cout.1792+64 _ZSt4cout.1856+16 _ZSt4cout.1920+64 _ZSt4cout.1984+64 _ZSt4cout.2048+64 _ZSt4cout.2112+64 }
+_ZSt4cout.1664+64 = { ESCAPED NONLOCAL _ZSt4cout.0+64 _ZSt4cout.64+64 _ZSt4cout.128+224 _ZSt4cout.384+64 _ZSt4cout.448+64 _ZSt4cout.512+1120 _ZSt4cout.1664+64 _ZSt4cout.1728+64 _ZSt4cout.1792+64 _ZSt4cout.1856+16 _ZSt4cout.1920+64 _ZSt4cout.1984+64 _ZSt4cout.2048+64 _ZSt4cout.2112+64 }
+_ZSt4cout.1728+64 = { ESCAPED NONLOCAL _ZSt4cout.0+64 _ZSt4cout.64+64 _ZSt4cout.128+224 _ZSt4cout.384+64 _ZSt4cout.448+64 _ZSt4cout.512+1120 _ZSt4cout.1664+64 _ZSt4cout.1728+64 _ZSt4cout.1792+64 _ZSt4cout.1856+16 _ZSt4cout.1920+64 _ZSt4cout.1984+64 _ZSt4cout.2048+64 _ZSt4cout.2112+64 }
+_ZSt4cout.1792+64 = { ESCAPED NONLOCAL _ZSt4cout.0+64 _ZSt4cout.64+64 _ZSt4cout.128+224 _ZSt4cout.384+64 _ZSt4cout.448+64 _ZSt4cout.512+1120 _ZSt4cout.1664+64 _ZSt4cout.1728+64 _ZSt4cout.1792+64 _ZSt4cout.1856+16 _ZSt4cout.1920+64 _ZSt4cout.1984+64 _ZSt4cout.2048+64 _ZSt4cout.2112+64 }
+_ZSt4cout.1856+16 = { ESCAPED NONLOCAL _ZSt4cout.0+64 _ZSt4cout.64+64 _ZSt4cout.128+224 _ZSt4cout.384+64 _ZSt4cout.448+64 _ZSt4cout.512+1120 _ZSt4cout.1664+64 _ZSt4cout.1728+64 _ZSt4cout.1792+64 _ZSt4cout.1856+16 _ZSt4cout.1920+64 _ZSt4cout.1984+64 _ZSt4cout.2048+64 _ZSt4cout.2112+64 }
+_ZSt4cout.1920+64 = { ESCAPED NONLOCAL _ZSt4cout.0+64 _ZSt4cout.64+64 _ZSt4cout.128+224 _ZSt4cout.384+64 _ZSt4cout.448+64 _ZSt4cout.512+1120 _ZSt4cout.1664+64 _ZSt4cout.1728+64 _ZSt4cout.1792+64 _ZSt4cout.1856+16 _ZSt4cout.1920+64 _ZSt4cout.1984+64 _ZSt4cout.2048+64 _ZSt4cout.2112+64 }
+_ZSt4cout.1984+64 = { ESCAPED NONLOCAL _ZSt4cout.0+64 _ZSt4cout.64+64 _ZSt4cout.128+224 _ZSt4cout.384+64 _ZSt4cout.448+64 _ZSt4cout.512+1120 _ZSt4cout.1664+64 _ZSt4cout.1728+64 _ZSt4cout.1792+64 _ZSt4cout.1856+16 _ZSt4cout.1920+64 _ZSt4cout.1984+64 _ZSt4cout.2048+64 _ZSt4cout.2112+64 }
+_ZSt4cout.2048+64 = { ESCAPED NONLOCAL _ZSt4cout.0+64 _ZSt4cout.64+64 _ZSt4cout.128+224 _ZSt4cout.384+64 _ZSt4cout.448+64 _ZSt4cout.512+1120 _ZSt4cout.1664+64 _ZSt4cout.1728+64 _ZSt4cout.1792+64 _ZSt4cout.1856+16 _ZSt4cout.1920+64 _ZSt4cout.1984+64 _ZSt4cout.2048+64 _ZSt4cout.2112+64 }
+_ZSt4cout.2112+64 = { ESCAPED NONLOCAL _ZSt4cout.0+64 _ZSt4cout.64+64 _ZSt4cout.128+224 _ZSt4cout.384+64 _ZSt4cout.448+64 _ZSt4cout.512+1120 _ZSt4cout.1664+64 _ZSt4cout.1728+64 _ZSt4cout.1792+64 _ZSt4cout.1856+16 _ZSt4cout.1920+64 _ZSt4cout.1984+64 _ZSt4cout.2048+64 _ZSt4cout.2112+64 }
+_ZNSirsERi = { }
+callescape(9) = { ESCAPED NONLOCAL _ZSt3cin.0+64 _ZSt3cin.64+64 _ZSt3cin.128+64 _ZSt3cin.192+224 _ZSt3cin.448+64 _ZSt3cin.512+64 _ZSt3cin.576+1120 _ZSt3cin.1728+64 _ZSt3cin.1792+64 _ZSt3cin.1856+64 _ZSt3cin.1920+16 _ZSt3cin.1984+64 _ZSt3cin.2048+64 _ZSt3cin.2112+64 _ZSt3cin.2176+64 n }
+CALLUSED(10) = { ESCAPED NONLOCAL _ZSt3cin.0+64 _ZSt3cin.64+64 _ZSt3cin.128+64 _ZSt3cin.192+224 _ZSt3cin.448+64 _ZSt3cin.512+64 _ZSt3cin.576+1120 _ZSt3cin.1728+64 _ZSt3cin.1792+64 _ZSt3cin.1856+64 _ZSt3cin.1920+16 _ZSt3cin.1984+64 _ZSt3cin.2048+64 _ZSt3cin.2112+64 _ZSt3cin.2176+64 n } same as callescape(9)
+CALLCLOBBERED(11) = { ESCAPED NONLOCAL _ZSt3cin.0+64 _ZSt3cin.64+64 _ZSt3cin.128+64 _ZSt3cin.192+224 _ZSt3cin.448+64 _ZSt3cin.512+64 _ZSt3cin.576+1120 _ZSt3cin.1728+64 _ZSt3cin.1792+64 _ZSt3cin.1856+64 _ZSt3cin.1920+16 _ZSt3cin.1984+64 _ZSt3cin.2048+64 _ZSt3cin.2112+64 _ZSt3cin.2176+64 n }
+callarg(12) = { ESCAPED NONLOCAL _ZSt3cin.0+64 _ZSt3cin.64+64 _ZSt3cin.128+64 _ZSt3cin.192+224 _ZSt3cin.448+64 _ZSt3cin.512+64 _ZSt3cin.576+1120 _ZSt3cin.1728+64 _ZSt3cin.1792+64 _ZSt3cin.1856+64 _ZSt3cin.1920+16 _ZSt3cin.1984+64 _ZSt3cin.2048+64 _ZSt3cin.2112+64 _ZSt3cin.2176+64 n }
+callarg(28) = { ESCAPED NONLOCAL _ZSt3cin.0+64 _ZSt3cin.64+64 _ZSt3cin.128+64 _ZSt3cin.192+224 _ZSt3cin.448+64 _ZSt3cin.512+64 _ZSt3cin.576+1120 _ZSt3cin.1728+64 _ZSt3cin.1792+64 _ZSt3cin.1856+64 _ZSt3cin.1920+16 _ZSt3cin.1984+64 _ZSt3cin.2048+64 _ZSt3cin.2112+64 _ZSt3cin.2176+64 n }
+f_16 = { NONLOCAL }
+i_3 = { NONLOCAL }
+f_4 = { NONLOCAL }
+i_17 = { NONLOCAL } same as i_3
+n.0_1 = { ESCAPED NONLOCAL _ZSt3cin.0+64 _ZSt3cin.64+64 _ZSt3cin.128+64 _ZSt3cin.192+224 _ZSt3cin.448+64 _ZSt3cin.512+64 _ZSt3cin.576+1120 _ZSt3cin.1728+64 _ZSt3cin.1792+64 _ZSt3cin.1856+64 _ZSt3cin.1920+16 _ZSt3cin.1984+64 _ZSt3cin.2048+64 _ZSt3cin.2112+64 _ZSt3cin.2176+64 n }
+_ZNSolsEi = { }
+callescape(36) = { ESCAPED NONLOCAL _ZSt4cout.0+64 _ZSt4cout.64+64 _ZSt4cout.128+224 _ZSt4cout.384+64 _ZSt4cout.448+64 _ZSt4cout.512+1120 _ZSt4cout.1664+64 _ZSt4cout.1728+64 _ZSt4cout.1792+64 _ZSt4cout.1856+16 _ZSt4cout.1920+64 _ZSt4cout.1984+64 _ZSt4cout.2048+64 _ZSt4cout.2112+64 }
+CALLUSED(37) = { ESCAPED NONLOCAL _ZSt4cout.0+64 _ZSt4cout.64+64 _ZSt4cout.128+224 _ZSt4cout.384+64 _ZSt4cout.448+64 _ZSt4cout.512+1120 _ZSt4cout.1664+64 _ZSt4cout.1728+64 _ZSt4cout.1792+64 _ZSt4cout.1856+16 _ZSt4cout.1920+64 _ZSt4cout.1984+64 _ZSt4cout.2048+64 _ZSt4cout.2112+64 } same as callescape(36)
+CALLCLOBBERED(38) = { ESCAPED NONLOCAL _ZSt4cout.0+64 _ZSt4cout.64+64 _ZSt4cout.128+224 _ZSt4cout.384+64 _ZSt4cout.448+64 _ZSt4cout.512+1120 _ZSt4cout.1664+64 _ZSt4cout.1728+64 _ZSt4cout.1792+64 _ZSt4cout.1856+16 _ZSt4cout.1920+64 _ZSt4cout.1984+64 _ZSt4cout.2048+64 _ZSt4cout.2112+64 }
+callarg(39) = { ESCAPED NONLOCAL _ZSt4cout.0+64 _ZSt4cout.64+64 _ZSt4cout.128+224 _ZSt4cout.384+64 _ZSt4cout.448+64 _ZSt4cout.512+1120 _ZSt4cout.1664+64 _ZSt4cout.1728+64 _ZSt4cout.1792+64 _ZSt4cout.1856+16 _ZSt4cout.1920+64 _ZSt4cout.1984+64 _ZSt4cout.2048+64 _ZSt4cout.2112+64 }
+callarg(54) = { ESCAPED NONLOCAL }
+_12 = { ESCAPED NONLOCAL _ZSt4cout.0+64 _ZSt4cout.64+64 _ZSt4cout.128+224 _ZSt4cout.384+64 _ZSt4cout.448+64 _ZSt4cout.512+1120 _ZSt4cout.1664+64 _ZSt4cout.1728+64 _ZSt4cout.1792+64 _ZSt4cout.1856+16 _ZSt4cout.1920+64 _ZSt4cout.1984+64 _ZSt4cout.2048+64 _ZSt4cout.2112+64 } same as callescape(36)
+_ZSt4endlIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_ = { }
+callescape(57) = { ESCAPED NONLOCAL _ZSt4cout.0+64 _ZSt4cout.64+64 _ZSt4cout.128+224 _ZSt4cout.384+64 _ZSt4cout.448+64 _ZSt4cout.512+1120 _ZSt4cout.1664+64 _ZSt4cout.1728+64 _ZSt4cout.1792+64 _ZSt4cout.1856+16 _ZSt4cout.1920+64 _ZSt4cout.1984+64 _ZSt4cout.2048+64 _ZSt4cout.2112+64 }
+CALLUSED(58) = { ESCAPED NONLOCAL _ZSt4cout.0+64 _ZSt4cout.64+64 _ZSt4cout.128+224 _ZSt4cout.384+64 _ZSt4cout.448+64 _ZSt4cout.512+1120 _ZSt4cout.1664+64 _ZSt4cout.1728+64 _ZSt4cout.1792+64 _ZSt4cout.1856+16 _ZSt4cout.1920+64 _ZSt4cout.1984+64 _ZSt4cout.2048+64 _ZSt4cout.2112+64 } same as callescape(57)
+CALLCLOBBERED(59) = { ESCAPED NONLOCAL _ZSt4cout.0+64 _ZSt4cout.64+64 _ZSt4cout.128+224 _ZSt4cout.384+64 _ZSt4cout.448+64 _ZSt4cout.512+1120 _ZSt4cout.1664+64 _ZSt4cout.1728+64 _ZSt4cout.1792+64 _ZSt4cout.1856+16 _ZSt4cout.1920+64 _ZSt4cout.1984+64 _ZSt4cout.2048+64 _ZSt4cout.2112+64 } same as callescape(57)
+callarg(60) = { ESCAPED NONLOCAL _ZSt4cout.0+64 _ZSt4cout.64+64 _ZSt4cout.128+224 _ZSt4cout.384+64 _ZSt4cout.448+64 _ZSt4cout.512+1120 _ZSt4cout.1664+64 _ZSt4cout.1728+64 _ZSt4cout.1792+64 _ZSt4cout.1856+16 _ZSt4cout.1920+64 _ZSt4cout.1984+64 _ZSt4cout.2048+64 _ZSt4cout.2112+64 } same as callescape(57)
+_19 = { ESCAPED NONLOCAL _ZSt4cout.0+64 _ZSt4cout.64+64 _ZSt4cout.128+224 _ZSt4cout.384+64 _ZSt4cout.448+64 _ZSt4cout.512+1120 _ZSt4cout.1664+64 _ZSt4cout.1728+64 _ZSt4cout.1792+64 _ZSt4cout.1856+16 _ZSt4cout.1920+64 _ZSt4cout.1984+64 _ZSt4cout.2048+64 _ZSt4cout.2112+64 } same as callescape(57)
+main = { }
+
+
+Alias information for int main()
+
+Aliased symbols
+
+n, UID D.50636, int, is addressable
+
+Call clobber information
+
+ESCAPED, points-to non-local, points-to vars: { D.50624 D.50625 D.50636 } (nonlocal, escaped, interposable)
+
+Flow-insensitive points-to information
+
+_12, points-to non-local, points-to escaped, points-to NULL, points-to vars: { D.50625 } (nonlocal, escaped, interposable)
+_19, points-to non-local, points-to escaped, points-to NULL, points-to vars: { D.50625 } (nonlocal, escaped, interposable)
+
+int main ()
+{
+  int f;
+  int n;
+  int i;
+  int x;
+  int n.0_1;
+  struct basic_ostream & _12;
+  struct __ostream_type & _19;
+
+  <bb 2> :
+  std::basic_istream<char>::operator>> (&cin, &n);
+  goto <bb 4>; [INV]
+
+  <bb 3> :
+  f_16 = i_3 * f_4;
+  i_17 = i_3 + 1;
+
+  <bb 4> :
+  # i_3 = PHI <2(2), i_17(3)>
+  # f_4 = PHI <1(2), f_16(3)>
+  n.0_1 = n;
+  if (n.0_1 >= i_3)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 5> :
+  _12 = std::basic_ostream<char>::operator<< (&cout, f_4);
+
+  <bb 6> :
+  _19 = std::endl<char, std::char_traits<char> > (_12);
+
+  <bb 7> :
+  n ={v} {CLOBBER(eol)};
+  return 0;
+
+  <bb 8> :
+<L5>:
+  n ={v} {CLOBBER(eol)};
+  resx 1
+
+}
+
+
+
+;; Function std::__check_facet<std::ctype<char> > (_ZSt13__check_facetISt5ctypeIcEERKT_PS3_, funcdef_no=2484, decl_uid=53998, cgraph_uid=952, symbol_order=989)
+
+Points-to analysis
+
+Constraints:
+
+ANYTHING = &ANYTHING
+ESCAPED = *ESCAPED
+ESCAPED = ESCAPED + UNKNOWN
+*ESCAPED = NONLOCAL
+NONLOCAL = &NONLOCAL
+NONLOCAL = &ESCAPED
+INTEGER = &ANYTHING
+__f = &NONLOCAL
+callescape(10) = NONLOCAL
+CALLUSED(11) = callescape(10)
+
+Collapsing static cycles and doing variable substitution
+Building predecessor graph
+Detecting pointer and location equivalences
+
+
+// The constraint graph before var-substitution in dot format:
+strict digraph {
+  node [
+    shape = box
+  ]
+  edge [
+    fontsize = "12"
+  ]
+
+  // List of nodes and complex constraints in the constraint graph:
+"NULL";
+"ANYTHING"[label="ANYTHING = { 2 }"];
+"STRING";
+"ESCAPED";
+"NONLOCAL"[label="NONLOCAL = { 4 5 }"];
+"STOREDANYTHING";
+"INTEGER"[label="INTEGER = { 2 }"];
+"__f"[label="__f = { 5 }"];
+"_ZSt16__throw_bad_castv";
+"callescape(10)";
+"CALLUSED(11)";
+"CALLCLOBBERED(12)";
+"_ZSt13__check_facetISt5ctypeIcEERKT_PS3_";
+"*NULL";
+"*ANYTHING";
+"*STRING";
+"*ESCAPED";
+"*NONLOCAL";
+"*STOREDANYTHING";
+"*INTEGER";
+"*__f";
+"*_ZSt16__throw_bad_castv";
+"*callescape(10)";
+"*CALLUSED(11)";
+"*CALLCLOBBERED(12)";
+"*_ZSt13__check_facetISt5ctypeIcEERKT_PS3_";
+
+  // Edges in the constraint graph:
+"*ESCAPED" -> "ESCAPED";
+"NONLOCAL" -> "callescape(10)";
+"callescape(10)" -> "CALLUSED(11)";
+"NONLOCAL" -> "*ESCAPED";
+}
+
+
+Rewriting constraints and unifying variables
+Uniting pointer but not location equivalent variables
+Finding indirect cycles
+
+
+// The constraint graph before solve-graph in dot format:
+strict digraph {
+  node [
+    shape = box
+  ]
+  edge [
+    fontsize = "12"
+  ]
+
+  // List of nodes and complex constraints in the constraint graph:
+"NULL";
+"ANYTHING";
+"STRING";
+"ESCAPED" [label="\N\nESCAPED = ESCAPED + UNKNOWN\lESCAPED = *ESCAPED\l*ESCAPED = NONLOCAL\l"];
+"STOREDANYTHING";
+"INTEGER";
+"__f";
+"_ZSt16__throw_bad_castv";
+"callescape(10)";
+"CALLCLOBBERED(12)";
+"_ZSt13__check_facetISt5ctypeIcEERKT_PS3_";
+
+  // Edges in the constraint graph:
+"STOREDANYTHING" -> "ESCAPED";
+}
+
+
+Solving graph
+
+
+// The constraint graph after solve-graph in dot format:
+strict digraph {
+  node [
+    shape = box
+  ]
+  edge [
+    fontsize = "12"
+  ]
+
+  // List of nodes and complex constraints in the constraint graph:
+"NULL";
+"ANYTHING";
+"STRING";
+"ESCAPED" [label="\N\nESCAPED = ESCAPED + UNKNOWN\lESCAPED = *ESCAPED\l*ESCAPED = NONLOCAL\l"];
+"STOREDANYTHING";
+"INTEGER";
+"__f";
+"_ZSt16__throw_bad_castv";
+"callescape(10)";
+"CALLCLOBBERED(12)";
+"_ZSt13__check_facetISt5ctypeIcEERKT_PS3_";
+
+  // Edges in the constraint graph:
+"STOREDANYTHING" -> "ESCAPED";
+}
+
+
+
+Points-to sets
+
+ANYTHING = { ANYTHING }
+ESCAPED = { }
+NONLOCAL = { ESCAPED NONLOCAL } same as callescape(10)
+STOREDANYTHING = { }
+INTEGER = { ANYTHING }
+__f = { NONLOCAL }
+_ZSt16__throw_bad_castv = { }
+callescape(10) = { ESCAPED NONLOCAL }
+CALLUSED(11) = { ESCAPED NONLOCAL } same as callescape(10)
+CALLCLOBBERED(12) = { }
+_ZSt13__check_facetISt5ctypeIcEERKT_PS3_ = { }
+
+
+Alias information for const _Facet& std::__check_facet(const _Facet*) [with _Facet = ctype<char>]
+
+Aliased symbols
+
+
+Call clobber information
+
+ESCAPED, points-to vars: { }
+
+Flow-insensitive points-to information
+
+__f_1(D), points-to non-local, points-to NULL, points-to vars: { }
+
+const struct ctype & std::__check_facet<std::ctype<char> > (const struct ctype * __f)
+{
+  <bb 2> :
+  if (__f_1(D) == 0B)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  std::__throw_bad_cast ();
+
+  <bb 4> :
+  return __f_1(D);
+
+}
+
+
+
+;; Function std::basic_ios<char>::widen (_ZNKSt9basic_iosIcSt11char_traitsIcEE5widenEc, funcdef_no=2415, decl_uid=47119, cgraph_uid=883, symbol_order=920)
+
+Points-to analysis
+
+Constraints:
+
+ANYTHING = &ANYTHING
+ESCAPED = *ESCAPED
+ESCAPED = ESCAPED + UNKNOWN
+*ESCAPED = NONLOCAL
+NONLOCAL = &NONLOCAL
+NONLOCAL = &ESCAPED
+INTEGER = &ANYTHING
+this = &NONLOCAL
+__c = &NONLOCAL
+_1 = *this + 1920
+callescape(12) = NONLOCAL
+CALLUSED(13) = callescape(12)
+_3 = __c
+callescape(17) = NONLOCAL
+CALLUSED(18) = callescape(17)
+callarg(20) = _1
+callarg(20) = callarg(20) + UNKNOWN
+callarg(20) = *callarg(20) + UNKNOWN
+CALLUSED(18) = callarg(20)
+*callarg(20) = callescape(17)
+CALLCLOBBERED(19) = callarg(20)
+callescape(17) = callarg(20)
+ESCAPED = _1
+callarg(21) = _3
+callarg(21) = callarg(21) + UNKNOWN
+callarg(21) = *callarg(21) + UNKNOWN
+CALLUSED(18) = callarg(21)
+*callarg(21) = callescape(17)
+CALLCLOBBERED(19) = callarg(21)
+callescape(17) = callarg(21)
+ESCAPED = _3
+_10 = NONLOCAL
+_10 = callarg(20)
+_10 = callarg(21)
+
+Collapsing static cycles and doing variable substitution
+Building predecessor graph
+Detecting pointer and location equivalences
+
+
+// The constraint graph before var-substitution in dot format:
+strict digraph {
+  node [
+    shape = box
+  ]
+  edge [
+    fontsize = "12"
+  ]
+
+  // List of nodes and complex constraints in the constraint graph:
+"NULL";
+"ANYTHING"[label="ANYTHING = { 2 }"];
+"STRING";
+"ESCAPED";
+"NONLOCAL"[label="NONLOCAL = { 4 5 }"];
+"STOREDANYTHING";
+"INTEGER"[label="INTEGER = { 2 }"];
+"this"[label="this = { 5 }"];
+"__c"[label="__c = { 5 }"];
+"_1";
+"_ZSt16__throw_bad_castv";
+"callescape(12)";
+"CALLUSED(13)";
+"CALLCLOBBERED(14)";
+"_3";
+"_ZNKSt5ctypeIcE5widenEc";
+"callescape(17)";
+"CALLUSED(18)";
+"CALLCLOBBERED(19)";
+"callarg(20)";
+"callarg(21)";
+"_10";
+"_ZNKSt9basic_iosIcSt11char_traitsIcEE5widenEc";
+"*NULL";
+"*ANYTHING";
+"*STRING";
+"*ESCAPED";
+"*NONLOCAL";
+"*STOREDANYTHING";
+"*INTEGER";
+"*this";
+"*__c";
+"*_1";
+"*_ZSt16__throw_bad_castv";
+"*callescape(12)";
+"*CALLUSED(13)";
+"*CALLCLOBBERED(14)";
+"*_3";
+"*_ZNKSt5ctypeIcE5widenEc";
+"*callescape(17)";
+"*CALLUSED(18)";
+"*CALLCLOBBERED(19)";
+"*callarg(20)";
+"*callarg(21)";
+"*_10";
+"*_ZNKSt9basic_iosIcSt11char_traitsIcEE5widenEc";
+
+  // Edges in the constraint graph:
+"_1" -> "ESCAPED";
+"_3" -> "ESCAPED";
+"*ESCAPED" -> "ESCAPED";
+"NONLOCAL" -> "callescape(12)";
+"callescape(12)" -> "CALLUSED(13)";
+"__c" -> "_3";
+"NONLOCAL" -> "callescape(17)";
+"callarg(20)" -> "callescape(17)";
+"callarg(21)" -> "callescape(17)";
+"callescape(17)" -> "CALLUSED(18)";
+"callarg(20)" -> "CALLUSED(18)";
+"callarg(21)" -> "CALLUSED(18)";
+"callarg(20)" -> "CALLCLOBBERED(19)";
+"callarg(21)" -> "CALLCLOBBERED(19)";
+"_1" -> "callarg(20)";
+"_3" -> "callarg(21)";
+"NONLOCAL" -> "_10";
+"callarg(20)" -> "_10";
+"callarg(21)" -> "_10";
+"NONLOCAL" -> "*ESCAPED";
+"callescape(17)" -> "*callarg(20)";
+"callescape(17)" -> "*callarg(21)";
+}
+
+
+Rewriting constraints and unifying variables
+Uniting pointer but not location equivalent variables
+Finding indirect cycles
+
+
+// The constraint graph before solve-graph in dot format:
+strict digraph {
+  node [
+    shape = box
+  ]
+  edge [
+    fontsize = "12"
+  ]
+
+  // List of nodes and complex constraints in the constraint graph:
+"NULL";
+"ANYTHING";
+"STRING";
+"ESCAPED" [label="\N\nESCAPED = ESCAPED + UNKNOWN\lESCAPED = *ESCAPED\l*ESCAPED = NONLOCAL\l"];
+"STOREDANYTHING";
+"INTEGER";
+"this" [label="\N\n_1 = *this + 1920\l"];
+"_1";
+"_ZSt16__throw_bad_castv";
+"callescape(12)";
+"CALLCLOBBERED(14)";
+"_ZNKSt5ctypeIcE5widenEc";
+"callescape(17)";
+"CALLCLOBBERED(19)";
+"callarg(20)" [label="\N\ncallarg(20) = callarg(20) + UNKNOWN\lcallarg(20) = *callarg(20) + UNKNOWN\l*callarg(20) = callescape(17)\l"];
+"callarg(21)" [label="\N\ncallarg(21) = callarg(21) + UNKNOWN\lcallarg(21) = *callarg(21) + UNKNOWN\l*callarg(21) = callescape(17)\l"];
+"_ZNKSt9basic_iosIcSt11char_traitsIcEE5widenEc";
+
+  // Edges in the constraint graph:
+"STOREDANYTHING" -> "ESCAPED";
+"STOREDANYTHING" -> "_1";
+"STOREDANYTHING" -> "callarg(20)";
+"STOREDANYTHING" -> "callarg(21)";
+"this" -> "ESCAPED";
+"this" -> "callarg(21)";
+"_1" -> "ESCAPED";
+"_1" -> "callarg(20)";
+"callescape(12)" -> "callescape(17)";
+"callarg(20)" -> "callescape(17)";
+"callarg(20)" -> "CALLCLOBBERED(19)";
+"callarg(21)" -> "callescape(17)";
+"callarg(21)" -> "CALLCLOBBERED(19)";
+}
+
+
+Solving graph
+
+
+// The constraint graph after solve-graph in dot format:
+strict digraph {
+  node [
+    shape = box
+  ]
+  edge [
+    fontsize = "12"
+  ]
+
+  // List of nodes and complex constraints in the constraint graph:
+"NULL";
+"ANYTHING";
+"STRING";
+"ESCAPED" [label="\N\nESCAPED = ESCAPED + UNKNOWN\lESCAPED = *ESCAPED\l*ESCAPED = callescape(12)\l"];
+"STOREDANYTHING";
+"INTEGER";
+"this" [label="\N\n_1 = *this + 1920\l"];
+"_1";
+"_ZSt16__throw_bad_castv";
+"callescape(12)";
+"CALLCLOBBERED(14)";
+"_ZNKSt5ctypeIcE5widenEc";
+"callescape(17)";
+"CALLCLOBBERED(19)";
+"callarg(20)" [label="\N\ncallarg(20) = callarg(20) + UNKNOWN\lcallarg(20) = *callarg(20) + UNKNOWN\l*callarg(20) = callescape(17)\l"];
+"callarg(21)" [label="\N\ncallarg(21) = callarg(21) + UNKNOWN\lcallarg(21) = *callarg(21) + UNKNOWN\l*callarg(21) = callescape(17)\l"];
+"_ZNKSt9basic_iosIcSt11char_traitsIcEE5widenEc";
+
+  // Edges in the constraint graph:
+"STOREDANYTHING" -> "ESCAPED";
+"STOREDANYTHING" -> "_1";
+"STOREDANYTHING" -> "callarg(20)";
+"STOREDANYTHING" -> "callarg(21)";
+"this" -> "ESCAPED";
+"this" -> "callarg(21)";
+"_1" -> "ESCAPED";
+"_1" -> "callarg(20)";
+"callescape(12)" -> "ESCAPED";
+"callescape(12)" -> "_1";
+"callescape(12)" -> "callescape(17)";
+"callescape(12)" -> "callarg(20)";
+"callescape(12)" -> "callarg(21)";
+"callescape(17)" -> "ESCAPED";
+"callarg(20)" -> "callescape(17)";
+"callarg(20)" -> "CALLCLOBBERED(19)";
+"callarg(21)" -> "callescape(17)";
+"callarg(21)" -> "CALLCLOBBERED(19)";
+}
+
+
+
+Points-to sets
+
+ANYTHING = { ANYTHING }
+ESCAPED = { ESCAPED NONLOCAL }
+NONLOCAL = { ESCAPED NONLOCAL } same as callescape(12)
+STOREDANYTHING = { }
+INTEGER = { ANYTHING }
+this = { NONLOCAL }
+__c = { NONLOCAL } same as this
+_1 = { ESCAPED NONLOCAL }
+_ZSt16__throw_bad_castv = { }
+callescape(12) = { ESCAPED NONLOCAL }
+CALLUSED(13) = { ESCAPED NONLOCAL } same as callescape(12)
+CALLCLOBBERED(14) = { }
+_3 = { NONLOCAL } same as this
+_ZNKSt5ctypeIcE5widenEc = { }
+callescape(17) = { ESCAPED NONLOCAL }
+CALLUSED(18) = { ESCAPED NONLOCAL } same as callescape(17)
+CALLCLOBBERED(19) = { ESCAPED NONLOCAL }
+callarg(20) = { ESCAPED NONLOCAL }
+callarg(21) = { ESCAPED NONLOCAL }
+_10 = { ESCAPED NONLOCAL } same as callescape(17)
+_ZNKSt9basic_iosIcSt11char_traitsIcEE5widenEc = { }
+
+
+Alias information for std::basic_ios<_CharT, _Traits>::char_type std::basic_ios<_CharT, _Traits>::widen(char) const [with _CharT = char; _Traits = std::char_traits<char>]
+
+Aliased symbols
+
+
+Call clobber information
+
+ESCAPED, points-to non-local, points-to vars: { }
+
+Flow-insensitive points-to information
+
+_1, points-to non-local, points-to escaped, points-to NULL, points-to vars: { }
+this_5(D), points-to non-local, points-to vars: { }
+
+char_type std::basic_ios<char>::widen (const struct basic_ios * const this, char __c)
+{
+  const struct ctype & D.54814;
+  const struct __ctype_type * _1;
+  int _3;
+  char_type _10;
+
+  <bb 2> :
+  _1 = this_5(D)->_M_ctype;
+  if (_1 == 0B)
+    goto <bb 3>; [0.04%]
+  else
+    goto <bb 4>; [99.96%]
+
+  <bb 3> :
+  std::__throw_bad_cast ();
+
+  <bb 4> :
+  _3 = (int) __c_8(D);
+  _10 = std::ctype<char>::widen (_1, _3);
+  return _10;
+
+}
+
+
+
+;; Function std::endl<char, std::char_traits<char> > (_ZSt4endlIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_, funcdef_no=2312, decl_uid=48114, cgraph_uid=780, symbol_order=817)
+
+Points-to analysis
+
+Constraints:
+
+ANYTHING = &ANYTHING
+ESCAPED = *ESCAPED
+ESCAPED = ESCAPED + UNKNOWN
+*ESCAPED = NONLOCAL
+NONLOCAL = &NONLOCAL
+NONLOCAL = &ESCAPED
+INTEGER = &ANYTHING
+__os = &NONLOCAL
+_1 = *__os
+_3 = *_1 + -192
+_4 = _3
+_5 = __os + UNKNOWN
+callescape(14) = NONLOCAL
+CALLUSED(15) = callescape(14)
+callarg(17) = _5
+callarg(17) = callarg(17) + UNKNOWN
+indircallarg(18) = *callarg(17) + UNKNOWN
+indircallarg(18) = indircallarg(18) + UNKNOWN
+indircallarg(18) = *indircallarg(18) + UNKNOWN
+CALLUSED(15) = callarg(17)
+CALLUSED(15) = indircallarg(18)
+*indircallarg(18) = callescape(14)
+CALLCLOBBERED(16) = indircallarg(18)
+callescape(14) = indircallarg(18)
+ESCAPED = *callarg(17) + UNKNOWN
+callarg(19) = &NONLOCAL
+callarg(19) = callarg(19) + UNKNOWN
+callarg(19) = *callarg(19) + UNKNOWN
+CALLUSED(15) = callarg(19)
+*callarg(19) = callescape(14)
+CALLCLOBBERED(16) = callarg(19)
+callescape(14) = callarg(19)
+ESCAPED = &NONLOCAL
+_12 = NONLOCAL
+_12 = indircallarg(18)
+_12 = callarg(19)
+_7 = _12
+callescape(23) = NONLOCAL
+CALLUSED(24) = callescape(23)
+callarg(26) = __os
+callarg(26) = callarg(26) + UNKNOWN
+callarg(26) = *callarg(26) + UNKNOWN
+CALLUSED(24) = callarg(26)
+*callarg(26) = callescape(23)
+CALLCLOBBERED(25) = callarg(26)
+callescape(23) = callarg(26)
+ESCAPED = __os
+callarg(27) = _7
+callarg(27) = callarg(27) + UNKNOWN
+callarg(27) = *callarg(27) + UNKNOWN
+CALLUSED(24) = callarg(27)
+*callarg(27) = callescape(23)
+CALLCLOBBERED(25) = callarg(27)
+callescape(23) = callarg(27)
+ESCAPED = _7
+_14 = NONLOCAL
+_14 = callarg(26)
+_14 = callarg(27)
+callescape(30) = NONLOCAL
+CALLUSED(31) = callescape(30)
+callarg(33) = _14
+callarg(33) = callarg(33) + UNKNOWN
+callarg(33) = *callarg(33) + UNKNOWN
+CALLUSED(31) = callarg(33)
+*callarg(33) = callescape(30)
+CALLCLOBBERED(32) = callarg(33)
+callescape(30) = callarg(33)
+ESCAPED = _14
+_18 = NONLOCAL
+_18 = callarg(33)
+
+Collapsing static cycles and doing variable substitution
+Building predecessor graph
+Detecting pointer and location equivalences
+
+
+// The constraint graph before var-substitution in dot format:
+strict digraph {
+  node [
+    shape = box
+  ]
+  edge [
+    fontsize = "12"
+  ]
+
+  // List of nodes and complex constraints in the constraint graph:
+"NULL";
+"ANYTHING"[label="ANYTHING = { 2 }"];
+"STRING";
+"ESCAPED"[label="ESCAPED = { 5 }"];
+"NONLOCAL"[label="NONLOCAL = { 4 5 }"];
+"STOREDANYTHING";
+"INTEGER"[label="INTEGER = { 2 }"];
+"__os"[label="__os = { 5 }"];
+"_1";
+"_3";
+"_4";
+"_5";
+"_ZNKSt9basic_iosIcSt11char_traitsIcEE5widenEc";
+"callescape(14)";
+"CALLUSED(15)";
+"CALLCLOBBERED(16)";
+"callarg(17)";
+"indircallarg(18)";
+"callarg(19)"[label="callarg(19) = { 5 }"];
+"_12";
+"_7";
+"_ZNSo3putEc";
+"callescape(23)";
+"CALLUSED(24)";
+"CALLCLOBBERED(25)";
+"callarg(26)";
+"callarg(27)";
+"_14";
+"_ZNSo5flushEv";
+"callescape(30)";
+"CALLUSED(31)";
+"CALLCLOBBERED(32)";
+"callarg(33)";
+"_18";
+"_ZSt4endlIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_";
+"*NULL";
+"*ANYTHING";
+"*STRING";
+"*STOREDANYTHING";
+"*INTEGER";
+"*__os";
+"*_1";
+"*_3";
+"*_4";
+"*_5";
+"*_ZNKSt9basic_iosIcSt11char_traitsIcEE5widenEc";
+"*callescape(14)";
+"*CALLUSED(15)";
+"*CALLCLOBBERED(16)";
+"*callarg(17)";
+"*indircallarg(18)";
+"*callarg(19)";
+"*_ZNSo3putEc";
+"*callescape(23)";
+"*CALLUSED(24)";
+"*CALLCLOBBERED(25)";
+"*callarg(26)";
+"*_ZNSo5flushEv";
+"*callescape(30)";
+"*CALLUSED(31)";
+"*CALLCLOBBERED(32)";
+"*callarg(33)";
+"*_18";
+"*_ZSt4endlIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_";
+
+  // Edges in the constraint graph:
+"NONLOCAL" -> "ESCAPED";
+"__os" -> "ESCAPED";
+"_7" -> "ESCAPED";
+"callescape(23)" -> "ESCAPED";
+"_14" -> "ESCAPED";
+"ESCAPED" -> "ESCAPED";
+"*__os" -> "_1";
+"_3" -> "_4";
+"NONLOCAL" -> "callescape(14)";
+"indircallarg(18)" -> "callescape(14)";
+"callarg(19)" -> "callescape(14)";
+"callescape(14)" -> "CALLUSED(15)";
+"callarg(17)" -> "CALLUSED(15)";
+"indircallarg(18)" -> "CALLUSED(15)";
+"callarg(19)" -> "CALLUSED(15)";
+"indircallarg(18)" -> "CALLCLOBBERED(16)";
+"callarg(19)" -> "CALLCLOBBERED(16)";
+"_5" -> "callarg(17)";
+"NONLOCAL" -> "_12";
+"indircallarg(18)" -> "_12";
+"callarg(19)" -> "_12";
+"_12" -> "_7";
+"NONLOCAL" -> "callescape(23)";
+"callarg(26)" -> "callescape(23)";
+"callarg(27)" -> "callescape(23)";
+"callescape(23)" -> "CALLUSED(24)";
+"callarg(26)" -> "CALLUSED(24)";
+"callarg(27)" -> "CALLUSED(24)";
+"callarg(26)" -> "CALLCLOBBERED(25)";
+"callarg(27)" -> "CALLCLOBBERED(25)";
+"__os" -> "callarg(26)";
+"_7" -> "callarg(27)";
+"NONLOCAL" -> "_14";
+"callarg(26)" -> "_14";
+"callarg(27)" -> "_14";
+"NONLOCAL" -> "callescape(30)";
+"callarg(33)" -> "callescape(30)";
+"callescape(30)" -> "CALLUSED(31)";
+"callarg(33)" -> "CALLUSED(31)";
+"callarg(33)" -> "CALLCLOBBERED(32)";
+"_14" -> "callarg(33)";
+"NONLOCAL" -> "_18";
+"callarg(33)" -> "_18";
+"callescape(14)" -> "*indircallarg(18)";
+"callescape(14)" -> "*callarg(19)";
+"callescape(23)" -> "*callarg(26)";
+"callescape(30)" -> "*callarg(33)";
+}
+
+
+Rewriting constraints and unifying variables
+Uniting pointer but not location equivalent variables
+Finding indirect cycles
+
+
+// The constraint graph before solve-graph in dot format:
+strict digraph {
+  node [
+    shape = box
+  ]
+  edge [
+    fontsize = "12"
+  ]
+
+  // List of nodes and complex constraints in the constraint graph:
+"NULL";
+"ANYTHING";
+"STRING";
+"ESCAPED" [label="\N\nESCAPED = ESCAPED + UNKNOWN\lESCAPED = *ESCAPED\l*ESCAPED = NONLOCAL\l"];
+"NONLOCAL";
+"STOREDANYTHING";
+"INTEGER";
+"__os" [label="\N\n_1 = *__os\l_5 = __os + UNKNOWN\l"];
+"_1" [label="\N\n_3 = *_1 + -192\l"];
+"_3";
+"_5";
+"_ZNKSt9basic_iosIcSt11char_traitsIcEE5widenEc";
+"callescape(14)";
+"CALLUSED(15)";
+"CALLCLOBBERED(16)";
+"callarg(17)" [label="\N\nESCAPED = *callarg(17) + UNKNOWN\lcallarg(17) = callarg(17) + UNKNOWN\lindircallarg(18) = *callarg(17) + UNKNOWN\l"];
+"indircallarg(18)" [label="\N\nindircallarg(18) = indircallarg(18) + UNKNOWN\lindircallarg(18) = *indircallarg(18) + UNKNOWN\l*indircallarg(18) = callescape(14)\l"];
+"callarg(19)" [label="\N\ncallarg(19) = callarg(19) + UNKNOWN\lcallarg(19) = *callarg(19) + UNKNOWN\l*callarg(19) = callescape(14)\l"];
+"_ZNSo3putEc";
+"callescape(23)";
+"callarg(26)" [label="\N\ncallarg(26) = callarg(26) + UNKNOWN\lcallarg(26) = *callarg(26) + UNKNOWN\l*callarg(26) = callescape(23)\l"];
+"callarg(27)" [label="\N\ncallarg(27) = callarg(27) + UNKNOWN\lcallarg(27) = *callarg(27) + UNKNOWN\l*callarg(27) = callescape(23)\l"];
+"_ZNSo5flushEv";
+"callescape(30)" [label="\N\ncallescape(30) = callescape(30) + UNKNOWN\lcallescape(30) = *callescape(30) + UNKNOWN\l*callescape(30) = callescape(30)\l"];
+"_ZSt4endlIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_";
+
+  // Edges in the constraint graph:
+"NONLOCAL" -> "callescape(14)";
+"NONLOCAL" -> "callescape(23)";
+"NONLOCAL" -> "callescape(30)";
+"STOREDANYTHING" -> "ESCAPED";
+"STOREDANYTHING" -> "_3";
+"STOREDANYTHING" -> "_5";
+"STOREDANYTHING" -> "callarg(17)";
+"STOREDANYTHING" -> "indircallarg(18)";
+"STOREDANYTHING" -> "callarg(19)";
+"STOREDANYTHING" -> "callarg(26)";
+"STOREDANYTHING" -> "callarg(27)";
+"STOREDANYTHING" -> "callescape(30)";
+"__os" -> "ESCAPED";
+"__os" -> "callarg(26)";
+"_5" -> "callarg(17)";
+"callescape(14)" -> "ESCAPED";
+"callescape(14)" -> "CALLUSED(15)";
+"callescape(14)" -> "callarg(27)";
+"callarg(17)" -> "CALLUSED(15)";
+"indircallarg(18)" -> "callescape(14)";
+"indircallarg(18)" -> "CALLUSED(15)";
+"indircallarg(18)" -> "CALLCLOBBERED(16)";
+"callarg(19)" -> "callescape(14)";
+"callarg(19)" -> "CALLUSED(15)";
+"callarg(19)" -> "CALLCLOBBERED(16)";
+"callescape(23)" -> "ESCAPED";
+"callescape(23)" -> "callescape(30)";
+"callarg(26)" -> "callescape(23)";
+"callarg(27)" -> "callescape(23)";
+}
+
+
+Solving graph
+
+
+// The constraint graph after solve-graph in dot format:
+strict digraph {
+  node [
+    shape = box
+  ]
+  edge [
+    fontsize = "12"
+  ]
+
+  // List of nodes and complex constraints in the constraint graph:
+"NULL";
+"ANYTHING";
+"STRING";
+"ESCAPED" [label="\N\nESCAPED = ESCAPED + UNKNOWN\lESCAPED = *ESCAPED\l*ESCAPED = NONLOCAL\l"];
+"NONLOCAL";
+"STOREDANYTHING";
+"INTEGER";
+"__os" [label="\N\n_1 = *__os\l_5 = __os + UNKNOWN\l"];
+"_1" [label="\N\n_3 = *_1 + -192\l"];
+"_3";
+"_5";
+"_ZNKSt9basic_iosIcSt11char_traitsIcEE5widenEc";
+"callescape(14)";
+"CALLUSED(15)";
+"CALLCLOBBERED(16)";
+"callarg(17)" [label="\N\nESCAPED = *callarg(17) + UNKNOWN\lcallarg(17) = callarg(17) + UNKNOWN\lindircallarg(18) = *callarg(17) + UNKNOWN\l"];
+"indircallarg(18)" [label="\N\nindircallarg(18) = indircallarg(18) + UNKNOWN\lindircallarg(18) = *indircallarg(18) + UNKNOWN\l*indircallarg(18) = callescape(14)\l"];
+"callarg(19)" [label="\N\ncallarg(19) = callarg(19) + UNKNOWN\lcallarg(19) = *callarg(19) + UNKNOWN\l*callarg(19) = callescape(14)\l"];
+"_ZNSo3putEc";
+"callescape(23)";
+"callarg(26)" [label="\N\ncallarg(26) = callarg(26) + UNKNOWN\lcallarg(26) = *callarg(26) + UNKNOWN\l*callarg(26) = callescape(23)\l"];
+"callarg(27)" [label="\N\ncallarg(27) = callarg(27) + UNKNOWN\lcallarg(27) = *callarg(27) + UNKNOWN\l*callarg(27) = callescape(23)\l"];
+"_ZNSo5flushEv";
+"callescape(30)" [label="\N\ncallescape(30) = callescape(30) + UNKNOWN\lcallescape(30) = *callescape(30) + UNKNOWN\l*callescape(30) = callescape(30)\l"];
+"_ZSt4endlIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_";
+
+  // Edges in the constraint graph:
+"NONLOCAL" -> "ESCAPED";
+"NONLOCAL" -> "callescape(14)";
+"NONLOCAL" -> "callescape(23)";
+"NONLOCAL" -> "callescape(30)";
+"STOREDANYTHING" -> "ESCAPED";
+"STOREDANYTHING" -> "_3";
+"STOREDANYTHING" -> "_5";
+"STOREDANYTHING" -> "callarg(17)";
+"STOREDANYTHING" -> "indircallarg(18)";
+"STOREDANYTHING" -> "callarg(19)";
+"STOREDANYTHING" -> "callarg(26)";
+"STOREDANYTHING" -> "callarg(27)";
+"STOREDANYTHING" -> "callescape(30)";
+"__os" -> "ESCAPED";
+"__os" -> "callarg(26)";
+"_5" -> "callarg(17)";
+"callescape(14)" -> "ESCAPED";
+"callescape(14)" -> "CALLUSED(15)";
+"callescape(14)" -> "callarg(27)";
+"callarg(17)" -> "CALLUSED(15)";
+"indircallarg(18)" -> "callescape(14)";
+"indircallarg(18)" -> "CALLUSED(15)";
+"indircallarg(18)" -> "CALLCLOBBERED(16)";
+"callarg(19)" -> "callescape(14)";
+"callarg(19)" -> "CALLUSED(15)";
+"callarg(19)" -> "CALLCLOBBERED(16)";
+"callescape(23)" -> "ESCAPED";
+"callescape(23)" -> "callescape(30)";
+"callarg(26)" -> "callescape(23)";
+"callarg(27)" -> "callescape(23)";
+"callescape(30)" -> "ESCAPED";
+}
+
+
+
+Points-to sets
+
+ANYTHING = { ANYTHING }
+ESCAPED = { ESCAPED NONLOCAL }
+NONLOCAL = { ESCAPED NONLOCAL }
+STOREDANYTHING = { }
+INTEGER = { ANYTHING }
+__os = { NONLOCAL }
+_1 = { ESCAPED NONLOCAL }
+_3 = { ESCAPED NONLOCAL }
+_4 = { ESCAPED NONLOCAL } same as _3
+_5 = { NONLOCAL }
+_ZNKSt9basic_iosIcSt11char_traitsIcEE5widenEc = { }
+callescape(14) = { ESCAPED NONLOCAL }
+CALLUSED(15) = { ESCAPED NONLOCAL }
+CALLCLOBBERED(16) = { ESCAPED NONLOCAL }
+callarg(17) = { NONLOCAL }
+indircallarg(18) = { ESCAPED NONLOCAL }
+callarg(19) = { ESCAPED NONLOCAL }
+_12 = { ESCAPED NONLOCAL } same as callescape(14)
+_7 = { ESCAPED NONLOCAL } same as callescape(14)
+_ZNSo3putEc = { }
+callescape(23) = { ESCAPED NONLOCAL }
+CALLUSED(24) = { ESCAPED NONLOCAL } same as callescape(23)
+CALLCLOBBERED(25) = { ESCAPED NONLOCAL } same as callescape(23)
+callarg(26) = { ESCAPED NONLOCAL }
+callarg(27) = { ESCAPED NONLOCAL }
+_14 = { ESCAPED NONLOCAL } same as callescape(23)
+_ZNSo5flushEv = { }
+callescape(30) = { ESCAPED NONLOCAL }
+CALLUSED(31) = { ESCAPED NONLOCAL } same as callescape(30)
+CALLCLOBBERED(32) = { ESCAPED NONLOCAL } same as callescape(30)
+callarg(33) = { ESCAPED NONLOCAL } same as callescape(30)
+_18 = { ESCAPED NONLOCAL } same as callescape(30)
+_ZSt4endlIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_ = { }
+
+
+Alias information for std::basic_ostream<_CharT, _Traits>& std::endl(basic_ostream<_CharT, _Traits>&) [with _CharT = char; _Traits = char_traits<char>]
+
+Aliased symbols
+
+
+Call clobber information
+
+ESCAPED, points-to non-local, points-to vars: { }
+
+Flow-insensitive points-to information
+
+_1, points-to non-local, points-to escaped, points-to NULL, points-to vars: { }
+_5, points-to non-local, points-to NULL, points-to vars: { }
+__os_10(D), points-to non-local, points-to vars: { }
+_14, points-to non-local, points-to escaped, points-to NULL, points-to vars: { }
+_18, points-to non-local, points-to escaped, points-to NULL, points-to vars: { }
+
+struct basic_ostream & std::endl<char, std::char_traits<char> > (struct basic_ostream & __os)
+{
+  struct basic_ostream & D.54817;
+  int (*) () * _1;
+  long int _3;
+  sizetype _4;
+  struct basic_ios * _5;
+  int _7;
+  char _12;
+  struct basic_ostream & _14;
+  struct basic_ostream & _18;
+
+  <bb 2> :
+  _1 = __os_10(D)->_vptr.basic_ostream;
+  _3 = MEM[(long int *)_1 + -24B];
+  _4 = (sizetype) _3;
+  _5 = __os_10(D) + _4;
+  _12 = std::basic_ios<char>::widen (_5, 10);
+  _7 = (int) _12;
+  _14 = std::basic_ostream<char>::put (__os_10(D), _7);
+  _18 = std::basic_ostream<char>::flush (_14);
+  return _18;
+
+}
+
+

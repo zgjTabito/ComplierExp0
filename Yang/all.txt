@@ -1,0 +1,5 @@
+lab1.CPP:9:15: error: expected ';' after expression
+    9 |     x = pi * 2
+      |               ^
+      |               ;
+1 error generated.

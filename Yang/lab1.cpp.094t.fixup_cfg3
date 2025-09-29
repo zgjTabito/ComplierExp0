@@ -1,0 +1,152 @@
+
+;; Function std::ctype<char>::do_widen (_ZNKSt5ctypeIcE8do_widenEc, funcdef_no=1810, decl_uid=43557, cgraph_uid=515, symbol_order=551)
+
+char_type std::ctype<char>::do_widen (const struct ctype * const this, char __c)
+{
+  <bb 2> [local count: 1073741824]:
+  return __c_1(D);
+
+}
+
+
+
+;; Function main (main, funcdef_no=2057, decl_uid=50632, cgraph_uid=525, symbol_order=562) (executed once)
+
+int main ()
+{
+  char_type D.54853;
+  char __c;
+  char_type D.54850;
+  char __c;
+  char_type D.54847;
+  char __c;
+  char_type D.54844;
+  int f;
+  int n;
+  int i;
+  int n.0_1;
+  struct basic_ostream & _8;
+  int (*) () * _13;
+  long int _14;
+  sizetype _15;
+  struct basic_ios * _16;
+  char _17;
+  int _18;
+  struct basic_ostream & _19;
+  struct basic_ostream & _20;
+  const struct __ctype_type * _21;
+  const struct __ctype_type * _22;
+  int _23;
+  char _24;
+  char _26;
+  unsigned char __c.1_27;
+  int _28;
+  char _29;
+  int _30;
+  char _31;
+  char _32;
+  int (*) () * _34;
+  int (*) () _35;
+  int _36;
+  char _37;
+  void * PROF_39;
+  void * PROF_40;
+  char _41;
+  char _42;
+  char_type _48;
+  char_type _50;
+  char_type _51;
+  char_type _52;
+
+  <bb 2> [local count: 118111600]:
+  std::basic_istream<char>::operator>> (&cin, &n);
+  goto <bb 4>; [100.00%]
+
+  <bb 3> [local count: 955630225]:
+  f_10 = i_2 * f_3;
+  i_11 = i_2 + 1;
+
+  <bb 4> [local count: 1073741824]:
+  # i_2 = PHI <2(2), i_11(3)>
+  # f_3 = PHI <1(2), f_10(3)>
+  n.0_1 = n;
+  if (n.0_1 >= i_2)
+    goto <bb 3>; [89.00%]
+  else
+    goto <bb 5>; [11.00%]
+
+  <bb 5> [local count: 118111600]:
+  # f_4 = PHI <f_3(4)>
+  _8 = std::basic_ostream<char>::operator<< (&cout, f_4);
+  _13 = _8->_vptr.basic_ostream;
+  _14 = MEM[(long int *)_13 + -24B];
+  _15 = (sizetype) _14;
+  _16 = _8 + _15;
+  _21 = MEM[(const struct __ctype_type * *)_16 + 240B];
+  _22 = _21;
+  if (_22 == 0B)
+    goto <bb 6>; [0.04%]
+  else
+    goto <bb 7>; [99.96%]
+
+  <bb 6> [local count: 47245]:
+  std::__throw_bad_cast ();
+
+  <bb 7> [local count: 118064356]:
+  _23 = 10;
+  __c_25 = (char) _23;
+  _26 = MEM[(const struct ctype *)_22]._M_widen_ok;
+  if (_26 != 0)
+    goto <bb 8>; [51.12%]
+  else
+    goto <bb 9>; [48.88%]
+
+  <bb 8> [local count: 60354499]:
+  __c.1_27 = (unsigned char) __c_25;
+  _28 = (int) __c.1_27;
+  _29 = MEM[(const struct ctype *)_22]._M_widen[_28];
+  goto <bb 13>; [100.00%]
+
+  <bb 9> [local count: 57709857]:
+  _30 = (int) __c_25;
+  __c_33 = (char) _30;
+  std::ctype<char>::_M_widen_init (_22);
+  _34 = MEM[(const struct ctype *)_22].D.43629._vptr.facet;
+  _35 = MEM[(int (*) () *)_34 + 48B];
+  _36 = (int) __c_33;
+  PROF_39 = [obj_type_ref] OBJ_TYPE_REF(_35;(const struct ctype)_22->6B);
+  PROF_40 = (void *) do_widen;
+  if (PROF_40 == PROF_39)
+    goto <bb 10>; [80.00%]
+  else
+    goto <bb 11>; [20.00%]
+
+  <bb 10> [local count: 46167886]:
+  __c_43 = (char) _36;
+  _48 = __c_43;
+  _42 = _48;
+  goto <bb 12>; [100.00%]
+
+  <bb 11> [local count: 11541971]:
+  _41 = OBJ_TYPE_REF(_35;(const struct ctype)_22->6B) (_22, _36);
+
+  <bb 12> [local count: 57709857]:
+  # _37 = PHI <_41(11), _42(10)>
+  _50 = _37;
+  _31 = _50;
+
+  <bb 13> [local count: 118064356]:
+  # _32 = PHI <_29(8), _31(12)>
+  _51 = _32;
+  _24 = _51;
+  _52 = _24;
+  _17 = _52;
+  _18 = (int) _17;
+  _19 = std::basic_ostream<char>::put (_8, _18);
+  _20 = std::basic_ostream<char>::flush (_19);
+  n ={v} {CLOBBER(eol)};
+  return 0;
+
+}
+
+

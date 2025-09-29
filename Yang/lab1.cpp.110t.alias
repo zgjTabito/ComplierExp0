@@ -1,0 +1,1350 @@
+
+;; Function std::ctype<char>::do_widen (_ZNKSt5ctypeIcE8do_widenEc, funcdef_no=1810, decl_uid=43557, cgraph_uid=515, symbol_order=551)
+
+Points-to analysis
+
+Constraints:
+
+ANYTHING = &ANYTHING
+ESCAPED = *ESCAPED
+ESCAPED = ESCAPED + UNKNOWN
+*ESCAPED = NONLOCAL
+NONLOCAL = &NONLOCAL
+NONLOCAL = &ESCAPED
+INTEGER = &ANYTHING
+this = &NONLOCAL
+__c = &NONLOCAL
+
+Collapsing static cycles and doing variable substitution
+Building predecessor graph
+Detecting pointer and location equivalences
+
+
+// The constraint graph before var-substitution in dot format:
+strict digraph {
+  node [
+    shape = box
+  ]
+  edge [
+    fontsize = "12"
+  ]
+
+  // List of nodes and complex constraints in the constraint graph:
+"NULL";
+"ANYTHING"[label="ANYTHING = { 2 }"];
+"STRING";
+"ESCAPED";
+"NONLOCAL"[label="NONLOCAL = { 4 5 }"];
+"STOREDANYTHING";
+"INTEGER"[label="INTEGER = { 2 }"];
+"this"[label="this = { 5 }"];
+"__c"[label="__c = { 5 }"];
+"_ZNKSt5ctypeIcE8do_widenEc";
+"*NULL";
+"*ANYTHING";
+"*STRING";
+"*ESCAPED";
+"*NONLOCAL";
+"*STOREDANYTHING";
+"*INTEGER";
+"*this";
+"*__c";
+"*_ZNKSt5ctypeIcE8do_widenEc";
+
+  // Edges in the constraint graph:
+"*ESCAPED" -> "ESCAPED";
+"NONLOCAL" -> "*ESCAPED";
+}
+
+
+Rewriting constraints and unifying variables
+Uniting pointer but not location equivalent variables
+Finding indirect cycles
+
+
+// The constraint graph before solve-graph in dot format:
+strict digraph {
+  node [
+    shape = box
+  ]
+  edge [
+    fontsize = "12"
+  ]
+
+  // List of nodes and complex constraints in the constraint graph:
+"NULL";
+"ANYTHING";
+"STRING";
+"ESCAPED" [label="\N\nESCAPED = ESCAPED + UNKNOWN\lESCAPED = *ESCAPED\l*ESCAPED = NONLOCAL\l"];
+"NONLOCAL";
+"STOREDANYTHING";
+"INTEGER";
+"this";
+"_ZNKSt5ctypeIcE8do_widenEc";
+
+  // Edges in the constraint graph:
+"STOREDANYTHING" -> "ESCAPED";
+}
+
+
+Solving graph
+
+
+// The constraint graph after solve-graph in dot format:
+strict digraph {
+  node [
+    shape = box
+  ]
+  edge [
+    fontsize = "12"
+  ]
+
+  // List of nodes and complex constraints in the constraint graph:
+"NULL";
+"ANYTHING";
+"STRING";
+"ESCAPED" [label="\N\nESCAPED = ESCAPED + UNKNOWN\lESCAPED = *ESCAPED\l*ESCAPED = NONLOCAL\l"];
+"NONLOCAL";
+"STOREDANYTHING";
+"INTEGER";
+"this";
+"_ZNKSt5ctypeIcE8do_widenEc";
+
+  // Edges in the constraint graph:
+"STOREDANYTHING" -> "ESCAPED";
+}
+
+
+
+Points-to sets
+
+ANYTHING = { ANYTHING }
+ESCAPED = { }
+NONLOCAL = { ESCAPED NONLOCAL }
+STOREDANYTHING = { }
+INTEGER = { ANYTHING }
+this = { NONLOCAL }
+__c = { NONLOCAL } same as this
+_ZNKSt5ctypeIcE8do_widenEc = { }
+
+
+Alias information for virtual std::ctype<char>::char_type std::ctype<char>::do_widen(char) const
+
+Aliased symbols
+
+
+Call clobber information
+
+ESCAPED, points-to vars: { }
+
+Flow-insensitive points-to information
+
+
+char_type std::ctype<char>::do_widen (const struct ctype * const this, char __c)
+{
+  <bb 2> [local count: 1073741824]:
+  return __c_1(D);
+
+}
+
+
+
+;; Function main (main, funcdef_no=2057, decl_uid=50632, cgraph_uid=525, symbol_order=562) (executed once)
+
+Points-to analysis
+
+Constraints:
+
+ANYTHING = &ANYTHING
+ESCAPED = *ESCAPED
+ESCAPED = ESCAPED + UNKNOWN
+*ESCAPED = NONLOCAL
+NONLOCAL = &NONLOCAL
+NONLOCAL = &ESCAPED
+INTEGER = &ANYTHING
+callescape(9) = NONLOCAL
+CALLUSED(10) = callescape(9)
+_ZSt3cin.0+64 = NONLOCAL
+_ZSt3cin.64+64 = NONLOCAL
+_ZSt3cin.128+64 = NONLOCAL
+_ZSt3cin.192+224 = NONLOCAL
+_ZSt3cin.448+64 = NONLOCAL
+_ZSt3cin.512+64 = NONLOCAL
+_ZSt3cin.576+1120 = NONLOCAL
+_ZSt3cin.1728+64 = NONLOCAL
+_ZSt3cin.1792+64 = NONLOCAL
+_ZSt3cin.1856+64 = NONLOCAL
+_ZSt3cin.1920+16 = NONLOCAL
+_ZSt3cin.1984+64 = NONLOCAL
+_ZSt3cin.2048+64 = NONLOCAL
+_ZSt3cin.2112+64 = NONLOCAL
+_ZSt3cin.2176+64 = NONLOCAL
+callarg(12) = &_ZSt3cin.0+64
+callarg(12) = callarg(12) + UNKNOWN
+callarg(12) = *callarg(12) + UNKNOWN
+CALLUSED(10) = callarg(12)
+*callarg(12) = callescape(9)
+CALLCLOBBERED(11) = callarg(12)
+callescape(9) = callarg(12)
+ESCAPED = &_ZSt3cin.0+64
+callarg(28) = &n
+callarg(28) = callarg(28) + UNKNOWN
+callarg(28) = *callarg(28) + UNKNOWN
+CALLUSED(10) = callarg(28)
+*callarg(28) = callescape(9)
+CALLCLOBBERED(11) = callarg(28)
+callescape(9) = callarg(28)
+ESCAPED = &n
+f_10 = i_2 + UNKNOWN
+f_10 = f_3 + UNKNOWN
+i_11 = i_2 + UNKNOWN
+i_11 = &NONLOCAL
+i_2 = &NONLOCAL
+i_2 = i_11
+f_3 = &NONLOCAL
+f_3 = f_10
+n.0_1 = n
+callescape(36) = NONLOCAL
+CALLUSED(37) = callescape(36)
+_ZSt4cout.0+64 = NONLOCAL
+_ZSt4cout.64+64 = NONLOCAL
+_ZSt4cout.128+224 = NONLOCAL
+_ZSt4cout.384+64 = NONLOCAL
+_ZSt4cout.448+64 = NONLOCAL
+_ZSt4cout.512+1120 = NONLOCAL
+_ZSt4cout.1664+64 = NONLOCAL
+_ZSt4cout.1728+64 = NONLOCAL
+_ZSt4cout.1792+64 = NONLOCAL
+_ZSt4cout.1856+16 = NONLOCAL
+_ZSt4cout.1920+64 = NONLOCAL
+_ZSt4cout.1984+64 = NONLOCAL
+_ZSt4cout.2048+64 = NONLOCAL
+_ZSt4cout.2112+64 = NONLOCAL
+callarg(39) = &_ZSt4cout.0+64
+callarg(39) = callarg(39) + UNKNOWN
+callarg(39) = *callarg(39) + UNKNOWN
+CALLUSED(37) = callarg(39)
+*callarg(39) = callescape(36)
+CALLCLOBBERED(38) = callarg(39)
+callescape(36) = callarg(39)
+ESCAPED = &_ZSt4cout.0+64
+callarg(54) = f_3
+callarg(54) = callarg(54) + UNKNOWN
+callarg(54) = *callarg(54) + UNKNOWN
+CALLUSED(37) = callarg(54)
+*callarg(54) = callescape(36)
+CALLCLOBBERED(38) = callarg(54)
+callescape(36) = callarg(54)
+ESCAPED = f_3
+_8 = NONLOCAL
+_8 = callarg(39)
+_8 = callarg(54)
+_13 = *_8
+_14 = *_13 + -192
+_15 = _14
+_16 = _8 + UNKNOWN
+_21 = *_16 + 1920
+callescape(62) = NONLOCAL
+CALLUSED(63) = callescape(62)
+_26 = *_21 + 448
+_29 = *_21 + 536
+callescape(68) = NONLOCAL
+CALLUSED(69) = callescape(68)
+callarg(71) = _21
+callarg(71) = callarg(71) + UNKNOWN
+callarg(71) = *callarg(71) + UNKNOWN
+CALLUSED(69) = callarg(71)
+*callarg(71) = callescape(68)
+CALLCLOBBERED(70) = callarg(71)
+callescape(68) = callarg(71)
+ESCAPED = _21
+_34 = *_21
+_35 = *_34 + 384
+PROF_39 = &ANYTHING
+callescape(75) = NONLOCAL
+CALLUSED(76) = callescape(75)
+callarg(78) = _21
+callarg(78) = callarg(78) + UNKNOWN
+callarg(78) = *callarg(78) + UNKNOWN
+CALLUSED(76) = callarg(78)
+*callarg(78) = callescape(75)
+CALLCLOBBERED(77) = callarg(78)
+callescape(75) = callarg(78)
+ESCAPED = _21
+callarg(79) = &NONLOCAL
+callarg(79) = callarg(79) + UNKNOWN
+callarg(79) = *callarg(79) + UNKNOWN
+CALLUSED(76) = callarg(79)
+*callarg(79) = callescape(75)
+CALLCLOBBERED(77) = callarg(79)
+callescape(75) = callarg(79)
+ESCAPED = &NONLOCAL
+_41 = NONLOCAL
+_41 = callarg(78)
+_41 = callarg(79)
+_37 = _41
+_37 = &NONLOCAL
+_32 = _29
+_32 = _37
+_18 = _32
+callescape(85) = NONLOCAL
+CALLUSED(86) = callescape(85)
+callarg(88) = _8
+callarg(88) = callarg(88) + UNKNOWN
+callarg(88) = *callarg(88) + UNKNOWN
+CALLUSED(86) = callarg(88)
+*callarg(88) = callescape(85)
+CALLCLOBBERED(87) = callarg(88)
+callescape(85) = callarg(88)
+ESCAPED = _8
+callarg(89) = _18
+callarg(89) = callarg(89) + UNKNOWN
+callarg(89) = *callarg(89) + UNKNOWN
+CALLUSED(86) = callarg(89)
+*callarg(89) = callescape(85)
+CALLCLOBBERED(87) = callarg(89)
+callescape(85) = callarg(89)
+ESCAPED = _18
+_19 = NONLOCAL
+_19 = callarg(88)
+_19 = callarg(89)
+callescape(92) = NONLOCAL
+CALLUSED(93) = callescape(92)
+callarg(95) = _19
+callarg(95) = callarg(95) + UNKNOWN
+callarg(95) = *callarg(95) + UNKNOWN
+CALLUSED(93) = callarg(95)
+*callarg(95) = callescape(92)
+CALLCLOBBERED(94) = callarg(95)
+callescape(92) = callarg(95)
+ESCAPED = _19
+_20 = NONLOCAL
+_20 = callarg(95)
+
+Collapsing static cycles and doing variable substitution
+Building predecessor graph
+Detecting pointer and location equivalences
+
+
+// The constraint graph before var-substitution in dot format:
+strict digraph {
+  node [
+    shape = box
+  ]
+  edge [
+    fontsize = "12"
+  ]
+
+  // List of nodes and complex constraints in the constraint graph:
+"NULL";
+"ANYTHING"[label="ANYTHING = { 2 }"];
+"STRING";
+"ESCAPED"[label="ESCAPED = { 5 8 23 24 }"];
+"NONLOCAL"[label="NONLOCAL = { 4 5 }"];
+"STOREDANYTHING";
+"INTEGER"[label="INTEGER = { 2 }"];
+"_ZSt3cin.0+64";
+"_ZSt3cin.64+64";
+"_ZSt3cin.128+64";
+"_ZSt3cin.192+224";
+"_ZSt3cin.448+64";
+"_ZSt3cin.512+64";
+"_ZSt3cin.576+1120";
+"_ZSt3cin.1728+64";
+"_ZSt3cin.1792+64";
+"_ZSt3cin.1856+64";
+"_ZSt3cin.1920+16";
+"_ZSt3cin.1984+64";
+"_ZSt3cin.2048+64";
+"_ZSt3cin.2112+64";
+"_ZSt3cin.2176+64";
+"n";
+"_ZSt4cout.0+64";
+"_ZSt4cout.64+64";
+"_ZSt4cout.128+224";
+"_ZSt4cout.384+64";
+"_ZSt4cout.448+64";
+"_ZSt4cout.512+1120";
+"_ZSt4cout.1664+64";
+"_ZSt4cout.1728+64";
+"_ZSt4cout.1792+64";
+"_ZSt4cout.1856+16";
+"_ZSt4cout.1920+64";
+"_ZSt4cout.1984+64";
+"_ZSt4cout.2048+64";
+"_ZSt4cout.2112+64";
+"_ZNSirsERi";
+"callescape(9)";
+"CALLUSED(10)";
+"CALLCLOBBERED(11)";
+"callarg(12)"[label="callarg(12) = { 8 }"];
+"callarg(28)"[label="callarg(28) = { 23 }"];
+"f_10";
+"i_2"[label="i_2 = { 5 }"];
+"f_3"[label="f_3 = { 5 }"];
+"i_11"[label="i_11 = { 5 }"];
+"n.0_1";
+"_ZNSolsEi";
+"callescape(36)";
+"CALLUSED(37)";
+"CALLCLOBBERED(38)";
+"callarg(39)"[label="callarg(39) = { 24 }"];
+"callarg(54)";
+"_8";
+"_13";
+"_14";
+"_15";
+"_16";
+"_21";
+"_ZSt16__throw_bad_castv";
+"callescape(62)";
+"CALLUSED(63)";
+"CALLCLOBBERED(64)";
+"_26";
+"_29";
+"_ZNKSt5ctypeIcE13_M_widen_initEv";
+"callescape(68)";
+"CALLUSED(69)";
+"CALLCLOBBERED(70)";
+"callarg(71)";
+"_34";
+"_35";
+"PROF_39"[label="PROF_39 = { 2 }"];
+"callescape(75)";
+"CALLUSED(76)";
+"CALLCLOBBERED(77)";
+"callarg(78)";
+"callarg(79)"[label="callarg(79) = { 5 }"];
+"_41";
+"_37"[label="_37 = { 5 }"];
+"_32";
+"_18";
+"_ZNSo3putEc";
+"callescape(85)";
+"CALLUSED(86)";
+"CALLCLOBBERED(87)";
+"callarg(88)";
+"callarg(89)";
+"_19";
+"_ZNSo5flushEv";
+"callescape(92)";
+"CALLUSED(93)";
+"CALLCLOBBERED(94)";
+"callarg(95)";
+"_20";
+"main";
+"*NULL";
+"*ANYTHING";
+"*STRING";
+"*STOREDANYTHING";
+"*INTEGER";
+"*_ZSt3cin.0+64";
+"*_ZSt3cin.64+64";
+"*_ZSt3cin.128+64";
+"*_ZSt3cin.192+224";
+"*_ZSt3cin.448+64";
+"*_ZSt3cin.512+64";
+"*_ZSt3cin.576+1120";
+"*_ZSt3cin.1728+64";
+"*_ZSt3cin.1792+64";
+"*_ZSt3cin.1856+64";
+"*_ZSt3cin.1920+16";
+"*_ZSt3cin.1984+64";
+"*_ZSt3cin.2048+64";
+"*_ZSt3cin.2112+64";
+"*_ZSt3cin.2176+64";
+"*n";
+"*_ZSt4cout.0+64";
+"*_ZSt4cout.64+64";
+"*_ZSt4cout.128+224";
+"*_ZSt4cout.384+64";
+"*_ZSt4cout.448+64";
+"*_ZSt4cout.512+1120";
+"*_ZSt4cout.1664+64";
+"*_ZSt4cout.1728+64";
+"*_ZSt4cout.1792+64";
+"*_ZSt4cout.1856+16";
+"*_ZSt4cout.1920+64";
+"*_ZSt4cout.1984+64";
+"*_ZSt4cout.2048+64";
+"*_ZSt4cout.2112+64";
+"*_ZNSirsERi";
+"*callescape(9)";
+"*CALLUSED(10)";
+"*CALLCLOBBERED(11)";
+"*callarg(12)";
+"*callarg(28)";
+"*f_10";
+"*i_2";
+"*f_3";
+"*i_11";
+"*n.0_1";
+"*_ZNSolsEi";
+"*callescape(36)";
+"*CALLUSED(37)";
+"*CALLCLOBBERED(38)";
+"*callarg(39)";
+"*callarg(54)";
+"*_13";
+"*_14";
+"*_15";
+"*_16";
+"*_21";
+"*_ZSt16__throw_bad_castv";
+"*callescape(62)";
+"*CALLUSED(63)";
+"*CALLCLOBBERED(64)";
+"*_26";
+"*_29";
+"*_ZNKSt5ctypeIcE13_M_widen_initEv";
+"*callescape(68)";
+"*CALLUSED(69)";
+"*CALLCLOBBERED(70)";
+"*callarg(71)";
+"*_34";
+"*_35";
+"*PROF_39";
+"*callescape(75)";
+"*CALLUSED(76)";
+"*CALLCLOBBERED(77)";
+"*callarg(78)";
+"*callarg(79)";
+"*_ZNSo3putEc";
+"*callescape(85)";
+"*CALLUSED(86)";
+"*CALLCLOBBERED(87)";
+"*_ZNSo5flushEv";
+"*callescape(92)";
+"*CALLUSED(93)";
+"*CALLCLOBBERED(94)";
+"*callarg(95)";
+"*_20";
+"*main";
+
+  // Edges in the constraint graph:
+"NONLOCAL" -> "ESCAPED";
+"f_3" -> "ESCAPED";
+"_8" -> "ESCAPED";
+"_21" -> "ESCAPED";
+"_18" -> "ESCAPED";
+"callescape(85)" -> "ESCAPED";
+"_19" -> "ESCAPED";
+"ESCAPED" -> "ESCAPED";
+"NONLOCAL" -> "_ZSt3cin.0+64";
+"NONLOCAL" -> "_ZSt3cin.64+64";
+"NONLOCAL" -> "_ZSt3cin.128+64";
+"NONLOCAL" -> "_ZSt3cin.192+224";
+"NONLOCAL" -> "_ZSt3cin.448+64";
+"NONLOCAL" -> "_ZSt3cin.512+64";
+"NONLOCAL" -> "_ZSt3cin.576+1120";
+"NONLOCAL" -> "_ZSt3cin.1728+64";
+"NONLOCAL" -> "_ZSt3cin.1792+64";
+"NONLOCAL" -> "_ZSt3cin.1856+64";
+"NONLOCAL" -> "_ZSt3cin.1920+16";
+"NONLOCAL" -> "_ZSt3cin.1984+64";
+"NONLOCAL" -> "_ZSt3cin.2048+64";
+"NONLOCAL" -> "_ZSt3cin.2112+64";
+"NONLOCAL" -> "_ZSt3cin.2176+64";
+"NONLOCAL" -> "_ZSt4cout.0+64";
+"NONLOCAL" -> "_ZSt4cout.64+64";
+"NONLOCAL" -> "_ZSt4cout.128+224";
+"NONLOCAL" -> "_ZSt4cout.384+64";
+"NONLOCAL" -> "_ZSt4cout.448+64";
+"NONLOCAL" -> "_ZSt4cout.512+1120";
+"NONLOCAL" -> "_ZSt4cout.1664+64";
+"NONLOCAL" -> "_ZSt4cout.1728+64";
+"NONLOCAL" -> "_ZSt4cout.1792+64";
+"NONLOCAL" -> "_ZSt4cout.1856+16";
+"NONLOCAL" -> "_ZSt4cout.1920+64";
+"NONLOCAL" -> "_ZSt4cout.1984+64";
+"NONLOCAL" -> "_ZSt4cout.2048+64";
+"NONLOCAL" -> "_ZSt4cout.2112+64";
+"NONLOCAL" -> "callescape(9)";
+"callarg(12)" -> "callescape(9)";
+"callarg(28)" -> "callescape(9)";
+"callescape(9)" -> "CALLUSED(10)";
+"callarg(12)" -> "CALLUSED(10)";
+"callarg(28)" -> "CALLUSED(10)";
+"callarg(12)" -> "CALLCLOBBERED(11)";
+"callarg(28)" -> "CALLCLOBBERED(11)";
+"i_11" -> "i_2";
+"f_10" -> "f_3";
+"n" -> "n.0_1";
+"NONLOCAL" -> "callescape(36)";
+"callarg(39)" -> "callescape(36)";
+"callarg(54)" -> "callescape(36)";
+"callescape(36)" -> "CALLUSED(37)";
+"callarg(39)" -> "CALLUSED(37)";
+"callarg(54)" -> "CALLUSED(37)";
+"callarg(39)" -> "CALLCLOBBERED(38)";
+"callarg(54)" -> "CALLCLOBBERED(38)";
+"f_3" -> "callarg(54)";
+"NONLOCAL" -> "_8";
+"callarg(39)" -> "_8";
+"callarg(54)" -> "_8";
+"ESCAPED" -> "_13";
+"_14" -> "_15";
+"NONLOCAL" -> "callescape(62)";
+"callescape(62)" -> "CALLUSED(63)";
+"NONLOCAL" -> "callescape(68)";
+"callarg(71)" -> "callescape(68)";
+"callescape(68)" -> "CALLUSED(69)";
+"callarg(71)" -> "CALLUSED(69)";
+"callarg(71)" -> "CALLCLOBBERED(70)";
+"_21" -> "callarg(71)";
+"*_21" -> "_34";
+"NONLOCAL" -> "callescape(75)";
+"callarg(78)" -> "callescape(75)";
+"callarg(79)" -> "callescape(75)";
+"callescape(75)" -> "CALLUSED(76)";
+"callarg(78)" -> "CALLUSED(76)";
+"callarg(79)" -> "CALLUSED(76)";
+"callarg(78)" -> "CALLCLOBBERED(77)";
+"callarg(79)" -> "CALLCLOBBERED(77)";
+"_21" -> "callarg(78)";
+"NONLOCAL" -> "_41";
+"callarg(78)" -> "_41";
+"callarg(79)" -> "_41";
+"_41" -> "_37";
+"_29" -> "_32";
+"_37" -> "_32";
+"_32" -> "_18";
+"NONLOCAL" -> "callescape(85)";
+"callarg(88)" -> "callescape(85)";
+"callarg(89)" -> "callescape(85)";
+"callescape(85)" -> "CALLUSED(86)";
+"callarg(88)" -> "CALLUSED(86)";
+"callarg(89)" -> "CALLUSED(86)";
+"callarg(88)" -> "CALLCLOBBERED(87)";
+"callarg(89)" -> "CALLCLOBBERED(87)";
+"_8" -> "callarg(88)";
+"_18" -> "callarg(89)";
+"NONLOCAL" -> "_19";
+"callarg(88)" -> "_19";
+"callarg(89)" -> "_19";
+"NONLOCAL" -> "callescape(92)";
+"callarg(95)" -> "callescape(92)";
+"callescape(92)" -> "CALLUSED(93)";
+"callarg(95)" -> "CALLUSED(93)";
+"callarg(95)" -> "CALLCLOBBERED(94)";
+"_19" -> "callarg(95)";
+"NONLOCAL" -> "_20";
+"callarg(95)" -> "_20";
+"callescape(9)" -> "*callarg(12)";
+"callescape(9)" -> "*callarg(28)";
+"callescape(36)" -> "*callarg(39)";
+"callescape(36)" -> "*callarg(54)";
+"callescape(68)" -> "*callarg(71)";
+"callescape(75)" -> "*callarg(78)";
+"callescape(75)" -> "*callarg(79)";
+"callescape(92)" -> "*callarg(95)";
+}
+
+
+Rewriting constraints and unifying variables
+Uniting pointer but not location equivalent variables
+Finding indirect cycles
+
+
+// The constraint graph before solve-graph in dot format:
+strict digraph {
+  node [
+    shape = box
+  ]
+  edge [
+    fontsize = "12"
+  ]
+
+  // List of nodes and complex constraints in the constraint graph:
+"NULL";
+"ANYTHING";
+"STRING";
+"STOREDANYTHING";
+"INTEGER";
+"_ZSt3cin.0+64";
+"_ZSt3cin.64+64";
+"_ZSt3cin.128+64";
+"_ZSt3cin.192+224";
+"_ZSt3cin.448+64";
+"_ZSt3cin.512+64";
+"_ZSt3cin.576+1120";
+"_ZSt3cin.1728+64";
+"_ZSt3cin.1792+64";
+"_ZSt3cin.1856+64";
+"_ZSt3cin.1920+16";
+"_ZSt3cin.1984+64";
+"_ZSt3cin.2048+64";
+"_ZSt3cin.2112+64";
+"_ZSt3cin.2176+64";
+"_ZSt4cout.0+64";
+"_ZSt4cout.64+64";
+"_ZSt4cout.128+224";
+"_ZSt4cout.384+64";
+"_ZSt4cout.448+64";
+"_ZSt4cout.512+1120";
+"_ZSt4cout.1664+64";
+"_ZSt4cout.1728+64";
+"_ZSt4cout.1792+64";
+"_ZSt4cout.1856+16";
+"_ZSt4cout.1920+64";
+"_ZSt4cout.1984+64";
+"_ZSt4cout.2048+64";
+"_ZSt4cout.2112+64";
+"_ZNSirsERi";
+"callescape(9)";
+"CALLCLOBBERED(11)";
+"callarg(12)" [label="\N\ncallarg(12) = callarg(12) + UNKNOWN\lcallarg(12) = *callarg(12) + UNKNOWN\l*callarg(12) = callescape(9)\l"];
+"callarg(28)" [label="\N\ncallarg(28) = callarg(28) + UNKNOWN\lcallarg(28) = *callarg(28) + UNKNOWN\l*callarg(28) = callescape(9)\l"];
+"f_10";
+"i_2" [label="\N\nf_10 = i_2 + UNKNOWN\li_2 = i_2 + UNKNOWN\l"];
+"f_3" [label="\N\nf_10 = f_3 + UNKNOWN\l"];
+"n.0_1";
+"_ZNSolsEi";
+"callescape(36)" [label="\N\n_13 = *callescape(36)\l_16 = callescape(36) + UNKNOWN\l"];
+"CALLCLOBBERED(38)";
+"callarg(39)" [label="\N\ncallarg(39) = callarg(39) + UNKNOWN\lcallarg(39) = *callarg(39) + UNKNOWN\l*callarg(39) = callescape(36)\l"];
+"callarg(54)" [label="\N\ncallarg(54) = callarg(54) + UNKNOWN\lcallarg(54) = *callarg(54) + UNKNOWN\l*callarg(54) = callescape(36)\l"];
+"_13" [label="\N\nESCAPED = _13 + UNKNOWN\lESCAPED = *_13\l_14 = *_13 + -192\l*_13 = NONLOCAL\l"];
+"_14";
+"_16" [label="\N\n_21 = *_16 + 1920\l"];
+"_21" [label="\N\n_26 = *_21 + 448\l_29 = *_21 + 536\l_34 = *_21\l"];
+"_ZSt16__throw_bad_castv";
+"callescape(62)";
+"CALLCLOBBERED(64)";
+"_26";
+"_29";
+"_ZNKSt5ctypeIcE13_M_widen_initEv";
+"callescape(68)";
+"callarg(71)" [label="\N\ncallarg(71) = callarg(71) + UNKNOWN\lcallarg(71) = *callarg(71) + UNKNOWN\l*callarg(71) = callescape(68)\l"];
+"_34" [label="\N\n_35 = *_34 + 384\l"];
+"_35";
+"PROF_39";
+"callescape(75)";
+"CALLCLOBBERED(77)";
+"callarg(78)" [label="\N\ncallarg(78) = callarg(78) + UNKNOWN\lcallarg(78) = *callarg(78) + UNKNOWN\l*callarg(78) = callescape(75)\l"];
+"callarg(79)" [label="\N\ncallarg(79) = callarg(79) + UNKNOWN\lcallarg(79) = *callarg(79) + UNKNOWN\l*callarg(79) = callescape(75)\l"];
+"_32";
+"_ZNSo3putEc";
+"callescape(85)";
+"callarg(88)" [label="\N\ncallarg(88) = callarg(88) + UNKNOWN\lcallarg(88) = *callarg(88) + UNKNOWN\l*callarg(88) = callescape(85)\l"];
+"callarg(89)" [label="\N\ncallarg(89) = callarg(89) + UNKNOWN\lcallarg(89) = *callarg(89) + UNKNOWN\l*callarg(89) = callescape(85)\l"];
+"_ZNSo5flushEv";
+"callescape(92)" [label="\N\ncallescape(92) = callescape(92) + UNKNOWN\lcallescape(92) = *callescape(92) + UNKNOWN\l*callescape(92) = callescape(92)\l"];
+"main";
+
+  // Edges in the constraint graph:
+"STOREDANYTHING" -> "_13";
+"STOREDANYTHING" -> "_ZSt3cin.0+64";
+"STOREDANYTHING" -> "_ZSt3cin.64+64";
+"STOREDANYTHING" -> "_ZSt3cin.128+64";
+"STOREDANYTHING" -> "_ZSt3cin.192+224";
+"STOREDANYTHING" -> "_ZSt3cin.448+64";
+"STOREDANYTHING" -> "_ZSt3cin.512+64";
+"STOREDANYTHING" -> "_ZSt3cin.576+1120";
+"STOREDANYTHING" -> "_ZSt3cin.1728+64";
+"STOREDANYTHING" -> "_ZSt3cin.1792+64";
+"STOREDANYTHING" -> "_ZSt3cin.1856+64";
+"STOREDANYTHING" -> "_ZSt3cin.1920+16";
+"STOREDANYTHING" -> "_ZSt3cin.1984+64";
+"STOREDANYTHING" -> "_ZSt3cin.2048+64";
+"STOREDANYTHING" -> "_ZSt3cin.2112+64";
+"STOREDANYTHING" -> "_ZSt3cin.2176+64";
+"STOREDANYTHING" -> "n.0_1";
+"STOREDANYTHING" -> "_ZSt4cout.0+64";
+"STOREDANYTHING" -> "_ZSt4cout.64+64";
+"STOREDANYTHING" -> "_ZSt4cout.128+224";
+"STOREDANYTHING" -> "_ZSt4cout.384+64";
+"STOREDANYTHING" -> "_ZSt4cout.448+64";
+"STOREDANYTHING" -> "_ZSt4cout.512+1120";
+"STOREDANYTHING" -> "_ZSt4cout.1664+64";
+"STOREDANYTHING" -> "_ZSt4cout.1728+64";
+"STOREDANYTHING" -> "_ZSt4cout.1792+64";
+"STOREDANYTHING" -> "_ZSt4cout.1856+16";
+"STOREDANYTHING" -> "_ZSt4cout.1920+64";
+"STOREDANYTHING" -> "_ZSt4cout.1984+64";
+"STOREDANYTHING" -> "_ZSt4cout.2048+64";
+"STOREDANYTHING" -> "_ZSt4cout.2112+64";
+"STOREDANYTHING" -> "callarg(12)";
+"STOREDANYTHING" -> "callarg(28)";
+"STOREDANYTHING" -> "f_10";
+"STOREDANYTHING" -> "i_2";
+"STOREDANYTHING" -> "callarg(39)";
+"STOREDANYTHING" -> "callarg(54)";
+"STOREDANYTHING" -> "_14";
+"STOREDANYTHING" -> "_16";
+"STOREDANYTHING" -> "_21";
+"STOREDANYTHING" -> "_26";
+"STOREDANYTHING" -> "_29";
+"STOREDANYTHING" -> "callarg(71)";
+"STOREDANYTHING" -> "_35";
+"STOREDANYTHING" -> "callarg(78)";
+"STOREDANYTHING" -> "callarg(79)";
+"STOREDANYTHING" -> "callarg(88)";
+"STOREDANYTHING" -> "callarg(89)";
+"STOREDANYTHING" -> "callescape(92)";
+"callarg(12)" -> "callescape(9)";
+"callarg(12)" -> "CALLCLOBBERED(11)";
+"callarg(28)" -> "callescape(9)";
+"callarg(28)" -> "CALLCLOBBERED(11)";
+"f_10" -> "f_3";
+"f_3" -> "_13";
+"f_3" -> "callarg(54)";
+"callescape(36)" -> "_13";
+"callescape(36)" -> "callarg(88)";
+"callarg(39)" -> "callescape(36)";
+"callarg(39)" -> "CALLCLOBBERED(38)";
+"callarg(54)" -> "callescape(36)";
+"callarg(54)" -> "CALLCLOBBERED(38)";
+"_21" -> "_13";
+"_21" -> "callarg(71)";
+"_21" -> "callarg(78)";
+"callescape(62)" -> "_ZSt3cin.0+64";
+"callescape(62)" -> "_ZSt3cin.64+64";
+"callescape(62)" -> "_ZSt3cin.128+64";
+"callescape(62)" -> "_ZSt3cin.192+224";
+"callescape(62)" -> "_ZSt3cin.448+64";
+"callescape(62)" -> "_ZSt3cin.512+64";
+"callescape(62)" -> "_ZSt3cin.576+1120";
+"callescape(62)" -> "_ZSt3cin.1728+64";
+"callescape(62)" -> "_ZSt3cin.1792+64";
+"callescape(62)" -> "_ZSt3cin.1856+64";
+"callescape(62)" -> "_ZSt3cin.1920+16";
+"callescape(62)" -> "_ZSt3cin.1984+64";
+"callescape(62)" -> "_ZSt3cin.2048+64";
+"callescape(62)" -> "_ZSt3cin.2112+64";
+"callescape(62)" -> "_ZSt3cin.2176+64";
+"callescape(62)" -> "_ZSt4cout.0+64";
+"callescape(62)" -> "_ZSt4cout.64+64";
+"callescape(62)" -> "_ZSt4cout.128+224";
+"callescape(62)" -> "_ZSt4cout.384+64";
+"callescape(62)" -> "_ZSt4cout.448+64";
+"callescape(62)" -> "_ZSt4cout.512+1120";
+"callescape(62)" -> "_ZSt4cout.1664+64";
+"callescape(62)" -> "_ZSt4cout.1728+64";
+"callescape(62)" -> "_ZSt4cout.1792+64";
+"callescape(62)" -> "_ZSt4cout.1856+16";
+"callescape(62)" -> "_ZSt4cout.1920+64";
+"callescape(62)" -> "_ZSt4cout.1984+64";
+"callescape(62)" -> "_ZSt4cout.2048+64";
+"callescape(62)" -> "_ZSt4cout.2112+64";
+"callescape(62)" -> "callescape(9)";
+"callescape(62)" -> "callescape(36)";
+"callescape(62)" -> "callescape(68)";
+"callescape(62)" -> "callescape(75)";
+"callescape(62)" -> "callescape(85)";
+"callescape(62)" -> "callescape(92)";
+"_29" -> "_32";
+"callarg(71)" -> "callescape(68)";
+"callescape(75)" -> "_32";
+"callarg(78)" -> "callescape(75)";
+"callarg(78)" -> "CALLCLOBBERED(77)";
+"callarg(79)" -> "callescape(75)";
+"callarg(79)" -> "CALLCLOBBERED(77)";
+"_32" -> "_13";
+"_32" -> "callarg(89)";
+"callescape(85)" -> "_13";
+"callescape(85)" -> "callescape(92)";
+"callarg(88)" -> "callescape(85)";
+"callarg(89)" -> "callescape(85)";
+}
+
+
+Solving graph
+
+
+// The constraint graph after solve-graph in dot format:
+strict digraph {
+  node [
+    shape = box
+  ]
+  edge [
+    fontsize = "12"
+  ]
+
+  // List of nodes and complex constraints in the constraint graph:
+"NULL";
+"ANYTHING";
+"STRING";
+"STOREDANYTHING";
+"INTEGER";
+"_ZSt3cin.0+64";
+"_ZSt3cin.64+64";
+"_ZSt3cin.128+64";
+"_ZSt3cin.192+224";
+"_ZSt3cin.448+64";
+"_ZSt3cin.512+64";
+"_ZSt3cin.576+1120";
+"_ZSt3cin.1728+64";
+"_ZSt3cin.1792+64";
+"_ZSt3cin.1856+64";
+"_ZSt3cin.1920+16";
+"_ZSt3cin.1984+64";
+"_ZSt3cin.2048+64";
+"_ZSt3cin.2112+64";
+"_ZSt3cin.2176+64";
+"_ZSt4cout.0+64";
+"_ZSt4cout.64+64";
+"_ZSt4cout.128+224";
+"_ZSt4cout.384+64";
+"_ZSt4cout.448+64";
+"_ZSt4cout.512+1120";
+"_ZSt4cout.1664+64";
+"_ZSt4cout.1728+64";
+"_ZSt4cout.1792+64";
+"_ZSt4cout.1856+16";
+"_ZSt4cout.1920+64";
+"_ZSt4cout.1984+64";
+"_ZSt4cout.2048+64";
+"_ZSt4cout.2112+64";
+"_ZNSirsERi";
+"callescape(9)";
+"CALLCLOBBERED(11)";
+"callarg(12)" [label="\N\ncallarg(12) = callarg(12) + UNKNOWN\lcallarg(12) = *callarg(12) + UNKNOWN\l*callarg(12) = callescape(9)\l"];
+"callarg(28)" [label="\N\ncallarg(28) = callarg(28) + UNKNOWN\lcallarg(28) = *callarg(28) + UNKNOWN\l*callarg(28) = callescape(9)\l"];
+"f_10";
+"i_2" [label="\N\nf_10 = i_2 + UNKNOWN\li_2 = i_2 + UNKNOWN\l"];
+"f_3" [label="\N\nf_10 = f_3 + UNKNOWN\l"];
+"n.0_1";
+"_ZNSolsEi";
+"callescape(36)" [label="\N\n_13 = *callescape(36)\l_16 = callescape(36) + UNKNOWN\l"];
+"CALLCLOBBERED(38)";
+"callarg(39)" [label="\N\ncallarg(39) = callarg(39) + UNKNOWN\lcallarg(39) = *callarg(39) + UNKNOWN\l*callarg(39) = callescape(36)\l"];
+"callarg(54)" [label="\N\ncallarg(54) = callarg(54) + UNKNOWN\lcallarg(54) = *callarg(54) + UNKNOWN\l*callarg(54) = callescape(36)\l"];
+"_13" [label="\N\n_13 = _13 + UNKNOWN\l_13 = *_13\l_14 = *_13 + -192\l*_13 = callescape(62)\l"];
+"_14";
+"_16" [label="\N\n_21 = *_16 + 1920\l"];
+"_21" [label="\N\n_26 = *_21 + 448\l_29 = *_21 + 536\l_34 = *_21\l"];
+"_ZSt16__throw_bad_castv";
+"callescape(62)";
+"CALLCLOBBERED(64)";
+"_26";
+"_29";
+"_ZNKSt5ctypeIcE13_M_widen_initEv";
+"callescape(68)";
+"callarg(71)" [label="\N\ncallarg(71) = callarg(71) + UNKNOWN\lcallarg(71) = *callarg(71) + UNKNOWN\l*callarg(71) = callescape(68)\l"];
+"_34" [label="\N\n_35 = *_34 + 384\l"];
+"_35";
+"PROF_39";
+"callescape(75)";
+"CALLCLOBBERED(77)";
+"callarg(78)" [label="\N\ncallarg(78) = callarg(78) + UNKNOWN\lcallarg(78) = *callarg(78) + UNKNOWN\l*callarg(78) = callescape(75)\l"];
+"callarg(79)" [label="\N\ncallarg(79) = callarg(79) + UNKNOWN\lcallarg(79) = *callarg(79) + UNKNOWN\l*callarg(79) = callescape(75)\l"];
+"_32";
+"_ZNSo3putEc";
+"callescape(85)";
+"callarg(88)" [label="\N\ncallarg(88) = callarg(88) + UNKNOWN\lcallarg(88) = *callarg(88) + UNKNOWN\l*callarg(88) = callescape(85)\l"];
+"callarg(89)" [label="\N\ncallarg(89) = callarg(89) + UNKNOWN\lcallarg(89) = *callarg(89) + UNKNOWN\l*callarg(89) = callescape(85)\l"];
+"_ZNSo5flushEv";
+"callescape(92)" [label="\N\ncallescape(92) = callescape(92) + UNKNOWN\lcallescape(92) = *callescape(92) + UNKNOWN\l*callescape(92) = callescape(92)\l"];
+"main";
+
+  // Edges in the constraint graph:
+"STOREDANYTHING" -> "_13";
+"STOREDANYTHING" -> "_ZSt3cin.0+64";
+"STOREDANYTHING" -> "_ZSt3cin.64+64";
+"STOREDANYTHING" -> "_ZSt3cin.128+64";
+"STOREDANYTHING" -> "_ZSt3cin.192+224";
+"STOREDANYTHING" -> "_ZSt3cin.448+64";
+"STOREDANYTHING" -> "_ZSt3cin.512+64";
+"STOREDANYTHING" -> "_ZSt3cin.576+1120";
+"STOREDANYTHING" -> "_ZSt3cin.1728+64";
+"STOREDANYTHING" -> "_ZSt3cin.1792+64";
+"STOREDANYTHING" -> "_ZSt3cin.1856+64";
+"STOREDANYTHING" -> "_ZSt3cin.1920+16";
+"STOREDANYTHING" -> "_ZSt3cin.1984+64";
+"STOREDANYTHING" -> "_ZSt3cin.2048+64";
+"STOREDANYTHING" -> "_ZSt3cin.2112+64";
+"STOREDANYTHING" -> "_ZSt3cin.2176+64";
+"STOREDANYTHING" -> "n.0_1";
+"STOREDANYTHING" -> "_ZSt4cout.0+64";
+"STOREDANYTHING" -> "_ZSt4cout.64+64";
+"STOREDANYTHING" -> "_ZSt4cout.128+224";
+"STOREDANYTHING" -> "_ZSt4cout.384+64";
+"STOREDANYTHING" -> "_ZSt4cout.448+64";
+"STOREDANYTHING" -> "_ZSt4cout.512+1120";
+"STOREDANYTHING" -> "_ZSt4cout.1664+64";
+"STOREDANYTHING" -> "_ZSt4cout.1728+64";
+"STOREDANYTHING" -> "_ZSt4cout.1792+64";
+"STOREDANYTHING" -> "_ZSt4cout.1856+16";
+"STOREDANYTHING" -> "_ZSt4cout.1920+64";
+"STOREDANYTHING" -> "_ZSt4cout.1984+64";
+"STOREDANYTHING" -> "_ZSt4cout.2048+64";
+"STOREDANYTHING" -> "_ZSt4cout.2112+64";
+"STOREDANYTHING" -> "callarg(12)";
+"STOREDANYTHING" -> "callarg(28)";
+"STOREDANYTHING" -> "f_10";
+"STOREDANYTHING" -> "i_2";
+"STOREDANYTHING" -> "callarg(39)";
+"STOREDANYTHING" -> "callarg(54)";
+"STOREDANYTHING" -> "_14";
+"STOREDANYTHING" -> "_16";
+"STOREDANYTHING" -> "_21";
+"STOREDANYTHING" -> "_26";
+"STOREDANYTHING" -> "_29";
+"STOREDANYTHING" -> "callarg(71)";
+"STOREDANYTHING" -> "_35";
+"STOREDANYTHING" -> "callarg(78)";
+"STOREDANYTHING" -> "callarg(79)";
+"STOREDANYTHING" -> "callarg(88)";
+"STOREDANYTHING" -> "callarg(89)";
+"STOREDANYTHING" -> "callescape(92)";
+"_ZSt3cin.0+64" -> "callarg(12)";
+"_ZSt3cin.0+64" -> "_13";
+"_ZSt3cin.64+64" -> "_13";
+"_ZSt3cin.64+64" -> "_14";
+"_ZSt3cin.128+64" -> "_13";
+"_ZSt3cin.128+64" -> "_14";
+"_ZSt3cin.192+224" -> "_13";
+"_ZSt3cin.192+224" -> "_14";
+"_ZSt3cin.448+64" -> "_13";
+"_ZSt3cin.448+64" -> "_14";
+"_ZSt3cin.512+64" -> "_13";
+"_ZSt3cin.512+64" -> "_14";
+"_ZSt3cin.576+1120" -> "_13";
+"_ZSt3cin.576+1120" -> "_14";
+"_ZSt3cin.1728+64" -> "_13";
+"_ZSt3cin.1728+64" -> "_14";
+"_ZSt3cin.1792+64" -> "_13";
+"_ZSt3cin.1792+64" -> "_14";
+"_ZSt3cin.1856+64" -> "_13";
+"_ZSt3cin.1856+64" -> "_14";
+"_ZSt3cin.1920+16" -> "_13";
+"_ZSt3cin.1920+16" -> "_14";
+"_ZSt3cin.1984+64" -> "_13";
+"_ZSt3cin.1984+64" -> "_14";
+"_ZSt3cin.2048+64" -> "_13";
+"_ZSt3cin.2048+64" -> "_14";
+"_ZSt3cin.2112+64" -> "_13";
+"_ZSt3cin.2112+64" -> "_14";
+"_ZSt3cin.2176+64" -> "_13";
+"_ZSt3cin.2176+64" -> "_14";
+"_ZSt4cout.0+64" -> "callarg(39)";
+"_ZSt4cout.0+64" -> "_13";
+"_ZSt4cout.64+64" -> "_13";
+"_ZSt4cout.64+64" -> "_14";
+"_ZSt4cout.128+224" -> "_13";
+"_ZSt4cout.128+224" -> "_14";
+"_ZSt4cout.384+64" -> "_13";
+"_ZSt4cout.384+64" -> "_14";
+"_ZSt4cout.448+64" -> "_13";
+"_ZSt4cout.448+64" -> "_14";
+"_ZSt4cout.512+1120" -> "_13";
+"_ZSt4cout.512+1120" -> "_14";
+"_ZSt4cout.1664+64" -> "_13";
+"_ZSt4cout.1664+64" -> "_14";
+"_ZSt4cout.1728+64" -> "_13";
+"_ZSt4cout.1728+64" -> "_14";
+"_ZSt4cout.1792+64" -> "_13";
+"_ZSt4cout.1792+64" -> "_14";
+"_ZSt4cout.1856+16" -> "_13";
+"_ZSt4cout.1856+16" -> "_14";
+"_ZSt4cout.1920+64" -> "_13";
+"_ZSt4cout.1920+64" -> "_14";
+"_ZSt4cout.1984+64" -> "_13";
+"_ZSt4cout.1984+64" -> "_14";
+"_ZSt4cout.2048+64" -> "_13";
+"_ZSt4cout.2048+64" -> "_14";
+"_ZSt4cout.2112+64" -> "_13";
+"_ZSt4cout.2112+64" -> "_14";
+"callescape(9)" -> "n.0_1";
+"callescape(9)" -> "_13";
+"callarg(12)" -> "callescape(9)";
+"callarg(12)" -> "CALLCLOBBERED(11)";
+"callarg(28)" -> "callescape(9)";
+"callarg(28)" -> "CALLCLOBBERED(11)";
+"f_10" -> "f_3";
+"f_3" -> "callarg(54)";
+"f_3" -> "_13";
+"n.0_1" -> "callarg(28)";
+"n.0_1" -> "_13";
+"callescape(36)" -> "_13";
+"callescape(36)" -> "callarg(88)";
+"callarg(39)" -> "callescape(36)";
+"callarg(39)" -> "CALLCLOBBERED(38)";
+"callarg(54)" -> "callescape(36)";
+"callarg(54)" -> "CALLCLOBBERED(38)";
+"_21" -> "_13";
+"_21" -> "callarg(71)";
+"_21" -> "callarg(78)";
+"callescape(62)" -> "_ZSt3cin.0+64";
+"callescape(62)" -> "_ZSt3cin.64+64";
+"callescape(62)" -> "_ZSt3cin.128+64";
+"callescape(62)" -> "_ZSt3cin.192+224";
+"callescape(62)" -> "_ZSt3cin.448+64";
+"callescape(62)" -> "_ZSt3cin.512+64";
+"callescape(62)" -> "_ZSt3cin.576+1120";
+"callescape(62)" -> "_ZSt3cin.1728+64";
+"callescape(62)" -> "_ZSt3cin.1792+64";
+"callescape(62)" -> "_ZSt3cin.1856+64";
+"callescape(62)" -> "_ZSt3cin.1920+16";
+"callescape(62)" -> "_ZSt3cin.1984+64";
+"callescape(62)" -> "_ZSt3cin.2048+64";
+"callescape(62)" -> "_ZSt3cin.2112+64";
+"callescape(62)" -> "_ZSt3cin.2176+64";
+"callescape(62)" -> "_ZSt4cout.0+64";
+"callescape(62)" -> "_ZSt4cout.64+64";
+"callescape(62)" -> "_ZSt4cout.128+224";
+"callescape(62)" -> "_ZSt4cout.384+64";
+"callescape(62)" -> "_ZSt4cout.448+64";
+"callescape(62)" -> "_ZSt4cout.512+1120";
+"callescape(62)" -> "_ZSt4cout.1664+64";
+"callescape(62)" -> "_ZSt4cout.1728+64";
+"callescape(62)" -> "_ZSt4cout.1792+64";
+"callescape(62)" -> "_ZSt4cout.1856+16";
+"callescape(62)" -> "_ZSt4cout.1920+64";
+"callescape(62)" -> "_ZSt4cout.1984+64";
+"callescape(62)" -> "_ZSt4cout.2048+64";
+"callescape(62)" -> "_ZSt4cout.2112+64";
+"callescape(62)" -> "callescape(9)";
+"callescape(62)" -> "n.0_1";
+"callescape(62)" -> "callescape(36)";
+"callescape(62)" -> "callarg(54)";
+"callescape(62)" -> "_13";
+"callescape(62)" -> "_14";
+"callescape(62)" -> "callescape(68)";
+"callescape(62)" -> "callescape(75)";
+"callescape(62)" -> "callarg(79)";
+"callescape(62)" -> "callescape(85)";
+"callescape(62)" -> "callescape(92)";
+"_29" -> "_32";
+"callescape(68)" -> "_13";
+"callarg(71)" -> "callescape(68)";
+"callescape(75)" -> "_13";
+"callescape(75)" -> "_32";
+"callarg(78)" -> "callescape(75)";
+"callarg(78)" -> "CALLCLOBBERED(77)";
+"callarg(79)" -> "callescape(75)";
+"callarg(79)" -> "CALLCLOBBERED(77)";
+"_32" -> "_13";
+"_32" -> "callarg(89)";
+"callescape(85)" -> "_13";
+"callescape(85)" -> "callescape(92)";
+"callarg(88)" -> "callescape(85)";
+"callarg(89)" -> "callescape(85)";
+"callescape(92)" -> "_13";
+}
+
+
+
+Points-to sets
+
+ANYTHING = { ANYTHING }
+ESCAPED = { ESCAPED NONLOCAL _ZSt3cin.0+64 _ZSt3cin.64+64 _ZSt3cin.128+64 _ZSt3cin.192+224 _ZSt3cin.448+64 _ZSt3cin.512+64 _ZSt3cin.576+1120 _ZSt3cin.1728+64 _ZSt3cin.1792+64 _ZSt3cin.1856+64 _ZSt3cin.1920+16 _ZSt3cin.1984+64 _ZSt3cin.2048+64 _ZSt3cin.2112+64 _ZSt3cin.2176+64 n _ZSt4cout.0+64 _ZSt4cout.64+64 _ZSt4cout.128+224 _ZSt4cout.384+64 _ZSt4cout.448+64 _ZSt4cout.512+1120 _ZSt4cout.1664+64 _ZSt4cout.1728+64 _ZSt4cout.1792+64 _ZSt4cout.1856+16 _ZSt4cout.1920+64 _ZSt4cout.1984+64 _ZSt4cout.2048+64 _ZSt4cout.2112+64 } same as _13
+NONLOCAL = { ESCAPED NONLOCAL } same as callescape(62)
+STOREDANYTHING = { }
+INTEGER = { ANYTHING }
+_ZSt3cin.0+64 = { ESCAPED NONLOCAL }
+_ZSt3cin.64+64 = { ESCAPED NONLOCAL }
+_ZSt3cin.128+64 = { ESCAPED NONLOCAL }
+_ZSt3cin.192+224 = { ESCAPED NONLOCAL }
+_ZSt3cin.448+64 = { ESCAPED NONLOCAL }
+_ZSt3cin.512+64 = { ESCAPED NONLOCAL }
+_ZSt3cin.576+1120 = { ESCAPED NONLOCAL }
+_ZSt3cin.1728+64 = { ESCAPED NONLOCAL }
+_ZSt3cin.1792+64 = { ESCAPED NONLOCAL }
+_ZSt3cin.1856+64 = { ESCAPED NONLOCAL }
+_ZSt3cin.1920+16 = { ESCAPED NONLOCAL }
+_ZSt3cin.1984+64 = { ESCAPED NONLOCAL }
+_ZSt3cin.2048+64 = { ESCAPED NONLOCAL }
+_ZSt3cin.2112+64 = { ESCAPED NONLOCAL }
+_ZSt3cin.2176+64 = { ESCAPED NONLOCAL }
+n = { ESCAPED NONLOCAL _ZSt3cin.0+64 _ZSt3cin.64+64 _ZSt3cin.128+64 _ZSt3cin.192+224 _ZSt3cin.448+64 _ZSt3cin.512+64 _ZSt3cin.576+1120 _ZSt3cin.1728+64 _ZSt3cin.1792+64 _ZSt3cin.1856+64 _ZSt3cin.1920+16 _ZSt3cin.1984+64 _ZSt3cin.2048+64 _ZSt3cin.2112+64 _ZSt3cin.2176+64 n } same as n.0_1
+_ZSt4cout.0+64 = { ESCAPED NONLOCAL }
+_ZSt4cout.64+64 = { ESCAPED NONLOCAL }
+_ZSt4cout.128+224 = { ESCAPED NONLOCAL }
+_ZSt4cout.384+64 = { ESCAPED NONLOCAL }
+_ZSt4cout.448+64 = { ESCAPED NONLOCAL }
+_ZSt4cout.512+1120 = { ESCAPED NONLOCAL }
+_ZSt4cout.1664+64 = { ESCAPED NONLOCAL }
+_ZSt4cout.1728+64 = { ESCAPED NONLOCAL }
+_ZSt4cout.1792+64 = { ESCAPED NONLOCAL }
+_ZSt4cout.1856+16 = { ESCAPED NONLOCAL }
+_ZSt4cout.1920+64 = { ESCAPED NONLOCAL }
+_ZSt4cout.1984+64 = { ESCAPED NONLOCAL }
+_ZSt4cout.2048+64 = { ESCAPED NONLOCAL }
+_ZSt4cout.2112+64 = { ESCAPED NONLOCAL }
+_ZNSirsERi = { }
+callescape(9) = { ESCAPED NONLOCAL _ZSt3cin.0+64 _ZSt3cin.64+64 _ZSt3cin.128+64 _ZSt3cin.192+224 _ZSt3cin.448+64 _ZSt3cin.512+64 _ZSt3cin.576+1120 _ZSt3cin.1728+64 _ZSt3cin.1792+64 _ZSt3cin.1856+64 _ZSt3cin.1920+16 _ZSt3cin.1984+64 _ZSt3cin.2048+64 _ZSt3cin.2112+64 _ZSt3cin.2176+64 n }
+CALLUSED(10) = { ESCAPED NONLOCAL _ZSt3cin.0+64 _ZSt3cin.64+64 _ZSt3cin.128+64 _ZSt3cin.192+224 _ZSt3cin.448+64 _ZSt3cin.512+64 _ZSt3cin.576+1120 _ZSt3cin.1728+64 _ZSt3cin.1792+64 _ZSt3cin.1856+64 _ZSt3cin.1920+16 _ZSt3cin.1984+64 _ZSt3cin.2048+64 _ZSt3cin.2112+64 _ZSt3cin.2176+64 n } same as callescape(9)
+CALLCLOBBERED(11) = { ESCAPED NONLOCAL _ZSt3cin.0+64 _ZSt3cin.64+64 _ZSt3cin.128+64 _ZSt3cin.192+224 _ZSt3cin.448+64 _ZSt3cin.512+64 _ZSt3cin.576+1120 _ZSt3cin.1728+64 _ZSt3cin.1792+64 _ZSt3cin.1856+64 _ZSt3cin.1920+16 _ZSt3cin.1984+64 _ZSt3cin.2048+64 _ZSt3cin.2112+64 _ZSt3cin.2176+64 n }
+callarg(12) = { ESCAPED NONLOCAL _ZSt3cin.0+64 _ZSt3cin.64+64 _ZSt3cin.128+64 _ZSt3cin.192+224 _ZSt3cin.448+64 _ZSt3cin.512+64 _ZSt3cin.576+1120 _ZSt3cin.1728+64 _ZSt3cin.1792+64 _ZSt3cin.1856+64 _ZSt3cin.1920+16 _ZSt3cin.1984+64 _ZSt3cin.2048+64 _ZSt3cin.2112+64 _ZSt3cin.2176+64 }
+callarg(28) = { ESCAPED NONLOCAL _ZSt3cin.0+64 _ZSt3cin.64+64 _ZSt3cin.128+64 _ZSt3cin.192+224 _ZSt3cin.448+64 _ZSt3cin.512+64 _ZSt3cin.576+1120 _ZSt3cin.1728+64 _ZSt3cin.1792+64 _ZSt3cin.1856+64 _ZSt3cin.1920+16 _ZSt3cin.1984+64 _ZSt3cin.2048+64 _ZSt3cin.2112+64 _ZSt3cin.2176+64 n }
+f_10 = { NONLOCAL }
+i_2 = { NONLOCAL }
+f_3 = { NONLOCAL }
+i_11 = { NONLOCAL } same as i_2
+n.0_1 = { ESCAPED NONLOCAL _ZSt3cin.0+64 _ZSt3cin.64+64 _ZSt3cin.128+64 _ZSt3cin.192+224 _ZSt3cin.448+64 _ZSt3cin.512+64 _ZSt3cin.576+1120 _ZSt3cin.1728+64 _ZSt3cin.1792+64 _ZSt3cin.1856+64 _ZSt3cin.1920+16 _ZSt3cin.1984+64 _ZSt3cin.2048+64 _ZSt3cin.2112+64 _ZSt3cin.2176+64 n }
+_ZNSolsEi = { }
+callescape(36) = { ESCAPED NONLOCAL _ZSt4cout.0+64 _ZSt4cout.64+64 _ZSt4cout.128+224 _ZSt4cout.384+64 _ZSt4cout.448+64 _ZSt4cout.512+1120 _ZSt4cout.1664+64 _ZSt4cout.1728+64 _ZSt4cout.1792+64 _ZSt4cout.1856+16 _ZSt4cout.1920+64 _ZSt4cout.1984+64 _ZSt4cout.2048+64 _ZSt4cout.2112+64 }
+CALLUSED(37) = { ESCAPED NONLOCAL _ZSt4cout.0+64 _ZSt4cout.64+64 _ZSt4cout.128+224 _ZSt4cout.384+64 _ZSt4cout.448+64 _ZSt4cout.512+1120 _ZSt4cout.1664+64 _ZSt4cout.1728+64 _ZSt4cout.1792+64 _ZSt4cout.1856+16 _ZSt4cout.1920+64 _ZSt4cout.1984+64 _ZSt4cout.2048+64 _ZSt4cout.2112+64 } same as callescape(36)
+CALLCLOBBERED(38) = { ESCAPED NONLOCAL _ZSt4cout.0+64 _ZSt4cout.64+64 _ZSt4cout.128+224 _ZSt4cout.384+64 _ZSt4cout.448+64 _ZSt4cout.512+1120 _ZSt4cout.1664+64 _ZSt4cout.1728+64 _ZSt4cout.1792+64 _ZSt4cout.1856+16 _ZSt4cout.1920+64 _ZSt4cout.1984+64 _ZSt4cout.2048+64 _ZSt4cout.2112+64 }
+callarg(39) = { ESCAPED NONLOCAL _ZSt4cout.0+64 _ZSt4cout.64+64 _ZSt4cout.128+224 _ZSt4cout.384+64 _ZSt4cout.448+64 _ZSt4cout.512+1120 _ZSt4cout.1664+64 _ZSt4cout.1728+64 _ZSt4cout.1792+64 _ZSt4cout.1856+16 _ZSt4cout.1920+64 _ZSt4cout.1984+64 _ZSt4cout.2048+64 _ZSt4cout.2112+64 }
+callarg(54) = { ESCAPED NONLOCAL }
+_8 = { ESCAPED NONLOCAL _ZSt4cout.0+64 _ZSt4cout.64+64 _ZSt4cout.128+224 _ZSt4cout.384+64 _ZSt4cout.448+64 _ZSt4cout.512+1120 _ZSt4cout.1664+64 _ZSt4cout.1728+64 _ZSt4cout.1792+64 _ZSt4cout.1856+16 _ZSt4cout.1920+64 _ZSt4cout.1984+64 _ZSt4cout.2048+64 _ZSt4cout.2112+64 } same as callescape(36)
+_13 = { ESCAPED NONLOCAL _ZSt3cin.0+64 _ZSt3cin.64+64 _ZSt3cin.128+64 _ZSt3cin.192+224 _ZSt3cin.448+64 _ZSt3cin.512+64 _ZSt3cin.576+1120 _ZSt3cin.1728+64 _ZSt3cin.1792+64 _ZSt3cin.1856+64 _ZSt3cin.1920+16 _ZSt3cin.1984+64 _ZSt3cin.2048+64 _ZSt3cin.2112+64 _ZSt3cin.2176+64 n _ZSt4cout.0+64 _ZSt4cout.64+64 _ZSt4cout.128+224 _ZSt4cout.384+64 _ZSt4cout.448+64 _ZSt4cout.512+1120 _ZSt4cout.1664+64 _ZSt4cout.1728+64 _ZSt4cout.1792+64 _ZSt4cout.1856+16 _ZSt4cout.1920+64 _ZSt4cout.1984+64 _ZSt4cout.2048+64 _ZSt4cout.2112+64 }
+_14 = { ESCAPED NONLOCAL }
+_15 = { ESCAPED NONLOCAL } same as _14
+_16 = { ESCAPED NONLOCAL _ZSt4cout.0+64 _ZSt4cout.64+64 _ZSt4cout.128+224 _ZSt4cout.384+64 _ZSt4cout.448+64 _ZSt4cout.512+1120 _ZSt4cout.1664+64 _ZSt4cout.1728+64 _ZSt4cout.1792+64 _ZSt4cout.1856+16 _ZSt4cout.1920+64 _ZSt4cout.1984+64 _ZSt4cout.2048+64 _ZSt4cout.2112+64 }
+_21 = { ESCAPED }
+_ZSt16__throw_bad_castv = { }
+callescape(62) = { ESCAPED NONLOCAL }
+CALLUSED(63) = { ESCAPED NONLOCAL } same as callescape(62)
+CALLCLOBBERED(64) = { }
+_26 = { ESCAPED }
+_29 = { ESCAPED }
+_ZNKSt5ctypeIcE13_M_widen_initEv = { }
+callescape(68) = { ESCAPED NONLOCAL }
+CALLUSED(69) = { ESCAPED NONLOCAL } same as callescape(68)
+CALLCLOBBERED(70) = { ESCAPED } same as callarg(71)
+callarg(71) = { ESCAPED }
+_34 = { ESCAPED }
+_35 = { ESCAPED }
+PROF_39 = { ANYTHING }
+callescape(75) = { ESCAPED NONLOCAL }
+CALLUSED(76) = { ESCAPED NONLOCAL } same as callescape(75)
+CALLCLOBBERED(77) = { ESCAPED NONLOCAL }
+callarg(78) = { ESCAPED }
+callarg(79) = { ESCAPED NONLOCAL }
+_41 = { ESCAPED NONLOCAL } same as callescape(75)
+_37 = { ESCAPED NONLOCAL } same as callescape(75)
+_32 = { ESCAPED NONLOCAL }
+_18 = { ESCAPED NONLOCAL } same as _32
+_ZNSo3putEc = { }
+callescape(85) = { ESCAPED NONLOCAL _ZSt4cout.0+64 _ZSt4cout.64+64 _ZSt4cout.128+224 _ZSt4cout.384+64 _ZSt4cout.448+64 _ZSt4cout.512+1120 _ZSt4cout.1664+64 _ZSt4cout.1728+64 _ZSt4cout.1792+64 _ZSt4cout.1856+16 _ZSt4cout.1920+64 _ZSt4cout.1984+64 _ZSt4cout.2048+64 _ZSt4cout.2112+64 }
+CALLUSED(86) = { ESCAPED NONLOCAL _ZSt4cout.0+64 _ZSt4cout.64+64 _ZSt4cout.128+224 _ZSt4cout.384+64 _ZSt4cout.448+64 _ZSt4cout.512+1120 _ZSt4cout.1664+64 _ZSt4cout.1728+64 _ZSt4cout.1792+64 _ZSt4cout.1856+16 _ZSt4cout.1920+64 _ZSt4cout.1984+64 _ZSt4cout.2048+64 _ZSt4cout.2112+64 } same as callescape(85)
+CALLCLOBBERED(87) = { ESCAPED NONLOCAL _ZSt4cout.0+64 _ZSt4cout.64+64 _ZSt4cout.128+224 _ZSt4cout.384+64 _ZSt4cout.448+64 _ZSt4cout.512+1120 _ZSt4cout.1664+64 _ZSt4cout.1728+64 _ZSt4cout.1792+64 _ZSt4cout.1856+16 _ZSt4cout.1920+64 _ZSt4cout.1984+64 _ZSt4cout.2048+64 _ZSt4cout.2112+64 } same as callescape(85)
+callarg(88) = { ESCAPED NONLOCAL _ZSt4cout.0+64 _ZSt4cout.64+64 _ZSt4cout.128+224 _ZSt4cout.384+64 _ZSt4cout.448+64 _ZSt4cout.512+1120 _ZSt4cout.1664+64 _ZSt4cout.1728+64 _ZSt4cout.1792+64 _ZSt4cout.1856+16 _ZSt4cout.1920+64 _ZSt4cout.1984+64 _ZSt4cout.2048+64 _ZSt4cout.2112+64 }
+callarg(89) = { ESCAPED NONLOCAL }
+_19 = { ESCAPED NONLOCAL _ZSt4cout.0+64 _ZSt4cout.64+64 _ZSt4cout.128+224 _ZSt4cout.384+64 _ZSt4cout.448+64 _ZSt4cout.512+1120 _ZSt4cout.1664+64 _ZSt4cout.1728+64 _ZSt4cout.1792+64 _ZSt4cout.1856+16 _ZSt4cout.1920+64 _ZSt4cout.1984+64 _ZSt4cout.2048+64 _ZSt4cout.2112+64 } same as callescape(85)
+_ZNSo5flushEv = { }
+callescape(92) = { ESCAPED NONLOCAL _ZSt4cout.0+64 _ZSt4cout.64+64 _ZSt4cout.128+224 _ZSt4cout.384+64 _ZSt4cout.448+64 _ZSt4cout.512+1120 _ZSt4cout.1664+64 _ZSt4cout.1728+64 _ZSt4cout.1792+64 _ZSt4cout.1856+16 _ZSt4cout.1920+64 _ZSt4cout.1984+64 _ZSt4cout.2048+64 _ZSt4cout.2112+64 }
+CALLUSED(93) = { ESCAPED NONLOCAL _ZSt4cout.0+64 _ZSt4cout.64+64 _ZSt4cout.128+224 _ZSt4cout.384+64 _ZSt4cout.448+64 _ZSt4cout.512+1120 _ZSt4cout.1664+64 _ZSt4cout.1728+64 _ZSt4cout.1792+64 _ZSt4cout.1856+16 _ZSt4cout.1920+64 _ZSt4cout.1984+64 _ZSt4cout.2048+64 _ZSt4cout.2112+64 } same as callescape(92)
+CALLCLOBBERED(94) = { ESCAPED NONLOCAL _ZSt4cout.0+64 _ZSt4cout.64+64 _ZSt4cout.128+224 _ZSt4cout.384+64 _ZSt4cout.448+64 _ZSt4cout.512+1120 _ZSt4cout.1664+64 _ZSt4cout.1728+64 _ZSt4cout.1792+64 _ZSt4cout.1856+16 _ZSt4cout.1920+64 _ZSt4cout.1984+64 _ZSt4cout.2048+64 _ZSt4cout.2112+64 } same as callescape(92)
+callarg(95) = { ESCAPED NONLOCAL _ZSt4cout.0+64 _ZSt4cout.64+64 _ZSt4cout.128+224 _ZSt4cout.384+64 _ZSt4cout.448+64 _ZSt4cout.512+1120 _ZSt4cout.1664+64 _ZSt4cout.1728+64 _ZSt4cout.1792+64 _ZSt4cout.1856+16 _ZSt4cout.1920+64 _ZSt4cout.1984+64 _ZSt4cout.2048+64 _ZSt4cout.2112+64 } same as callescape(92)
+_20 = { ESCAPED NONLOCAL _ZSt4cout.0+64 _ZSt4cout.64+64 _ZSt4cout.128+224 _ZSt4cout.384+64 _ZSt4cout.448+64 _ZSt4cout.512+1120 _ZSt4cout.1664+64 _ZSt4cout.1728+64 _ZSt4cout.1792+64 _ZSt4cout.1856+16 _ZSt4cout.1920+64 _ZSt4cout.1984+64 _ZSt4cout.2048+64 _ZSt4cout.2112+64 } same as callescape(92)
+main = { }
+
+
+Alias information for int main()
+
+Aliased symbols
+
+n, UID D.50636, int, is addressable
+
+Call clobber information
+
+ESCAPED, points-to non-local, points-to vars: { D.50624 D.50625 D.50636 } (nonlocal, escaped, interposable)
+
+Flow-insensitive points-to information
+
+_8, points-to non-local, points-to escaped, points-to NULL, points-to vars: { D.50625 } (nonlocal, escaped, interposable)
+_13, points-to non-local, points-to escaped, points-to NULL, points-to vars: { D.50624 D.50625 D.50636 } (nonlocal, escaped, interposable)
+_16, points-to non-local, points-to escaped, points-to NULL, points-to vars: { D.50625 } (nonlocal, escaped, interposable)
+_19, points-to non-local, points-to escaped, points-to NULL, points-to vars: { D.50625 } (nonlocal, escaped, interposable)
+_20, points-to non-local, points-to escaped, points-to NULL, points-to vars: { D.50625 } (nonlocal, escaped, interposable)
+_21, points-to non-local, points-to escaped, points-to NULL, points-to vars: { }
+_34, points-to non-local, points-to escaped, points-to NULL, points-to vars: { }
+_35, points-to non-local, points-to escaped, points-to NULL, points-to vars: { }
+PROF_39, points-to anything, points-to NULL
+
+int main ()
+{
+  char_type D.54853;
+  char __c;
+  char_type D.54850;
+  char __c;
+  char_type D.54847;
+  char __c;
+  char_type D.54844;
+  int f;
+  int n;
+  int i;
+  int n.0_1;
+  struct basic_ostream & _8;
+  int (*) () * _13;
+  long int _14;
+  sizetype _15;
+  struct basic_ios * _16;
+  int _18;
+  struct basic_ostream & _19;
+  struct basic_ostream & _20;
+  const struct __ctype_type * _21;
+  char _26;
+  char _29;
+  char _32;
+  int (*) () * _34;
+  int (*) () _35;
+  char _37;
+  void * PROF_39;
+  char _41;
+
+  <bb 2> [local count: 118111600]:
+  std::basic_istream<char>::operator>> (&cin, &n);
+  goto <bb 4>; [100.00%]
+
+  <bb 3> [local count: 955630225]:
+  f_10 = i_2 * f_3;
+  i_11 = i_2 + 1;
+
+  <bb 4> [local count: 1073741824]:
+  # i_2 = PHI <2(2), i_11(3)>
+  # f_3 = PHI <1(2), f_10(3)>
+  n.0_1 = n;
+  if (n.0_1 >= i_2)
+    goto <bb 3>; [89.00%]
+  else
+    goto <bb 5>; [11.00%]
+
+  <bb 5> [local count: 118111600]:
+  _8 = std::basic_ostream<char>::operator<< (&cout, f_3);
+  _13 = _8->_vptr.basic_ostream;
+  _14 = MEM[(long int *)_13 + -24B];
+  _15 = (sizetype) _14;
+  _16 = _8 + _15;
+  _21 = MEM[(const struct __ctype_type * *)_16 + 240B];
+  if (_21 == 0B)
+    goto <bb 6>; [0.04%]
+  else
+    goto <bb 7>; [99.96%]
+
+  <bb 6> [local count: 47245]:
+  std::__throw_bad_cast ();
+
+  <bb 7> [local count: 118064356]:
+  _26 = MEM[(const struct ctype *)_21]._M_widen_ok;
+  if (_26 != 0)
+    goto <bb 8>; [51.12%]
+  else
+    goto <bb 9>; [48.88%]
+
+  <bb 8> [local count: 60354499]:
+  _29 = MEM[(const struct ctype *)_21]._M_widen[10];
+  goto <bb 12>; [100.00%]
+
+  <bb 9> [local count: 57709857]:
+  std::ctype<char>::_M_widen_init (_21);
+  _34 = MEM[(const struct ctype *)_21].D.43629._vptr.facet;
+  _35 = MEM[(int (*) () *)_34 + 48B];
+  PROF_39 = [obj_type_ref] OBJ_TYPE_REF(_35;(const struct ctype)_21->6B);
+  if (PROF_39 == do_widen)
+    goto <bb 11>; [80.00%]
+  else
+    goto <bb 10>; [20.00%]
+
+  <bb 10> [local count: 11541971]:
+  _41 = OBJ_TYPE_REF(_35;(const struct ctype)_21->6B) (_21, 10);
+
+  <bb 11> [local count: 57709857]:
+  # _37 = PHI <_41(10), 10(9)>
+
+  <bb 12> [local count: 118064356]:
+  # _32 = PHI <_29(8), _37(11)>
+  _18 = (int) _32;
+  _19 = std::basic_ostream<char>::put (_8, _18);
+  _20 = std::basic_ostream<char>::flush (_19);
+  n ={v} {CLOBBER(eol)};
+  return 0;
+
+}
+
+

@@ -1,0 +1,121 @@
+
+lab1-x86:     file format elf64-x86-64
+
+
+Disassembly of section .plt:
+
+0000000000001020 <std::ostream::operator<<(unsigned long)@plt-0x10>:
+    1020:	ff 35 ca 4f 00 00    	push   QWORD PTR [rip+0x4fca]        # 5ff0 <_GLOBAL_OFFSET_TABLE_+0x8>
+    1026:	ff 25 cc 4f 00 00    	jmp    QWORD PTR [rip+0x4fcc]        # 5ff8 <_GLOBAL_OFFSET_TABLE_+0x10>
+    102c:	0f 1f 40 00          	nop    DWORD PTR [rax+0x0]
+
+0000000000001030 <std::ostream::operator<<(unsigned long)@plt>:
+    1030:	ff 25 ca 4f 00 00    	jmp    QWORD PTR [rip+0x4fca]        # 6000 <std::ostream::operator<<(unsigned long)@GLIBCXX_3.4>
+    1036:	68 00 00 00 00       	push   0x0
+    103b:	e9 e0 ff ff ff       	jmp    1020 <_init+0x20>
+
+0000000000001040 <std::terminate()@plt>:
+    1040:	ff 25 c2 4f 00 00    	jmp    QWORD PTR [rip+0x4fc2]        # 6008 <std::terminate()@GLIBCXX_3.4>
+    1046:	68 01 00 00 00       	push   0x1
+    104b:	e9 d0 ff ff ff       	jmp    1020 <_init+0x20>
+
+0000000000001050 <std::__throw_bad_alloc()@plt>:
+    1050:	ff 25 ba 4f 00 00    	jmp    QWORD PTR [rip+0x4fba]        # 6010 <std::__throw_bad_alloc()@GLIBCXX_3.4>
+    1056:	68 02 00 00 00       	push   0x2
+    105b:	e9 c0 ff ff ff       	jmp    1020 <_init+0x20>
+
+0000000000001060 <__cxa_begin_catch@plt>:
+    1060:	ff 25 b2 4f 00 00    	jmp    QWORD PTR [rip+0x4fb2]        # 6018 <__cxa_begin_catch@CXXABI_1.3>
+    1066:	68 03 00 00 00       	push   0x3
+    106b:	e9 b0 ff ff ff       	jmp    1020 <_init+0x20>
+
+0000000000001070 <std::ios_base::sync_with_stdio(bool)@plt>:
+    1070:	ff 25 aa 4f 00 00    	jmp    QWORD PTR [rip+0x4faa]        # 6020 <std::ios_base::sync_with_stdio(bool)@GLIBCXX_3.4>
+    1076:	68 04 00 00 00       	push   0x4
+    107b:	e9 a0 ff ff ff       	jmp    1020 <_init+0x20>
+
+0000000000001080 <std::__throw_length_error(char const*)@plt>:
+    1080:	ff 25 a2 4f 00 00    	jmp    QWORD PTR [rip+0x4fa2]        # 6028 <std::__throw_length_error(char const*)@GLIBCXX_3.4>
+    1086:	68 05 00 00 00       	push   0x5
+    108b:	e9 90 ff ff ff       	jmp    1020 <_init+0x20>
+
+0000000000001090 <std::basic_ios<char, std::char_traits<char> >::tie(std::ostream*)@plt>:
+    1090:	ff 25 9a 4f 00 00    	jmp    QWORD PTR [rip+0x4f9a]        # 6030 <std::basic_ios<char, std::char_traits<char> >::tie(std::ostream*)@GLIBCXX_3.4>
+    1096:	68 06 00 00 00       	push   0x6
+    109b:	e9 80 ff ff ff       	jmp    1020 <_init+0x20>
+
+00000000000010a0 <std::__throw_bad_array_new_length()@plt>:
+    10a0:	ff 25 92 4f 00 00    	jmp    QWORD PTR [rip+0x4f92]        # 6038 <std::__throw_bad_array_new_length()@GLIBCXX_3.4.29>
+    10a6:	68 07 00 00 00       	push   0x7
+    10ab:	e9 70 ff ff ff       	jmp    1020 <_init+0x20>
+
+00000000000010b0 <operator delete(void*)@plt>:
+    10b0:	ff 25 8a 4f 00 00    	jmp    QWORD PTR [rip+0x4f8a]        # 6040 <operator delete(void*)@GLIBCXX_3.4>
+    10b6:	68 08 00 00 00       	push   0x8
+    10bb:	e9 60 ff ff ff       	jmp    1020 <_init+0x20>
+
+00000000000010c0 <std::basic_ostream<char, std::char_traits<char> >& std::operator<< <std::char_traits<char> >(std::basic_ostream<char, std::char_traits<char> >&, char const*)@plt>:
+    10c0:	ff 25 82 4f 00 00    	jmp    QWORD PTR [rip+0x4f82]        # 6048 <std::basic_ostream<char, std::char_traits<char> >& std::operator<< <std::char_traits<char> >(std::basic_ostream<char, std::char_traits<char> >&, char const*)@GLIBCXX_3.4>
+    10c6:	68 09 00 00 00       	push   0x9
+    10cb:	e9 50 ff ff ff       	jmp    1020 <_init+0x20>
+
+00000000000010d0 <operator new(unsigned long)@plt>:
+    10d0:	ff 25 7a 4f 00 00    	jmp    QWORD PTR [rip+0x4f7a]        # 6050 <operator new(unsigned long)@GLIBCXX_3.4>
+    10d6:	68 0a 00 00 00       	push   0xa
+    10db:	e9 40 ff ff ff       	jmp    1020 <_init+0x20>
+
+00000000000010e0 <__isoc23_strtoul@plt>:
+    10e0:	ff 25 72 4f 00 00    	jmp    QWORD PTR [rip+0x4f72]        # 6058 <__isoc23_strtoul@GLIBC_2.38>
+    10e6:	68 0b 00 00 00       	push   0xb
+    10eb:	e9 30 ff ff ff       	jmp    1020 <_init+0x20>
+
+00000000000010f0 <std::chrono::_V2::steady_clock::now()@plt>:
+    10f0:	ff 25 6a 4f 00 00    	jmp    QWORD PTR [rip+0x4f6a]        # 6060 <std::chrono::_V2::steady_clock::now()@GLIBCXX_3.4.19>
+    10f6:	68 0c 00 00 00       	push   0xc
+    10fb:	e9 20 ff ff ff       	jmp    1020 <_init+0x20>
+
+0000000000001100 <std::ostream::operator<<(unsigned int)@plt>:
+    1100:	ff 25 62 4f 00 00    	jmp    QWORD PTR [rip+0x4f62]        # 6068 <std::ostream::operator<<(unsigned int)@GLIBCXX_3.4>
+    1106:	68 0d 00 00 00       	push   0xd
+    110b:	e9 10 ff ff ff       	jmp    1020 <_init+0x20>
+
+0000000000001110 <atoi@plt>:
+    1110:	ff 25 5a 4f 00 00    	jmp    QWORD PTR [rip+0x4f5a]        # 6070 <atoi@GLIBC_2.2.5>
+    1116:	68 0e 00 00 00       	push   0xe
+    111b:	e9 00 ff ff ff       	jmp    1020 <_init+0x20>
+
+0000000000001120 <memmove@plt>:
+    1120:	ff 25 52 4f 00 00    	jmp    QWORD PTR [rip+0x4f52]        # 6078 <memmove@GLIBC_2.2.5>
+    1126:	68 0f 00 00 00       	push   0xf
+    112b:	e9 f0 fe ff ff       	jmp    1020 <_init+0x20>
+
+0000000000001130 <std::ostream::operator<<(int)@plt>:
+    1130:	ff 25 4a 4f 00 00    	jmp    QWORD PTR [rip+0x4f4a]        # 6080 <std::ostream::operator<<(int)@GLIBCXX_3.4>
+    1136:	68 10 00 00 00       	push   0x10
+    113b:	e9 e0 fe ff ff       	jmp    1020 <_init+0x20>
+
+0000000000001140 <_Unwind_Resume@plt>:
+    1140:	ff 25 42 4f 00 00    	jmp    QWORD PTR [rip+0x4f42]        # 6088 <_Unwind_Resume@GCC_3.0>
+    1146:	68 11 00 00 00       	push   0x11
+    114b:	e9 d0 fe ff ff       	jmp    1020 <_init+0x20>
+
+0000000000001150 <std::ostream::operator<<(double)@plt>:
+    1150:	ff 25 3a 4f 00 00    	jmp    QWORD PTR [rip+0x4f3a]        # 6090 <std::ostream::operator<<(double)@GLIBCXX_3.4>
+    1156:	68 12 00 00 00       	push   0x12
+    115b:	e9 c0 fe ff ff       	jmp    1020 <_init+0x20>
+
+Disassembly of section .got.plt:
+
+0000000000005fe8 <_GLOBAL_OFFSET_TABLE_>:
+    5fe8:	a0 5d 00 00 00 00 00 00 00 00 00 00 00 00 00 00     .]..............
+	...
+    6000:	36 10 00 00 00 00 00 00 46 10 00 00 00 00 00 00     6.......F.......
+    6010:	56 10 00 00 00 00 00 00 66 10 00 00 00 00 00 00     V.......f.......
+    6020:	76 10 00 00 00 00 00 00 86 10 00 00 00 00 00 00     v...............
+    6030:	96 10 00 00 00 00 00 00 a6 10 00 00 00 00 00 00     ................
+    6040:	b6 10 00 00 00 00 00 00 c6 10 00 00 00 00 00 00     ................
+    6050:	d6 10 00 00 00 00 00 00 e6 10 00 00 00 00 00 00     ................
+    6060:	f6 10 00 00 00 00 00 00 06 11 00 00 00 00 00 00     ................
+    6070:	16 11 00 00 00 00 00 00 26 11 00 00 00 00 00 00     ........&.......
+    6080:	36 11 00 00 00 00 00 00 46 11 00 00 00 00 00 00     6.......F.......
+    6090:	56 11 00 00 00 00 00 00                             V.......

@@ -1,0 +1,1029 @@
+
+;; Function std::ctype<char>::do_widen (_ZNKSt5ctypeIcE8do_widenEc, funcdef_no=1810, decl_uid=43557, cgraph_uid=515, symbol_order=551)
+
+
+********** Local #1: **********
+
+	   Spilling non-eliminable hard regs: 7
+New elimination table:
+Can eliminate 16 to 7 (offset=8, prev_offset=0)
+Can eliminate 16 to 6 (offset=8, prev_offset=0)
+Can eliminate 19 to 7 (offset=0, prev_offset=0)
+Can eliminate 19 to 6 (offset=0, prev_offset=0)
+            Cycle danger: overall += LRA_MAX_REJECT
+          alt=0,overall=606,losers=1,rld_nregs=1
+          alt=1,overall=0,losers=0,rld_nregs=0
+	 Choosing alt 1 in insn 4:  (0) R  (1) R {*movqi_internal}
+	   Spilling non-eliminable hard regs: 7
+
+********** Inheritance #1: **********
+
+EBB 2
+
+********** Pseudo live ranges #1: **********
+
+  BB 2
+   Insn 13: point = 0, n_alt = -1
+   Insn 12: point = 0, n_alt = -2
+   Insn 4: point = 1, n_alt = 1
+   Insn 15: point = 3, n_alt = -2
+ r84: [0..1]
+ r87: [2..3]
+Compressing live ranges: from 4 to 4 - 100%
+Ranges after the compression:
+ r84: [0..1]
+ r87: [2..3]
+
+********** Assignment #1: **********
+
+
+********** Undoing inheritance #1: **********
+
+
+********** Local #2: **********
+
+	   Spilling non-eliminable hard regs: 7
+	   Spilling non-eliminable hard regs: 7
+New elimination table:
+Can eliminate 16 to 7 (offset=8, prev_offset=8)
+Can eliminate 16 to 6 (offset=8, prev_offset=0)
+Can eliminate 19 to 7 (offset=0, prev_offset=0)
+Can eliminate 19 to 6 (offset=0, prev_offset=0)
+changing reg in insn 4
+changing reg in insn 12
+changing reg in insn 15
+deleting insn with uid = 15.
+deleting insn with uid = 12.
+
+
+try_optimize_cfg iteration 1
+
+starting the processing of deferred insns
+ending the processing of deferred insns
+starting the processing of deferred insns
+ending the processing of deferred insns
+df_analyze called
+df_worklist_dataflow_doublequeue: n_basic_blocks 3 n_edges 2 count 3 (    1)
+df_worklist_dataflow_doublequeue: n_basic_blocks 3 n_edges 2 count 3 (    1)
+
+
+std::ctype<char>::do_widen
+
+Dataflow summary:
+;;  fully invalidated by EH 	 0 [ax] 1 [dx] 2 [cx] 4 [si] 5 [di] 8 [st] 9 [st(1)] 10 [st(2)] 11 [st(3)] 12 [st(4)] 13 [st(5)] 14 [st(6)] 15 [st(7)] 17 [flags] 18 [fpsr] 20 [xmm0] 21 [xmm1] 22 [xmm2] 23 [xmm3] 24 [xmm4] 25 [xmm5] 26 [xmm6] 27 [xmm7] 28 [mm0] 29 [mm1] 30 [mm2] 31 [mm3] 32 [mm4] 33 [mm5] 34 [mm6] 35 [mm7] 36 [r8] 37 [r9] 38 [r10] 39 [r11] 44 [xmm8] 45 [xmm9] 46 [xmm10] 47 [xmm11] 48 [xmm12] 49 [xmm13] 50 [xmm14] 51 [xmm15] 52 [xmm16] 53 [xmm17] 54 [xmm18] 55 [xmm19] 56 [xmm20] 57 [xmm21] 58 [xmm22] 59 [xmm23] 60 [xmm24] 61 [xmm25] 62 [xmm26] 63 [xmm27] 64 [xmm28] 65 [xmm29] 66 [xmm30] 67 [xmm31] 68 [k0] 69 [k1] 70 [k2] 71 [k3] 72 [k4] 73 [k5] 74 [k6] 75 [k7]
+;;  hardware regs used 	 7 [sp]
+;;  regular block artificial uses 	 7 [sp]
+;;  eh block artificial uses 	 7 [sp] 16 [argp]
+;;  entry block defs 	 0 [ax] 1 [dx] 2 [cx] 4 [si] 5 [di] 7 [sp] 20 [xmm0] 21 [xmm1] 22 [xmm2] 23 [xmm3] 24 [xmm4] 25 [xmm5] 26 [xmm6] 27 [xmm7] 36 [r8] 37 [r9]
+;;  exit block uses 	 0 [ax] 7 [sp]
+;;  regs ever live 	 0 [ax] 4 [si]
+;;  ref usage 	r0={2d,2u} r1={1d} r2={1d} r4={1d,1u} r5={1d} r7={1d,2u} r20={1d} r21={1d} r22={1d} r23={1d} r24={1d} r25={1d} r26={1d} r27={1d} r36={1d} r37={1d} 
+;;    total ref usage 22{17d,5u,0e} in 2{2 regular + 0 call} insns.
+(note 1 0 6 NOTE_INSN_DELETED)
+(note 6 1 3 2 [bb 2] NOTE_INSN_BASIC_BLOCK)
+(note 3 6 4 2 NOTE_INSN_DELETED)
+(insn 4 3 5 2 (set (reg/v:QI 0 ax [orig:84 __c ] [84])
+        (reg:QI 4 si [87])) "/usr/include/c++/13/bits/locale_facets.h":1092:7 85 {*movqi_internal}
+     (nil))
+(note 5 4 13 2 NOTE_INSN_FUNCTION_BEG)
+(insn 13 5 16 2 (use (reg/i:QI 0 ax)) "/usr/include/c++/13/bits/locale_facets.h":1093:21 -1
+     (nil))
+(note 16 13 0 NOTE_INSN_DELETED)
+
+;; Function main (main, funcdef_no=2057, decl_uid=50632, cgraph_uid=525, symbol_order=562) (executed once)
+
+
+********** Local #1: **********
+
+	   Spilling non-eliminable hard regs: 7
+New elimination table:
+Can eliminate 16 to 7 (offset=48, prev_offset=0)
+Can eliminate 16 to 6 (offset=8, prev_offset=0)
+Can eliminate 19 to 7 (offset=16, prev_offset=0)
+Can eliminate 19 to 6 (offset=-24, prev_offset=0)
+            2 Scratch win: reject+=2
+          alt=0,overall=2,losers=0,rld_nregs=0
+	 Choosing alt 0 in insn 4:  (0) =m  (1) m  (2) =&r {stack_protect_set_1_di}
+            1 Matching alt: reject+=2
+            1 Non-pseudo reload: reject+=2
+          alt=0,overall=10,losers=1,rld_nregs=1
+            1 Matching alt: reject+=2
+            1 Non-pseudo reload: reject+=2
+            alt=1: Bad operand -- refuse
+            2 Matching alt: reject+=2
+            2 Non-pseudo reload: reject+=2
+            2 Non input pseudo reload: reject++
+            alt=2,overall=11,losers=1 -- refuse
+          alt=3,overall=0,losers=0,rld_nregs=0
+            1 Matching alt: reject+=2
+            1 Non-pseudo reload: reject+=2
+            1 Non input pseudo reload: reject++
+            alt=0,overall=11,losers=1 -- refuse
+            1 Matching alt: reject+=2
+            1 Non-pseudo reload: reject+=2
+            1 Non input pseudo reload: reject++
+            alt=1,overall=11,losers=1 -- refuse
+            1 Non-pseudo reload: reject+=2
+            1 Non input pseudo reload: reject++
+            alt=2,overall=9,losers=1 -- refuse
+            1 Non-pseudo reload: reject+=2
+            1 Non input pseudo reload: reject++
+            alt=3,overall=9,losers=1 -- refuse
+	 Choosing alt 3 in insn 11:  (0) r  (1) r  (2) le {*adddi_1}
+            alt=2: Bad operand -- refuse
+            1 Non-pseudo reload: reject+=2
+            1 Non input pseudo reload: reject++
+            Cycle danger: overall += LRA_MAX_REJECT
+          alt=3,overall=609,losers=1,rld_nregs=1
+          alt=4,overall=0,losers=0,rld_nregs=0
+	 Choosing alt 4 in insn 13:  (0) r  (1) i {*movdi_internal}
+          alt=0,overall=0,losers=0,rld_nregs=0
+	 Choosing alt 0 in insn 15:  (1) rBwBz {*call_value}
+          alt=0,overall=0,losers=0,rld_nregs=0
+	 Choosing alt 0 in insn 16:  (0) =r  (1) g {*movsi_internal}
+          alt=0,overall=0,losers=0,rld_nregs=0
+	 Choosing alt 0 in insn 19:  (0) rm  (1) re {*cmpsi_1}
+            1 Matching alt: reject+=2
+          alt=0,overall=8,losers=1,rld_nregs=1
+            1 Matching alt: reject+=2
+            alt=1: Bad operand -- refuse
+            2 Matching alt: reject+=2
+            2 Non-pseudo reload: reject+=2
+            2 Non input pseudo reload: reject++
+            alt=2,overall=11,losers=1 -- refuse
+          alt=3,overall=0,losers=0,rld_nregs=0
+            1 Matching alt: reject+=2
+            1 Non-pseudo reload: reject+=2
+            1 Non input pseudo reload: reject++
+            alt=0,overall=11,losers=1 -- refuse
+            1 Matching alt: reject+=2
+            1 Non-pseudo reload: reject+=2
+            1 Non input pseudo reload: reject++
+            alt=1,overall=11,losers=1 -- refuse
+            1 Non-pseudo reload: reject+=2
+            1 Non input pseudo reload: reject++
+            alt=2,overall=9,losers=1 -- refuse
+            1 Non-pseudo reload: reject+=2
+            1 Non input pseudo reload: reject++
+            alt=3,overall=9,losers=1 -- refuse
+	 Choosing alt 3 in insn 22:  (0) r  (1) r  (2) le {*addsi_1}
+          alt=0,overall=0,losers=0,rld_nregs=0
+	 Choosing alt 0 in insn 5:  (0) =r  (1) g {*movsi_internal}
+          alt=0,overall=0,losers=0,rld_nregs=0
+	 Choosing alt 0 in insn 6:  (0) =r  (1) g {*movsi_internal}
+            1 Non-pseudo reload: reject+=2
+            1 Non input pseudo reload: reject++
+          alt=0,overall=9,losers=1,rld_nregs=1
+            0 Costly loser: reject++
+            0 Small class reload: reject+=3
+            alt=1,overall=10,losers=1 -- refuse
+          alt=2,overall=0,losers=0,rld_nregs=0
+            0 Non-pseudo reload: reject+=2
+            0 Non input pseudo reload: reject++
+            alt=0,overall=9,losers=1 -- refuse
+            0 Costly loser: reject++
+            0 Non-pseudo reload: reject+=2
+            0 Small class reload: reject+=3
+            0 Non input pseudo reload: reject++
+            alt=1,overall=13,losers=1 -- refuse
+            0 Non-pseudo reload: reject+=2
+            0 Non input pseudo reload: reject++
+            alt=2,overall=9,losers=1 -- refuse
+	 Choosing alt 2 in insn 156:  (0) rm  (1) e {*testsi_1}
+            alt=0: Bad operand -- refuse
+            alt=1: Bad operand -- refuse
+          alt=2,overall=0,losers=0,rld_nregs=0
+            alt=0: Bad operand -- refuse
+            alt=1: Bad operand -- refuse
+            1 Matching alt: reject+=2
+            alt=2,overall=8,losers=1 -- refuse
+	 Choosing alt 2 in insn 24:  (0) r  (1) 0  (2) BMr {*mulsi3_1}
+            1 Matching alt: reject+=2
+          alt=0,overall=8,losers=1,rld_nregs=1
+            1 Matching alt: reject+=2
+            alt=1: Bad operand -- refuse
+            2 Matching alt: reject+=2
+            2 Non-pseudo reload: reject+=2
+            2 Non input pseudo reload: reject++
+            alt=2,overall=11,losers=1 -- refuse
+          alt=3,overall=0,losers=0,rld_nregs=0
+            1 Matching alt: reject+=2
+            1 Non-pseudo reload: reject+=2
+            1 Non input pseudo reload: reject++
+            alt=0,overall=11,losers=1 -- refuse
+            1 Matching alt: reject+=2
+            1 Non-pseudo reload: reject+=2
+            1 Non input pseudo reload: reject++
+            alt=1,overall=11,losers=1 -- refuse
+            1 Non-pseudo reload: reject+=2
+            1 Non input pseudo reload: reject++
+            alt=2,overall=9,losers=1 -- refuse
+            1 Non-pseudo reload: reject+=2
+            1 Non input pseudo reload: reject++
+            alt=3,overall=9,losers=1 -- refuse
+	 Choosing alt 3 in insn 140:  (0) r  (1) r  (2) le {*addsi_1}
+            alt=0: Bad operand -- refuse
+            alt=1: Bad operand -- refuse
+          alt=2,overall=0,losers=0,rld_nregs=0
+            alt=0: Bad operand -- refuse
+            alt=1: Bad operand -- refuse
+            alt=2,overall=6,losers=1 -- refuse
+	 Choosing alt 2 in insn 132:  (0) r  (1) 0  (2) BMr {*mulsi3_1}
+          alt=0,overall=0,losers=0,rld_nregs=0
+            1 Matching alt: reject+=2
+            1 Non-pseudo reload: reject+=2
+            1 Non input pseudo reload: reject++
+            alt=0,overall=11,losers=1 -- refuse
+            1 Matching alt: reject+=2
+            1 Non-pseudo reload: reject+=2
+            1 Non input pseudo reload: reject++
+            alt=1,overall=11,losers=1 -- refuse
+            1 Non-pseudo reload: reject+=2
+            1 Non input pseudo reload: reject++
+            alt=2,overall=9,losers=1 -- refuse
+            1 Non-pseudo reload: reject+=2
+            1 Non input pseudo reload: reject++
+            alt=3,overall=9,losers=1 -- refuse
+	 Choosing alt 0 in insn 133:  (0) =rm  (1) %0  (2) re {*addsi_1}
+          alt=0,overall=0,losers=0,rld_nregs=0
+	 Choosing alt 0 in insn 134:  (0) rm  (1) re {*cmpsi_1}
+          alt=0,overall=0,losers=0,rld_nregs=0
+	 Choosing alt 0 in insn 7:  (0) =r  (1) g {*movsi_internal}
+            alt=2: Bad operand -- refuse
+            1 Non-pseudo reload: reject+=2
+            1 Non input pseudo reload: reject++
+            Cycle danger: overall += LRA_MAX_REJECT
+          alt=3,overall=609,losers=1,rld_nregs=1
+          alt=4,overall=0,losers=0,rld_nregs=0
+	 Choosing alt 4 in insn 32:  (0) r  (1) i {*movdi_internal}
+          alt=0,overall=0,losers=0,rld_nregs=0
+	 Choosing alt 0 in insn 34:  (1) rBwBz {*call_value}
+            alt=2: Bad operand -- refuse
+          alt=3,overall=0,losers=0,rld_nregs=0
+	 Choosing alt 3 in insn 36:  (0) r  (1) rem {*movdi_internal}
+            alt=2: Bad operand -- refuse
+          alt=3,overall=0,losers=0,rld_nregs=0
+	 Choosing alt 3 in insn 37:  (0) r  (1) rem {*movdi_internal}
+            alt=2: Bad operand -- refuse
+          alt=3,overall=0,losers=0,rld_nregs=0
+	 Choosing alt 3 in insn 38:  (0) r  (1) rem {*movdi_internal}
+          alt=0,overall=0,losers=0,rld_nregs=0
+	 Choosing alt 0 in insn 39:  (0) r {*cmpdi_ccno_1}
+            3 Scratch win: reject+=2
+          alt=0,overall=2,losers=0,rld_nregs=0
+	 Choosing alt 0 in insn 43:  (1) m  (2) m  (3) =&r {stack_protect_test_1_di}
+          alt=0,overall=0,losers=0,rld_nregs=0
+	 Choosing alt 0 in insn 45:  (0) rBwBz {*call}
+          alt=0,overall=0,losers=0,rld_nregs=0
+	 Choosing alt 0 in insn 48:  (0) rBwBz {*call}
+            0 Non-pseudo reload: reject+=2
+            0 Non input pseudo reload: reject++
+          alt=0,overall=9,losers=1,rld_nregs=1
+            Staticly defined alt reject+=6
+          alt=1,overall=0,losers=0,rld_nregs=0
+	 Choosing alt 1 in insn 52:  (0) ?mq {*cmpqi_ccno_1}
+            0 Non input pseudo reload: reject++
+            1 Non-pseudo reload: reject+=2
+            1 Non input pseudo reload: reject++
+          alt=0,overall=16,losers=2,rld_nregs=2
+            1 Non-pseudo reload: reject+=2
+            1 Non input pseudo reload: reject++
+            Cycle danger: overall += LRA_MAX_REJECT
+          alt=1,overall=609,losers=1,rld_nregs=1
+            1 Non-pseudo reload: reject+=2
+            1 Non input pseudo reload: reject++
+            Cycle danger: overall += LRA_MAX_REJECT
+          alt=2,overall=609,losers=1,rld_nregs=1
+            alt=3: Bad operand -- refuse
+          alt=4,overall=0,losers=0,rld_nregs=0
+	 Choosing alt 4 in insn 55:  (0) q  (1) m {*movqi_internal}
+          alt=0,overall=0,losers=0,rld_nregs=0
+	 Choosing alt 0 in insn 61:  (0) rBwBz {*call}
+            alt=2: Bad operand -- refuse
+          alt=3,overall=0,losers=0,rld_nregs=0
+	 Choosing alt 3 in insn 62:  (0) r  (1) rem {*movdi_internal}
+            alt=2: Bad operand -- refuse
+          alt=3,overall=0,losers=0,rld_nregs=0
+	 Choosing alt 3 in insn 63:  (0) r  (1) rem {*movdi_internal}
+            0 Non input pseudo reload: reject++
+            1 Non-pseudo reload: reject+=2
+            1 Non input pseudo reload: reject++
+          alt=0,overall=16,losers=2,rld_nregs=2
+            1 Non-pseudo reload: reject+=2
+            1 Non input pseudo reload: reject++
+            Cycle danger: overall += LRA_MAX_REJECT
+          alt=1,overall=609,losers=1,rld_nregs=1
+            1 Non-pseudo reload: reject+=2
+            1 Non input pseudo reload: reject++
+            Cycle danger: overall += LRA_MAX_REJECT
+          alt=2,overall=609,losers=1,rld_nregs=1
+          alt=3,overall=0,losers=0,rld_nregs=0
+	 Choosing alt 3 in insn 8:  (0) q  (1) n {*movqi_internal}
+            alt=2: Bad operand -- refuse
+            1 Non-pseudo reload: reject+=2
+            1 Non input pseudo reload: reject++
+            Cycle danger: overall += LRA_MAX_REJECT
+          alt=3,overall=609,losers=1,rld_nregs=1
+          alt=4,overall=0,losers=0,rld_nregs=0
+	 Choosing alt 4 in insn 157:  (0) r  (1) i {*movdi_internal}
+          alt=0,overall=0,losers=0,rld_nregs=0
+	 Choosing alt 0 in insn 65:  (0) rm  (1) re {*cmpdi_1}
+          alt=0,overall=0,losers=0,rld_nregs=0
+	 Choosing alt 0 in insn 68:  (0) =r  (1) g {*movsi_internal}
+          alt=0,overall=0,losers=0,rld_nregs=0
+	 Choosing alt 0 in insn 70:  (1) rBwBz {*call_value}
+          alt=0,overall=0,losers=0,rld_nregs=0
+	 Choosing alt 0 in insn 74:  (0) =r  (1) qm {extendqisi2}
+          alt=0,overall=0,losers=0,rld_nregs=0
+	 Choosing alt 0 in insn 77:  (1) rBwBz {*call_value}
+          alt=0,overall=0,losers=0,rld_nregs=0
+	 Choosing alt 0 in insn 80:  (1) rBwBz {*call_value}
+            3 Scratch win: reject+=2
+          alt=0,overall=2,losers=0,rld_nregs=0
+	 Choosing alt 0 in insn 86:  (1) m  (2) m  (3) =&r {stack_protect_test_1_di}
+          alt=0,overall=0,losers=0,rld_nregs=0
+	 Choosing alt 0 in insn 88:  (0) rBwBz {*call}
+          alt=0,overall=0,losers=0,rld_nregs=0
+	 Choosing alt 0 in insn 91:  (0) =r  (1) g {*movsi_internal}
+          alt=0,overall=0,losers=0,rld_nregs=0
+	 Choosing alt 0 in insn 118:  (0) =r  (1) g {*movsi_internal}
+          alt=0,overall=0,losers=0,rld_nregs=0
+	 Choosing alt 0 in insn 119:  (0) =r  (1) g {*movsi_internal}
+          alt=0,overall=0,losers=0,rld_nregs=0
+	 Choosing alt 0 in insn 120:  (0) rm  (1) re {*cmpsi_1}
+	   Spilling non-eliminable hard regs: 7
+
+********** Inheritance #1: **********
+
+EBB 2 3
+EBB 4
+EBB 5
+EBB 6
+EBB 7
+EBB 8
+EBB 9
+EBB 10
+EBB 11 12
+EBB 13
+EBB 14
+EBB 15
+EBB 16
+EBB 17
+EBB 18
+EBB 19
+
+********** Pseudo live ranges #1: **********
+
+  BB 9
+   Insn 45: point = 0, n_alt = 0
+  BB 10
+   Insn 48: point = 0, n_alt = 0
+  BB 8
+   Insn 44: point = 0, n_alt = -1
+   Insn 43: point = 0, n_alt = 0
+  BB 16
+   Insn 88: point = 2, n_alt = 0
+  BB 17
+   Insn 92: point = 2, n_alt = -1
+   Insn 91: point = 2, n_alt = 0
+  BB 15
+   Insn 87: point = 2, n_alt = -1
+   Insn 86: point = 2, n_alt = 0
+   Insn 80: point = 4, n_alt = 0
+   Insn 79: point = 4, n_alt = -2
+   Insn 78: point = 5, n_alt = -2
+   Insn 146: point = 7, n_alt = -2
+   Insn 77: point = 8, n_alt = 0
+   Insn 76: point = 8, n_alt = -2
+   Insn 75: point = 9, n_alt = -2
+   Insn 74: point = 10, n_alt = 0
+  BB 12
+   Insn 151: point = 13, n_alt = -1
+   Insn 55: point = 13, n_alt = 4
+  BB 14
+   Insn 71: point = 16, n_alt = -2
+   Insn 145: point = 18, n_alt = -2
+   Insn 70: point = 19, n_alt = 0
+   Insn 69: point = 20, n_alt = -2
+   Insn 68: point = 21, n_alt = 0
+  BB 13
+   Insn 66: point = 22, n_alt = -1
+   Insn 65: point = 22, n_alt = 0
+   Insn 157: point = 23, n_alt = 4
+   Insn 8: point = 24, n_alt = 3
+   Insn 63: point = 25, n_alt = 3
+   Insn 62: point = 27, n_alt = 3
+   Insn 61: point = 28, n_alt = 0
+   Insn 60: point = 28, n_alt = -2
+  BB 11
+   Insn 53: point = 29, n_alt = -1
+   Insn 52: point = 29, n_alt = 1
+  BB 7
+   Insn 40: point = 30, n_alt = -1
+   Insn 39: point = 30, n_alt = 0
+   Insn 38: point = 30, n_alt = 3
+   Insn 37: point = 32, n_alt = 3
+   Insn 36: point = 34, n_alt = 3
+   Insn 35: point = 35, n_alt = -2
+   Insn 144: point = 37, n_alt = -2
+   Insn 34: point = 38, n_alt = 0
+   Insn 33: point = 38, n_alt = -2
+   Insn 32: point = 39, n_alt = 4
+   Insn 31: point = 40, n_alt = -2
+  BB 19
+   Insn 154: point = 42, n_alt = -1
+  BB 5
+   Insn 149: point = 43, n_alt = -1
+  BB 4
+   Insn 135: point = 44, n_alt = -1
+   Insn 134: point = 44, n_alt = 0
+   Insn 133: point = 44, n_alt = 0
+   Insn 132: point = 45, n_alt = 2
+   Insn 140: point = 47, n_alt = 3
+   Insn 24: point = 48, n_alt = 2
+  BB 18
+   Insn 121: point = 50, n_alt = -1
+   Insn 120: point = 50, n_alt = 0
+   Insn 119: point = 50, n_alt = 0
+   Insn 118: point = 51, n_alt = 0
+  BB 3
+   Insn 129: point = 53, n_alt = -1
+   Insn 156: point = 53, n_alt = 2
+   Insn 6: point = 54, n_alt = 0
+   Insn 5: point = 55, n_alt = 0
+   Insn 22: point = 56, n_alt = 3
+  BB 6
+   Insn 7: point = 58, n_alt = 0
+  BB 2
+   Insn 20: point = 59, n_alt = -1
+   Insn 19: point = 59, n_alt = 0
+   Insn 16: point = 59, n_alt = 0
+   Insn 15: point = 60, n_alt = 0
+   Insn 14: point = 60, n_alt = -2
+   Insn 13: point = 61, n_alt = 4
+   Insn 12: point = 62, n_alt = -2
+   Insn 11: point = 63, n_alt = 3
+   Insn 4: point = 64, n_alt = 0
+ r84: [53..54] [44..50]
+ r85: [8..35]
+ r86: [58..58] [53..55] [40..51]
+ r92: [4..5]
+ r93: [20..30] [14..15]
+ r95: [22..24] [16..16] [11..13]
+ r97: [19..25]
+ r98: [59..59] [53..57]
+ r100: [44..56]
+ r103: [62..63]
+ r104: [60..61]
+ r105: [38..39]
+ r106: [33..34]
+ r107: [31..32]
+ r109: [26..27]
+ r110: [22..23]
+ r111: [9..10]
+ r118: [46..47]
+ r119: [36..37]
+ r120: [17..18]
+ r121: [6..7]
+ r122: [64..65]
+ r123: [0..1]
+ r124: [2..3]
+Compressing live ranges: from 66 to 41 - 62%
+Ranges after the compression:
+ r84: [29..32]
+ r85: [8..24]
+ r86: [29..33]
+ r92: [4..5]
+ r93: [17..20] [12..13]
+ r95: [17..18] [14..14] [10..11]
+ r97: [17..18]
+ r98: [34..34] [31..32]
+ r100: [29..32]
+ r103: [37..38]
+ r104: [35..36]
+ r105: [27..28]
+ r106: [23..24]
+ r107: [21..22]
+ r109: [19..20]
+ r110: [17..18]
+ r111: [8..9]
+ r118: [29..30]
+ r119: [25..26]
+ r120: [15..16]
+ r121: [6..7]
+ r122: [39..40]
+ r123: [0..1]
+ r124: [2..3]
+
+********** Assignment #1: **********
+
+
+********** Undoing inheritance #1: **********
+
+
+********** Local #2: **********
+
+	   Spilling non-eliminable hard regs: 7
+	   Spilling non-eliminable hard regs: 7
+New elimination table:
+Can eliminate 16 to 7 (offset=48, prev_offset=48)
+Can eliminate 16 to 6 (offset=8, prev_offset=0)
+Can eliminate 19 to 7 (offset=16, prev_offset=16)
+Can eliminate 19 to 6 (offset=-24, prev_offset=0)
+changing reg in insn 133
+changing reg in insn 119
+changing reg in insn 6
+changing reg in insn 133
+changing reg in insn 140
+changing reg in insn 134
+changing reg in insn 120
+changing reg in insn 24
+changing reg in insn 35
+changing reg in insn 76
+changing reg in insn 38
+changing reg in insn 36
+changing reg in insn 36
+changing reg in insn 118
+changing reg in insn 132
+changing reg in insn 7
+changing reg in insn 24
+changing reg in insn 5
+changing reg in insn 132
+changing reg in insn 31
+changing reg in insn 24
+changing reg in insn 78
+changing reg in insn 79
+changing reg in insn 38
+changing reg in insn 69
+changing reg in insn 62
+changing reg in insn 60
+changing reg in insn 55
+changing reg in insn 52
+changing reg in insn 39
+changing reg in insn 62
+changing reg in insn 71
+changing reg in insn 8
+changing reg in insn 55
+changing reg in insn 74
+changing reg in insn 63
+changing reg in insn 70
+changing reg in insn 65
+changing reg in insn 65
+changing reg in insn 16
+changing reg in insn 156
+changing reg in insn 22
+changing reg in insn 19
+changing reg in insn 22
+changing reg in insn 134
+changing reg in insn 120
+changing reg in insn 11
+changing reg in insn 12
+changing reg in insn 13
+changing reg in insn 14
+changing reg in insn 32
+changing reg in insn 33
+changing reg in insn 36
+changing reg in insn 37
+changing reg in insn 37
+changing reg in insn 38
+changing reg in insn 62
+changing reg in insn 63
+changing reg in insn 157
+changing reg in insn 65
+changing reg in insn 74
+changing reg in insn 75
+changing reg in insn 140
+changing reg in insn 132
+changing reg in insn 144
+changing reg in insn 35
+changing reg in insn 145
+changing reg in insn 71
+changing reg in insn 146
+changing reg in insn 78
+changing reg in insn 4
+changing reg in insn 43
+changing reg in insn 86
+deleting insn with uid = 12.
+deleting insn with uid = 14.
+deleting insn with uid = 31.
+deleting insn with uid = 33.
+deleting insn with uid = 144.
+deleting insn with uid = 145.
+deleting insn with uid = 75.
+deleting insn with uid = 146.
+deleting insn with uid = 79.
+
+
+try_optimize_cfg iteration 1
+
+Forwarding edge 4->5 to 7 failed.
+Forwarding edge 18->19 to 7 failed.
+starting the processing of deferred insns
+ending the processing of deferred insns
+verify found no changes in insn with uid = 15.
+verify found no changes in insn with uid = 34.
+verify found no changes in insn with uid = 45.
+verify found no changes in insn with uid = 48.
+verify found no changes in insn with uid = 61.
+rescanning insn with uid = 70.
+verify found no changes in insn with uid = 77.
+verify found no changes in insn with uid = 80.
+verify found no changes in insn with uid = 88.
+starting the processing of deferred insns
+ending the processing of deferred insns
+df_analyze called
+df_worklist_dataflow_doublequeue: n_basic_blocks 20 n_edges 25 count 20 (    1)
+df_worklist_dataflow_doublequeue: n_basic_blocks 20 n_edges 25 count 21 (  1.1)
+
+
+main
+
+Dataflow summary:
+;;  fully invalidated by EH 	 0 [ax] 1 [dx] 2 [cx] 4 [si] 5 [di] 8 [st] 9 [st(1)] 10 [st(2)] 11 [st(3)] 12 [st(4)] 13 [st(5)] 14 [st(6)] 15 [st(7)] 17 [flags] 18 [fpsr] 20 [xmm0] 21 [xmm1] 22 [xmm2] 23 [xmm3] 24 [xmm4] 25 [xmm5] 26 [xmm6] 27 [xmm7] 28 [mm0] 29 [mm1] 30 [mm2] 31 [mm3] 32 [mm4] 33 [mm5] 34 [mm6] 35 [mm7] 36 [r8] 37 [r9] 38 [r10] 39 [r11] 44 [xmm8] 45 [xmm9] 46 [xmm10] 47 [xmm11] 48 [xmm12] 49 [xmm13] 50 [xmm14] 51 [xmm15] 52 [xmm16] 53 [xmm17] 54 [xmm18] 55 [xmm19] 56 [xmm20] 57 [xmm21] 58 [xmm22] 59 [xmm23] 60 [xmm24] 61 [xmm25] 62 [xmm26] 63 [xmm27] 64 [xmm28] 65 [xmm29] 66 [xmm30] 67 [xmm31] 68 [k0] 69 [k1] 70 [k2] 71 [k3] 72 [k4] 73 [k5] 74 [k6] 75 [k7]
+;;  hardware regs used 	 7 [sp]
+;;  regular block artificial uses 	 7 [sp]
+;;  eh block artificial uses 	 7 [sp] 16 [argp]
+;;  entry block defs 	 0 [ax] 1 [dx] 2 [cx] 4 [si] 5 [di] 7 [sp] 20 [xmm0] 21 [xmm1] 22 [xmm2] 23 [xmm3] 24 [xmm4] 25 [xmm5] 26 [xmm6] 27 [xmm7] 36 [r8] 37 [r9]
+;;  exit block uses 	 0 [ax] 7 [sp]
+;;  regs ever live 	 0 [ax] 1 [dx] 2 [cx] 3 [bx] 4 [si] 5 [di] 6 [bp] 7 [sp] 17 [flags]
+;;  ref usage 	r0={21d,15u,1e} r1={13d,5u} r2={11d,2u} r3={1d,3u,1e} r4={21d,7u} r5={16d,6u} r6={1d,6u,1e} r7={1d,33u} r8={9d} r9={9d} r10={9d} r11={9d} r12={9d} r13={9d} r14={9d} r15={9d} r17={25d,9u} r18={9d} r19={1e} r20={10d} r21={10d} r22={10d} r23={10d} r24={10d} r25={10d} r26={10d} r27={10d} r28={9d} r29={9d} r30={9d} r31={9d} r32={9d} r33={9d} r34={9d} r35={9d} r36={10d} r37={10d} r38={9d} r39={9d} r44={9d} r45={9d} r46={9d} r47={9d} r48={9d} r49={9d} r50={9d} r51={9d} r52={9d} r53={9d} r54={9d} r55={9d} r56={9d} r57={9d} r58={9d} r59={9d} r60={9d} r61={9d} r62={9d} r63={9d} r64={9d} r65={9d} r66={9d} r67={9d} r68={9d} r69={9d} r70={9d} r71={9d} r72={9d} r73={9d} r74={9d} r75={9d} 
+;;    total ref usage 759{669d,86u,4e} in 63{54 regular + 9 call} insns.
+(note 1 0 9 NOTE_INSN_DELETED)
+(note 9 1 2 2 [bb 2] NOTE_INSN_BASIC_BLOCK)
+(note 2 9 4 2 NOTE_INSN_FUNCTION_BEG)
+(insn 4 2 11 2 (parallel [
+            (set (mem/v/f/c:DI (plus:DI (reg/f:DI 7 sp)
+                        (const_int 8 [0x8])) [14 D.54863+0 S8 A64])
+                (unspec:DI [
+                        (mem/v/f:DI (const_int 40 [0x28]) [9 MEM[(<address-space-1> long unsigned int *)40B]+0 S8 A64 AS1])
+                    ] UNSPEC_SP_SET))
+            (set (reg:DI 0 ax [122])
+                (const_int 0 [0]))
+            (clobber (reg:CC 17 flags))
+        ]) "lab1.cpp":4:12 1382 {stack_protect_set_1_di}
+     (nil))
+(insn 11 4 13 2 (parallel [
+            (set (reg/f:DI 4 si [103])
+                (plus:DI (reg/f:DI 7 sp)
+                    (const_int 4 [0x4])))
+            (clobber (reg:CC 17 flags))
+        ]) "lab1.cpp":9:12 247 {*adddi_1}
+     (expr_list:REG_EQUIV (plus:DI (reg/f:DI 19 frame)
+            (const_int -12 [0xfffffffffffffff4]))
+        (nil)))
+(insn 13 11 15 2 (set (reg/f:DI 5 di [104])
+        (symbol_ref:DI ("_ZSt3cin") [flags 0x40]  <var_decl 0x7fb00fecb6c0 cin>)) "lab1.cpp":9:12 82 {*movdi_internal}
+     (expr_list:REG_EQUIV (symbol_ref:DI ("_ZSt3cin") [flags 0x40]  <var_decl 0x7fb00fecb6c0 cin>)
+        (nil)))
+(call_insn 15 13 16 2 (set (reg:DI 0 ax)
+        (call (mem:QI (symbol_ref:DI ("_ZNSirsERi") [flags 0x41]  <function_decl 0x7fb0101f8e00 operator>>>) [0 operator>> S1 A8])
+            (const_int 0 [0]))) "lab1.cpp":9:12 1013 {*call_value}
+     (expr_list:REG_CALL_DECL (symbol_ref:DI ("_ZNSirsERi") [flags 0x41]  <function_decl 0x7fb0101f8e00 operator>>>)
+        (nil))
+    (expr_list:DI (use (reg:DI 5 di))
+        (expr_list:DI (use (reg:DI 4 si))
+            (nil))))
+(insn 16 15 19 2 (set (reg:SI 1 dx [orig:98 n.0_37 ] [98])
+        (mem/c:SI (plus:DI (reg/f:DI 7 sp)
+                (const_int 4 [0x4])) [5 n+0 S4 A32])) "lab1.cpp":14:14 83 {*movsi_internal}
+     (nil))
+(insn 19 16 20 2 (set (reg:CCGC 17 flags)
+        (compare:CCGC (reg:SI 1 dx [orig:98 n.0_37 ] [98])
+            (const_int 1 [0x1]))) "lab1.cpp":14:14 11 {*cmpsi_1}
+     (nil))
+(jump_insn 20 19 21 2 (set (pc)
+        (if_then_else (le (reg:CCGC 17 flags)
+                (const_int 0 [0]))
+            (label_ref:DI 98)
+            (pc))) "lab1.cpp":14:14 995 {*jcc}
+     (int_list:REG_BR_PROB 118111604 (nil))
+ -> 98)
+(note 21 20 22 3 [bb 3] NOTE_INSN_BASIC_BLOCK)
+(insn 22 21 5 3 (parallel [
+            (set (reg:SI 2 cx [orig:100 _45 ] [100])
+                (plus:SI (reg:SI 1 dx [orig:98 n.0_37 ] [98])
+                    (const_int 1 [0x1])))
+            (clobber (reg:CC 17 flags))
+        ]) 246 {*addsi_1}
+     (nil))
+(insn 5 22 6 3 (set (reg/v:SI 4 si [orig:86 f ] [86])
+        (const_int 1 [0x1])) "lab1.cpp":12:7 83 {*movsi_internal}
+     (expr_list:REG_EQUAL (const_int 1 [0x1])
+        (nil)))
+(insn 6 5 113 3 (set (reg/v:SI 0 ax [orig:84 i ] [84])
+        (const_int 2 [0x2])) "lab1.cpp":11:7 83 {*movsi_internal}
+     (expr_list:REG_EQUAL (const_int 2 [0x2])
+        (nil)))
+(note 113 6 114 3 NOTE_INSN_DELETED)
+(note 114 113 156 3 NOTE_INSN_DELETED)
+(insn 156 114 129 3 (set (reg:CCZ 17 flags)
+        (compare:CCZ (and:SI (reg:SI 1 dx [orig:98 n.0_37 ] [98])
+                (const_int 1 [0x1]))
+            (const_int 0 [0]))) 543 {*testsi_1}
+     (nil))
+(jump_insn 129 156 26 3 (set (pc)
+        (if_then_else (eq (reg:CCZ 17 flags)
+                (const_int 0 [0]))
+            (label_ref:DI 147)
+            (pc))) 995 {*jcc}
+     (int_list:REG_BR_PROB 536870918 (nil))
+ -> 147)
+(code_label 26 129 23 4 5 (nil) [2 uses])
+(note 23 26 24 4 [bb 4] NOTE_INSN_BASIC_BLOCK)
+(insn 24 23 140 4 (parallel [
+            (set (reg/v:SI 4 si [orig:86 f ] [86])
+                (mult:SI (reg/v:SI 4 si [orig:86 f ] [86])
+                    (reg/v:SI 0 ax [orig:84 i ] [84])))
+            (clobber (reg:CC 17 flags))
+        ]) "lab1.cpp":15:11 469 {*mulsi3_1}
+     (nil))
+(insn 140 24 132 4 (parallel [
+            (set (reg:SI 1 dx [118])
+                (plus:SI (reg/v:SI 0 ax [orig:84 i ] [84])
+                    (const_int 1 [0x1])))
+            (clobber (reg:CC 17 flags))
+        ]) "lab1.cpp":16:11 246 {*addsi_1}
+     (nil))
+(insn 132 140 133 4 (parallel [
+            (set (reg/v:SI 4 si [orig:86 f ] [86])
+                (mult:SI (reg/v:SI 4 si [orig:86 f ] [86])
+                    (reg:SI 1 dx [118])))
+            (clobber (reg:CC 17 flags))
+        ]) "lab1.cpp":15:11 469 {*mulsi3_1}
+     (nil))
+(insn 133 132 134 4 (parallel [
+            (set (reg/v:SI 0 ax [orig:84 i ] [84])
+                (plus:SI (reg/v:SI 0 ax [orig:84 i ] [84])
+                    (const_int 2 [0x2])))
+            (clobber (reg:CC 17 flags))
+        ]) "lab1.cpp":16:11 246 {*addsi_1}
+     (nil))
+(insn 134 133 135 4 (set (reg:CCZ 17 flags)
+        (compare:CCZ (reg/v:SI 0 ax [orig:84 i ] [84])
+            (reg:SI 2 cx [orig:100 _45 ] [100]))) "lab1.cpp":14:14 11 {*cmpsi_1}
+     (nil))
+(jump_insn 135 134 148 4 (set (pc)
+        (if_then_else (ne (reg:CCZ 17 flags)
+                (const_int 0 [0]))
+            (label_ref:DI 26)
+            (pc))) "lab1.cpp":14:14 995 {*jcc}
+     (int_list:REG_BR_PROB 955630228 (nil))
+ -> 26)
+(note 148 135 149 5 [bb 5] NOTE_INSN_BASIC_BLOCK)
+(jump_insn 149 148 150 5 (set (pc)
+        (label_ref 29)) 996 {jump}
+     (nil)
+ -> 29)
+(barrier 150 149 98)
+(code_label 98 150 97 6 11 (nil) [1 uses])
+(note 97 98 7 6 [bb 6] NOTE_INSN_BASIC_BLOCK)
+(insn 7 97 29 6 (set (reg/v:SI 4 si [orig:86 f ] [86])
+        (const_int 1 [0x1])) "lab1.cpp":12:7 83 {*movsi_internal}
+     (nil))
+(code_label 29 7 30 7 4 (nil) [2 uses])
+(note 30 29 32 7 [bb 7] NOTE_INSN_BASIC_BLOCK)
+(insn 32 30 34 7 (set (reg/f:DI 5 di [105])
+        (symbol_ref:DI ("_ZSt4cout") [flags 0x40]  <var_decl 0x7fb00fecb750 cout>)) "lab1.cpp":19:13 82 {*movdi_internal}
+     (expr_list:REG_EQUIV (symbol_ref:DI ("_ZSt4cout") [flags 0x40]  <var_decl 0x7fb00fecb750 cout>)
+        (nil)))
+(call_insn 34 32 35 7 (set (reg:DI 0 ax)
+        (call (mem:QI (symbol_ref:DI ("_ZNSolsEi") [flags 0x41]  <function_decl 0x7fb010190000 operator<<>) [0 operator<< S1 A8])
+            (const_int 0 [0]))) "lab1.cpp":19:13 1013 {*call_value}
+     (expr_list:REG_CALL_DECL (symbol_ref:DI ("_ZNSolsEi") [flags 0x41]  <function_decl 0x7fb010190000 operator<<>)
+        (nil))
+    (expr_list:DI (use (reg:DI 5 di))
+        (expr_list:SI (use (reg:SI 4 si))
+            (nil))))
+(insn 35 34 36 7 (set (reg/f:DI 3 bx [orig:85 _8 ] [85])
+        (reg:DI 0 ax [119])) "lab1.cpp":19:13 82 {*movdi_internal}
+     (nil))
+(insn 36 35 37 7 (set (reg/f:DI 0 ax [orig:106 _8->_vptr.basic_ostream ] [106])
+        (mem/f:DI (reg/f:DI 3 bx [orig:85 _8 ] [85]) [2 _8->_vptr.basic_ostream+0 S8 A64])) "/usr/include/c++/13/ostream":736:39 82 {*movdi_internal}
+     (expr_list:REG_EQUIV (mem/f:DI (reg/f:DI 3 bx [orig:85 _8 ] [85]) [2 _8->_vptr.basic_ostream+0 S8 A64])
+        (nil)))
+(insn 37 36 38 7 (set (reg:DI 0 ax [orig:107 MEM[(long int *)_13 + -24B] ] [107])
+        (mem:DI (plus:DI (reg/f:DI 0 ax [orig:106 _8->_vptr.basic_ostream ] [106])
+                (const_int -24 [0xffffffffffffffe8])) [9 MEM[(long int *)_13 + -24B]+0 S8 A64])) 82 {*movdi_internal}
+     (nil))
+(insn 38 37 39 7 (set (reg/f:DI 6 bp [orig:93 _21 ] [93])
+        (mem/f:DI (plus:DI (plus:DI (reg/f:DI 3 bx [orig:85 _8 ] [85])
+                    (reg:DI 0 ax [orig:107 MEM[(long int *)_13 + -24B] ] [107]))
+                (const_int 240 [0xf0])) [6 MEM[(const struct __ctype_type * *)_16 + 240B]+0 S8 A64])) 82 {*movdi_internal}
+     (nil))
+(insn 39 38 40 7 (set (reg:CCZ 17 flags)
+        (compare:CCZ (reg/f:DI 6 bp [orig:93 _21 ] [93])
+            (const_int 0 [0]))) "/usr/include/c++/13/bits/basic_ios.h":49:7 8 {*cmpdi_ccno_1}
+     (nil))
+(jump_insn 40 39 41 7 (set (pc)
+        (if_then_else (ne (reg:CCZ 17 flags)
+                (const_int 0 [0]))
+            (label_ref 50)
+            (pc))) "/usr/include/c++/13/bits/basic_ios.h":49:7 995 {*jcc}
+     (int_list:REG_BR_PROB 1073312332 (nil))
+ -> 50)
+(note 41 40 43 8 [bb 8] NOTE_INSN_BASIC_BLOCK)
+(insn 43 41 44 8 (parallel [
+            (set (reg:CCZ 17 flags)
+                (unspec:CCZ [
+                        (mem/v/f/c:DI (plus:DI (reg/f:DI 7 sp)
+                                (const_int 8 [0x8])) [14 D.54863+0 S8 A64])
+                        (mem/v/f:DI (const_int 40 [0x28]) [9 MEM[(<address-space-1> long unsigned int *)40B]+0 S8 A64 AS1])
+                    ] UNSPEC_SP_TEST))
+            (clobber (reg:DI 0 ax [123]))
+        ]) "/usr/include/c++/13/bits/basic_ios.h":50:18 1387 {stack_protect_test_1_di}
+     (nil))
+(jump_insn 44 43 103 8 (set (pc)
+        (if_then_else (eq (reg:CCZ 17 flags)
+                (const_int 0 [0]))
+            (label_ref 47)
+            (pc))) "/usr/include/c++/13/bits/basic_ios.h":50:18 995 {*jcc}
+     (int_list:REG_BR_PROB 1073312332 (nil))
+ -> 47)
+(note 103 44 45 9 [bb 9] NOTE_INSN_BASIC_BLOCK)
+(call_insn 45 103 46 9 (call (mem:QI (symbol_ref:DI ("__stack_chk_fail") [flags 0x41]  <function_decl 0x7fb00fdc5600 __stack_chk_fail>) [0 __stack_chk_fail S1 A8])
+        (const_int 0 [0])) "/usr/include/c++/13/bits/basic_ios.h":50:18 1002 {*call}
+     (expr_list:REG_CALL_DECL (symbol_ref:DI ("__stack_chk_fail") [flags 0x41]  <function_decl 0x7fb00fdc5600 __stack_chk_fail>)
+        (expr_list:REG_ARGS_SIZE (const_int 0 [0])
+            (expr_list:REG_NORETURN (const_int 0 [0])
+                (expr_list:REG_EH_REGION (const_int 0 [0])
+                    (nil)))))
+    (nil))
+(barrier 46 45 47)
+(code_label 47 46 104 10 7 (nil) [1 uses])
+(note 104 47 48 10 [bb 10] NOTE_INSN_BASIC_BLOCK)
+(call_insn 48 104 49 10 (call (mem:QI (symbol_ref:DI ("_ZSt16__throw_bad_castv") [flags 0x41]  <function_decl 0x7fb011771100 __throw_bad_cast>) [0 __throw_bad_cast S1 A8])
+        (const_int 0 [0])) "/usr/include/c++/13/bits/basic_ios.h":50:18 1002 {*call}
+     (expr_list:REG_CALL_DECL (symbol_ref:DI ("_ZSt16__throw_bad_castv") [flags 0x41]  <function_decl 0x7fb011771100 __throw_bad_cast>)
+        (expr_list:REG_ARGS_SIZE (const_int 0 [0])
+            (expr_list:REG_NORETURN (const_int 0 [0])
+                (nil))))
+    (nil))
+(barrier 49 48 50)
+(code_label 50 49 51 11 6 (nil) [1 uses])
+(note 51 50 52 11 [bb 11] NOTE_INSN_BASIC_BLOCK)
+(insn 52 51 53 11 (set (reg:CCZ 17 flags)
+        (compare:CCZ (mem:QI (plus:DI (reg/f:DI 6 bp [orig:93 _21 ] [93])
+                    (const_int 56 [0x38])) [0 MEM[(const struct ctype *)_21]._M_widen_ok+0 S1 A64])
+            (const_int 0 [0]))) "/usr/include/c++/13/bits/locale_facets.h":882:2 5 {*cmpqi_ccno_1}
+     (nil))
+(jump_insn 53 52 54 11 (set (pc)
+        (if_then_else (eq (reg:CCZ 17 flags)
+                (const_int 0 [0]))
+            (label_ref 58)
+            (pc))) "/usr/include/c++/13/bits/locale_facets.h":882:2 995 {*jcc}
+     (int_list:REG_BR_PROB 524845004 (nil))
+ -> 58)
+(note 54 53 55 12 [bb 12] NOTE_INSN_BASIC_BLOCK)
+(insn 55 54 151 12 (set (reg:QI 4 si [orig:95 _32 ] [95])
+        (mem:QI (plus:DI (reg/f:DI 6 bp [orig:93 _21 ] [93])
+                (const_int 67 [0x43])) [0 MEM[(const struct ctype *)_21]._M_widen[10]+0 S1 A8])) "/usr/include/c++/13/bits/locale_facets.h":883:51 85 {*movqi_internal}
+     (nil))
+(jump_insn 151 55 152 12 (set (pc)
+        (label_ref 72)) "/usr/include/c++/13/bits/locale_facets.h":883:51 996 {jump}
+     (nil)
+ -> 72)
+(barrier 152 151 58)
+(code_label 58 152 59 13 8 (nil) [1 uses])
+(note 59 58 60 13 [bb 13] NOTE_INSN_BASIC_BLOCK)
+(insn 60 59 61 13 (set (reg:DI 5 di)
+        (reg/f:DI 6 bp [orig:93 _21 ] [93])) "/usr/include/c++/13/bits/locale_facets.h":884:21 82 {*movdi_internal}
+     (nil))
+(call_insn 61 60 62 13 (call (mem:QI (symbol_ref:DI ("_ZNKSt5ctypeIcE13_M_widen_initEv") [flags 0x41]  <function_decl 0x7fb010329300 _M_widen_init>) [0 _M_widen_init S1 A8])
+        (const_int 0 [0])) "/usr/include/c++/13/bits/locale_facets.h":884:21 1002 {*call}
+     (expr_list:REG_CALL_DECL (symbol_ref:DI ("_ZNKSt5ctypeIcE13_M_widen_initEv") [flags 0x41]  <function_decl 0x7fb010329300 _M_widen_init>)
+        (nil))
+    (expr_list:DI (use (reg:DI 5 di))
+        (nil)))
+(insn 62 61 63 13 (set (reg/f:DI 0 ax [orig:109 MEM[(const struct ctype *)_21].D.43629._vptr.facet ] [109])
+        (mem/f:DI (reg/f:DI 6 bp [orig:93 _21 ] [93]) [2 MEM[(const struct ctype *)_21].D.43629._vptr.facet+0 S8 A64])) "/usr/include/c++/13/bits/locale_facets.h":885:23 82 {*movdi_internal}
+     (expr_list:REG_EQUIV (mem/f:DI (reg/f:DI 6 bp [orig:93 _21 ] [93]) [2 MEM[(const struct ctype *)_21].D.43629._vptr.facet+0 S8 A64])
+        (nil)))
+(insn 63 62 8 13 (set (reg/f:DI 0 ax [orig:97 _35 ] [97])
+        (mem/f:DI (plus:DI (reg/f:DI 0 ax [orig:109 MEM[(const struct ctype *)_21].D.43629._vptr.facet ] [109])
+                (const_int 48 [0x30])) [4 MEM[(int (*) () *)_34 + 48B]+0 S8 A64])) "/usr/include/c++/13/bits/locale_facets.h":885:23 82 {*movdi_internal}
+     (nil))
+(insn 8 63 157 13 (set (reg:QI 4 si [orig:95 _32 ] [95])
+        (const_int 10 [0xa])) "/usr/include/c++/13/bits/locale_facets.h":885:23 85 {*movqi_internal}
+     (nil))
+(insn 157 8 65 13 (set (reg/f:DI 1 dx [110])
+        (symbol_ref/i:DI ("_ZNKSt5ctypeIcE8do_widenEc") [flags 0x3]  <function_decl 0x7fb01031ee00 do_widen>)) 82 {*movdi_internal}
+     (expr_list:REG_EQUIV (symbol_ref/i:DI ("_ZNKSt5ctypeIcE8do_widenEc") [flags 0x3]  <function_decl 0x7fb01031ee00 do_widen>)
+        (nil)))
+(insn 65 157 66 13 (set (reg:CCZ 17 flags)
+        (compare:CCZ (reg/f:DI 0 ax [orig:97 _35 ] [97])
+            (reg/f:DI 1 dx [110]))) 12 {*cmpdi_1}
+     (expr_list:REG_EQUAL (compare:CCZ (reg/f:DI 0 ax [orig:97 _35 ] [97])
+            (symbol_ref/i:DI ("_ZNKSt5ctypeIcE8do_widenEc") [flags 0x3]  <function_decl 0x7fb01031ee00 do_widen>))
+        (nil)))
+(jump_insn 66 65 67 13 (set (pc)
+        (if_then_else (eq (reg:CCZ 17 flags)
+                (const_int 0 [0]))
+            (label_ref:DI 72)
+            (pc))) 995 {*jcc}
+     (int_list:REG_BR_PROB 858993468 (nil))
+ -> 72)
+(note 67 66 68 14 [bb 14] NOTE_INSN_BASIC_BLOCK)
+(insn 68 67 69 14 (set (reg:SI 4 si)
+        (const_int 10 [0xa])) "/usr/include/c++/13/bits/locale_facets.h":885:23 83 {*movsi_internal}
+     (nil))
+(insn 69 68 70 14 (set (reg:DI 5 di)
+        (reg/f:DI 6 bp [orig:93 _21 ] [93])) "/usr/include/c++/13/bits/locale_facets.h":885:23 82 {*movdi_internal}
+     (nil))
+(call_insn 70 69 71 14 (set (reg:QI 0 ax)
+        (call (mem:QI (reg/f:DI 0 ax [orig:97 _35 ] [97]) [0 *OBJ_TYPE_REF(_35;_21->6B) S1 A8])
+            (const_int 0 [0]))) "/usr/include/c++/13/bits/locale_facets.h":885:23 1013 {*call_value}
+     (expr_list:REG_CALL_DECL (nil)
+        (nil))
+    (expr_list:DI (use (reg:DI 5 di))
+        (expr_list:SI (use (reg:SI 4 si))
+            (nil))))
+(insn 71 70 72 14 (set (reg:QI 4 si [orig:95 _32 ] [95])
+        (reg:QI 0 ax [120])) "/usr/include/c++/13/bits/locale_facets.h":885:23 85 {*movqi_internal}
+     (nil))
+(code_label 72 71 73 15 9 (nil) [2 uses])
+(note 73 72 74 15 [bb 15] NOTE_INSN_BASIC_BLOCK)
+(insn 74 73 76 15 (set (reg:SI 4 si [orig:111 _32 ] [111])
+        (sign_extend:SI (reg:QI 4 si [orig:95 _32 ] [95]))) "/usr/include/c++/13/ostream":736:19 discrim 1 167 {extendqisi2}
+     (nil))
+(insn 76 74 77 15 (set (reg:DI 5 di)
+        (reg/f:DI 3 bx [orig:85 _8 ] [85])) "/usr/include/c++/13/ostream":736:19 discrim 1 82 {*movdi_internal}
+     (nil))
+(call_insn 77 76 78 15 (set (reg:DI 0 ax)
+        (call (mem:QI (symbol_ref:DI ("_ZNSo3putEc") [flags 0x41]  <function_decl 0x7fb010190a00 put>) [0 put S1 A8])
+            (const_int 0 [0]))) "/usr/include/c++/13/ostream":736:19 discrim 1 1013 {*call_value}
+     (expr_list:REG_CALL_DECL (symbol_ref:DI ("_ZNSo3putEc") [flags 0x41]  <function_decl 0x7fb010190a00 put>)
+        (nil))
+    (expr_list:DI (use (reg:DI 5 di))
+        (expr_list:SI (use (reg:SI 4 si))
+            (nil))))
+(insn 78 77 80 15 (set (reg/f:DI 5 di [orig:92 _19 ] [92])
+        (reg:DI 0 ax [121])) "/usr/include/c++/13/ostream":736:19 discrim 1 82 {*movdi_internal}
+     (nil))
+(call_insn 80 78 86 15 (set (reg:DI 0 ax)
+        (call (mem:QI (symbol_ref:DI ("_ZNSo5flushEv") [flags 0x41]  <function_decl 0x7fb010190c00 flush>) [0 flush S1 A8])
+            (const_int 0 [0]))) "/usr/include/c++/13/ostream":758:24 1013 {*call_value}
+     (expr_list:REG_CALL_DECL (symbol_ref:DI ("_ZNSo5flushEv") [flags 0x41]  <function_decl 0x7fb010190c00 flush>)
+        (nil))
+    (expr_list:DI (use (reg:DI 5 di))
+        (nil)))
+(insn 86 80 87 15 (parallel [
+            (set (reg:CCZ 17 flags)
+                (unspec:CCZ [
+                        (mem/v/f/c:DI (plus:DI (reg/f:DI 7 sp)
+                                (const_int 8 [0x8])) [14 D.54863+0 S8 A64])
+                        (mem/v/f:DI (const_int 40 [0x28]) [9 MEM[(<address-space-1> long unsigned int *)40B]+0 S8 A64 AS1])
+                    ] UNSPEC_SP_TEST))
+            (clobber (reg:DI 0 ax [124]))
+        ]) "lab1.cpp":21:1 1387 {stack_protect_test_1_di}
+     (nil))
+(jump_insn 87 86 105 15 (set (pc)
+        (if_then_else (eq (reg:CCZ 17 flags)
+                (const_int 0 [0]))
+            (label_ref 90)
+            (pc))) "lab1.cpp":21:1 995 {*jcc}
+     (int_list:REG_BR_PROB 1073312332 (nil))
+ -> 90)
+(note 105 87 88 16 [bb 16] NOTE_INSN_BASIC_BLOCK)
+(call_insn 88 105 89 16 (call (mem:QI (symbol_ref:DI ("__stack_chk_fail") [flags 0x41]  <function_decl 0x7fb00fdc5600 __stack_chk_fail>) [0 __stack_chk_fail S1 A8])
+        (const_int 0 [0])) "lab1.cpp":21:1 1002 {*call}
+     (expr_list:REG_CALL_DECL (symbol_ref:DI ("__stack_chk_fail") [flags 0x41]  <function_decl 0x7fb00fdc5600 __stack_chk_fail>)
+        (expr_list:REG_ARGS_SIZE (const_int 0 [0])
+            (expr_list:REG_NORETURN (const_int 0 [0])
+                (expr_list:REG_EH_REGION (const_int 0 [0])
+                    (nil)))))
+    (nil))
+(barrier 89 88 90)
+(code_label 90 89 106 17 10 (nil) [1 uses])
+(note 106 90 91 17 [bb 17] NOTE_INSN_BASIC_BLOCK)
+(insn 91 106 92 17 (set (reg/i:SI 0 ax)
+        (const_int 0 [0])) "lab1.cpp":21:1 83 {*movsi_internal}
+     (nil))
+(insn 92 91 147 17 (use (reg/i:SI 0 ax)) "lab1.cpp":21:1 -1
+     (nil))
+      ; pc falls through to BB 1
+(code_label 147 92 122 18 18 (nil) [1 uses])
+(note 122 147 118 18 [bb 18] NOTE_INSN_BASIC_BLOCK)
+(insn 118 122 119 18 (set (reg/v:SI 4 si [orig:86 f ] [86])
+        (const_int 2 [0x2])) "lab1.cpp":15:11 83 {*movsi_internal}
+     (nil))
+(insn 119 118 120 18 (set (reg/v:SI 0 ax [orig:84 i ] [84])
+        (const_int 3 [0x3])) "lab1.cpp":16:11 83 {*movsi_internal}
+     (nil))
+(insn 120 119 121 18 (set (reg:CCZ 17 flags)
+        (compare:CCZ (reg/v:SI 0 ax [orig:84 i ] [84])
+            (reg:SI 2 cx [orig:100 _45 ] [100]))) "lab1.cpp":14:14 11 {*cmpsi_1}
+     (nil))
+(jump_insn 121 120 153 18 (set (pc)
+        (if_then_else (ne (reg:CCZ 17 flags)
+                (const_int 0 [0]))
+            (label_ref:DI 26)
+            (pc))) "lab1.cpp":14:14 995 {*jcc}
+     (int_list:REG_BR_PROB 955630228 (nil))
+ -> 26)
+(note 153 121 154 19 [bb 19] NOTE_INSN_BASIC_BLOCK)
+(jump_insn 154 153 155 19 (set (pc)
+        (label_ref 29)) 996 {jump}
+     (nil)
+ -> 29)
+(barrier 155 154 158)
+(note 158 155 0 NOTE_INSN_DELETED)

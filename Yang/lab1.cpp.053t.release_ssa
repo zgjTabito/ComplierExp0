@@ -1,0 +1,197 @@
+
+;; Function std::basic_ostream<char>::operator<< (_ZNSolsEPFRSoS_E, funcdef_no=2313, decl_uid=47902, cgraph_uid=781, symbol_order=818)
+
+Released 2 names, 33.33%, removed 2 holes
+struct __ostream_type & std::basic_ostream<char>::operator<< (struct basic_ostream * const this, struct __ostream_type & (*<T7eb4>) (struct __ostream_type &) __pf)
+{
+  struct __ostream_type & _5;
+
+  <bb 2> [local count: 1073741824]:
+  _5 = __pf_1(D) (this_3(D));
+  return _5;
+
+}
+
+
+
+;; Function std::flush<char, std::char_traits<char> > (_ZSt5flushIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_, funcdef_no=2416, decl_uid=48124, cgraph_uid=884, symbol_order=921)
+
+Released 1 names, 20.00%, removed 1 holes
+struct basic_ostream & std::flush<char, std::char_traits<char> > (struct basic_ostream & __os)
+{
+  struct basic_ostream & _4;
+
+  <bb 2> [local count: 1073741824]:
+  _4 = std::basic_ostream<char>::flush (__os_2(D));
+  return _4;
+
+}
+
+
+
+;; Function std::ctype<char>::widen (_ZNKSt5ctypeIcE5widenEc, funcdef_no=1805, decl_uid=43499, cgraph_uid=510, symbol_order=546)
+
+Released 7 names, 53.85%, removed 7 holes
+char_type std::ctype<char>::widen (const struct ctype * const this, char __c)
+{
+  char _1;
+  unsigned char __c.1_2;
+  int _3;
+  int _4;
+  char_type _5;
+  char _9;
+  char_type _10;
+
+  <bb 2> [local count: 1073741824]:
+  _1 = this_7(D)->_M_widen_ok;
+  if (_1 != 0)
+    goto <bb 3>; [51.12%]
+  else
+    goto <bb 4>; [48.88%]
+
+  <bb 3> [local count: 548896825]:
+  __c.1_2 = (unsigned char) __c_8(D);
+  _3 = (int) __c.1_2;
+  _10 = this_7(D)->_M_widen[_3];
+  goto <bb 5>; [100.00%]
+
+  <bb 4> [local count: 524845000]:
+  _4 = (int) __c_8(D);
+  _9 = std::ctype<char>::_ZNKSt5ctypeIcE5widenEc.part.0 (this_7(D), _4);
+
+  <bb 5> [local count: 1073741824]:
+  # _5 = PHI <_10(3), _9(4)>
+  return _5;
+
+}
+
+
+
+;; Function std::ctype<char>::do_widen (_ZNKSt5ctypeIcE8do_widenEc, funcdef_no=1810, decl_uid=43557, cgraph_uid=515, symbol_order=551)
+
+Released 1 names, 33.33%, removed 1 holes
+char_type std::ctype<char>::do_widen (const struct ctype * const this, char __c)
+{
+  <bb 2> [local count: 1073741824]:
+  return __c_1(D);
+
+}
+
+
+
+;; Function main (main, funcdef_no=2057, decl_uid=50632, cgraph_uid=525, symbol_order=562) (executed once)
+
+Released 8 names, 61.54%, removed 8 holes
+int main ()
+{
+  int f;
+  int n;
+  int i;
+  int n.0_1;
+  struct basic_ostream & _8;
+
+  <bb 2> [local count: 118111600]:
+  std::basic_istream<char>::operator>> (&cin, &n);
+  goto <bb 4>; [100.00%]
+
+  <bb 3> [local count: 955630225]:
+  f_10 = i_2 * f_3;
+  i_11 = i_2 + 1;
+
+  <bb 4> [local count: 1073741824]:
+  # i_2 = PHI <2(2), i_11(3)>
+  # f_3 = PHI <1(2), f_10(3)>
+  n.0_1 = n;
+  if (n.0_1 >= i_2)
+    goto <bb 3>; [89.00%]
+  else
+    goto <bb 5>; [11.00%]
+
+  <bb 5> [local count: 118111600]:
+  # f_4 = PHI <f_3(4)>
+  _8 = std::basic_ostream<char>::operator<< (&cout, f_4);
+  std::endl<char, std::char_traits<char> > (_8);
+  n ={v} {CLOBBER(eol)};
+  return 0;
+
+}
+
+
+
+;; Function std::__check_facet<std::ctype<char> > (_ZSt13__check_facetISt5ctypeIcEERKT_PS3_, funcdef_no=2484, decl_uid=53998, cgraph_uid=952, symbol_order=989)
+
+Released 1 names, 25.00%, removed 1 holes
+const struct ctype & std::__check_facet<std::ctype<char> > (const struct ctype * __f)
+{
+  <bb 2> [local count: 1073741824]:
+  if (__f_1(D) == 0B)
+    goto <bb 3>; [0.04%]
+  else
+    goto <bb 4>; [99.96%]
+
+  <bb 3> [local count: 429496]:
+  std::__throw_bad_cast ();
+
+  <bb 4> [local count: 1073312329]:
+  return __f_1(D);
+
+}
+
+
+
+;; Function std::basic_ios<char>::widen (_ZNKSt9basic_iosIcSt11char_traitsIcEE5widenEc, funcdef_no=2415, decl_uid=47119, cgraph_uid=883, symbol_order=920)
+
+Released 5 names, 55.56%, removed 5 holes
+char_type std::basic_ios<char>::widen (const struct basic_ios * const this, char __c)
+{
+  const struct __ctype_type * _1;
+  int _2;
+  char_type _7;
+
+  <bb 2> [local count: 1073741824]:
+  _1 = this_4(D)->_M_ctype;
+  if (_1 == 0B)
+    goto <bb 3>; [0.04%]
+  else
+    goto <bb 4>; [99.96%]
+
+  <bb 3> [local count: 429496]:
+  std::__throw_bad_cast ();
+
+  <bb 4> [local count: 1073312329]:
+  _2 = (int) __c_5(D);
+  _7 = std::ctype<char>::widen (_1, _2);
+  return _7;
+
+}
+
+
+
+;; Function std::endl<char, std::char_traits<char> > (_ZSt4endlIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_, funcdef_no=2312, decl_uid=48114, cgraph_uid=780, symbol_order=817)
+
+Released 7 names, 50.00%, removed 7 holes
+struct basic_ostream & std::endl<char, std::char_traits<char> > (struct basic_ostream & __os)
+{
+  int (*) () * _1;
+  long int _2;
+  sizetype _3;
+  struct basic_ios * _4;
+  int _5;
+  char _9;
+  struct basic_ostream & _11;
+  struct basic_ostream & _12;
+
+  <bb 2> [local count: 1073741824]:
+  _1 = __os_7(D)->_vptr.basic_ostream;
+  _2 = MEM[(long int *)_1 + -24B];
+  _3 = (sizetype) _2;
+  _4 = __os_7(D) + _3;
+  _9 = std::basic_ios<char>::widen (_4, 10);
+  _5 = (int) _9;
+  _11 = std::basic_ostream<char>::put (__os_7(D), _5);
+  _12 = std::basic_ostream<char>::flush (_11);
+  return _12;
+
+}
+
+

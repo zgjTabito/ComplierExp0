@@ -1,0 +1,133 @@
+digraph "lab1.cpp.199t.vrp2" {
+overlap=false;
+subgraph "cluster_std::ctype<char>::do_widen" {
+	style="dashed";
+	color="black";
+	label="std::ctype<char>::do_widen ()";
+	fn_1810_basic_block_0 [shape=Mdiamond,style=filled,fillcolor=white,label="ENTRY"];
+
+	fn_1810_basic_block_1 [shape=Mdiamond,style=filled,fillcolor=white,label="EXIT"];
+
+	fn_1810_basic_block_2 [shape=record,style=filled,fillcolor=lightgrey,label="{COUNT:1073741824\<bb\ 2\>:\l\
+|return\ __c_1(D);\l\
+}"];
+
+	fn_1810_basic_block_0:s -> fn_1810_basic_block_2:n [style="solid,bold",color=black,weight=100,constraint=true,label="[100%]"];
+	fn_1810_basic_block_2:s -> fn_1810_basic_block_1:n [style="solid,bold",color=black,weight=10,constraint=true,label="[100%]"];
+	fn_1810_basic_block_0:s -> fn_1810_basic_block_1:n [style="invis",constraint=true];
+}
+subgraph "cluster_main" {
+	style="dashed";
+	color="black";
+	label="main ()";
+	subgraph cluster_2057_1 {
+	style="filled";
+	color="darkgreen";
+	fillcolor="grey88";
+	label="loop 1";
+	labeljust=l;
+	penwidth=2;
+	fn_2057_basic_block_4 [shape=record,style=filled,fillcolor=lightgrey,label="{COUNT:955630225\<bb\ 4\>:\l\
+|#\ i_4\ =\ PHI\ \<i_11(4),\ 2(3)\>\l\
+|#\ f_22\ =\ PHI\ \<f_10(4),\ 1(3)\>\l\
+|f_10\ =\ i_4\ *\ f_22;\l\
+|i_11\ =\ i_4\ +\ 1;\l\
+|if\ (i_11\ !=\ _45)\l\
+\ \ goto\ \<bb\ 4\>;\ [89.00%]\l\
+else\l\
+\ \ goto\ \<bb\ 5\>;\ [11.00%]\l\
+}"];
+
+	}
+	fn_2057_basic_block_0 [shape=Mdiamond,style=filled,fillcolor=white,label="ENTRY"];
+
+	fn_2057_basic_block_1 [shape=Mdiamond,style=filled,fillcolor=white,label="EXIT"];
+
+	fn_2057_basic_block_2 [shape=record,style=filled,fillcolor=lightgrey,label="{COUNT:118111600\<bb\ 2\>:\l\
+|std::basic_istream\<char\>::operator\>\>\ (&cin,\ &n);\l\
+|n.0_37\ =\ n;\l\
+|if\ (n.0_37\ \>\ 1)\l\
+\ \ goto\ \<bb\ 3\>;\ [89.00%]\l\
+else\l\
+\ \ goto\ \<bb\ 5\>;\ [11.00%]\l\
+}"];
+
+	fn_2057_basic_block_3 [shape=record,style=filled,fillcolor=lightgrey,label="{COUNT:105119324\<bb\ 3\>:\l\
+|_3\ =\ (unsigned\ int)\ n.0_37;\l\
+|_2\ =\ _3\ +\ 1;\l\
+|_45\ =\ (int)\ _2;\l\
+}"];
+
+	fn_2057_basic_block_5 [shape=record,style=filled,fillcolor=lightgrey,label="{COUNT:118111600\<bb\ 5\>:\l\
+|#\ f_23\ =\ PHI\ \<f_10(4),\ 1(2)\>\l\
+|_8\ =\ std::basic_ostream\<char\>::operator\<\<\ (&cout,\ f_23);\l\
+|_13\ =\ _8-\>_vptr.basic_ostream;\l\
+|_14\ =\ MEM[(long\ int\ *)_13\ +\ -24B];\l\
+|_15\ =\ (sizetype)\ _14;\l\
+|_16\ =\ _8\ +\ _15;\l\
+|_21\ =\ MEM[(const\ struct\ __ctype_type\ *\ *)_16\ +\ 240B];\l\
+|if\ (_21\ ==\ 0B)\l\
+\ \ goto\ \<bb\ 6\>;\ [0.04%]\l\
+else\l\
+\ \ goto\ \<bb\ 7\>;\ [99.96%]\l\
+}"];
+
+	fn_2057_basic_block_6 [shape=record,style=filled,fillcolor=lightgrey,label="{COUNT:47245\<bb\ 6\>:\l\
+|std::__throw_bad_cast\ ();\l\
+}"];
+
+	fn_2057_basic_block_7 [shape=record,style=filled,fillcolor=lightgrey,label="{COUNT:118064356\<bb\ 7\>:\l\
+|_26\ =\ MEM[(const\ struct\ ctype\ *)_21]._M_widen_ok;\l\
+|if\ (_26\ !=\ 0)\l\
+\ \ goto\ \<bb\ 8\>;\ [51.12%]\l\
+else\l\
+\ \ goto\ \<bb\ 9\>;\ [48.88%]\l\
+}"];
+
+	fn_2057_basic_block_8 [shape=record,style=filled,fillcolor=lightgrey,label="{COUNT:60354499\<bb\ 8\>:\l\
+|_29\ =\ MEM[(const\ struct\ ctype\ *)_21]._M_widen[10];\l\
+goto\ \<bb\ 11\>;\ [100.00%]\l\
+}"];
+
+	fn_2057_basic_block_9 [shape=record,style=filled,fillcolor=lightgrey,label="{COUNT:57709857\<bb\ 9\>:\l\
+|std::ctype\<char\>::_M_widen_init\ (_21);\l\
+|_34\ =\ MEM[(const\ struct\ ctype\ *)_21].D.43629._vptr.facet;\l\
+|_35\ =\ MEM[(int\ (*)\ ()\ *)_34\ +\ 48B];\l\
+|PROF_39\ =\ [obj_type_ref]\ OBJ_TYPE_REF(_35;(const\ struct\ ctype)_21-\>6B);\l\
+|if\ (PROF_39\ ==\ do_widen)\l\
+\ \ goto\ \<bb\ 11\>;\ [80.00%]\l\
+else\l\
+\ \ goto\ \<bb\ 10\>;\ [20.00%]\l\
+}"];
+
+	fn_2057_basic_block_10 [shape=record,style=filled,fillcolor=lightgrey,label="{COUNT:11541971\<bb\ 10\>:\l\
+|_41\ =\ OBJ_TYPE_REF(_35;(const\ struct\ ctype)_21-\>6B)\ (_21,\ 10);\l\
+}"];
+
+	fn_2057_basic_block_11 [shape=record,style=filled,fillcolor=lightgrey,label="{COUNT:118064356\<bb\ 11\>:\l\
+|#\ _32\ =\ PHI\ \<_29(8),\ 10(9),\ _41(10)\>\l\
+|_18\ =\ (int)\ _32;\l\
+|_19\ =\ std::basic_ostream\<char\>::put\ (_8,\ _18);\l\
+|std::basic_ostream\<char\>::flush\ (_19);\l\
+|n\ =\{v\}\ \{CLOBBER(eol)\};\l\
+|return\ 0;\l\
+}"];
+
+	fn_2057_basic_block_0:s -> fn_2057_basic_block_2:n [style="solid,bold",color=black,weight=100,constraint=true,label="[100%]"];
+	fn_2057_basic_block_2:s -> fn_2057_basic_block_3:n [style="solid,bold",color=forestgreen,weight=10,constraint=true,label="[89%]"];
+	fn_2057_basic_block_2:s -> fn_2057_basic_block_5:n [style="solid,bold",color=darkorange,weight=10,constraint=true,label="[11%]"];
+	fn_2057_basic_block_3:s -> fn_2057_basic_block_4:n [style="solid,bold",color=black,weight=100,constraint=true,label="[100%]"];
+	fn_2057_basic_block_4:s -> fn_2057_basic_block_4:n [style="dotted,bold",color=blue,weight=10,constraint=false,label="[89%]"];
+	fn_2057_basic_block_4:s -> fn_2057_basic_block_5:n [style="solid,bold",color=darkorange,weight=10,constraint=true,label="[11%]"];
+	fn_2057_basic_block_5:s -> fn_2057_basic_block_6:n [style="solid,bold",color=forestgreen,weight=10,constraint=true,label="[0%]"];
+	fn_2057_basic_block_5:s -> fn_2057_basic_block_7:n [style="solid,bold",color=darkorange,weight=10,constraint=true,label="[99%]"];
+	fn_2057_basic_block_7:s -> fn_2057_basic_block_8:n [style="solid,bold",color=forestgreen,weight=10,constraint=true,label="[51%]"];
+	fn_2057_basic_block_7:s -> fn_2057_basic_block_9:n [style="solid,bold",color=darkorange,weight=10,constraint=true,label="[48%]"];
+	fn_2057_basic_block_8:s -> fn_2057_basic_block_11:n [style="solid,bold",color=black,weight=100,constraint=true,label="[100%]"];
+	fn_2057_basic_block_9:s -> fn_2057_basic_block_11:n [style="solid,bold",color=forestgreen,weight=10,constraint=true,label="[80%]"];
+	fn_2057_basic_block_9:s -> fn_2057_basic_block_10:n [style="solid,bold",color=darkorange,weight=10,constraint=true,label="[20%]"];
+	fn_2057_basic_block_10:s -> fn_2057_basic_block_11:n [style="solid,bold",color=black,weight=100,constraint=true,label="[100%]"];
+	fn_2057_basic_block_11:s -> fn_2057_basic_block_1:n [style="solid,bold",color=black,weight=10,constraint=true,label="[100%]"];
+	fn_2057_basic_block_0:s -> fn_2057_basic_block_1:n [style="invis",constraint=true];
+}
+}

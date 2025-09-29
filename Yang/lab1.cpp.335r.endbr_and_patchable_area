@@ -1,0 +1,502 @@
+
+;; Function std::ctype<char>::do_widen (_ZNKSt5ctypeIcE8do_widenEc, funcdef_no=1810, decl_uid=43557, cgraph_uid=515, symbol_order=551)
+
+scanning new insn with uid = 24.
+
+
+std::ctype<char>::do_widen
+
+Dataflow summary:
+;;  fully invalidated by EH 	 0 [ax] 1 [dx] 2 [cx] 4 [si] 5 [di] 8 [st] 9 [st(1)] 10 [st(2)] 11 [st(3)] 12 [st(4)] 13 [st(5)] 14 [st(6)] 15 [st(7)] 17 [flags] 18 [fpsr] 20 [xmm0] 21 [xmm1] 22 [xmm2] 23 [xmm3] 24 [xmm4] 25 [xmm5] 26 [xmm6] 27 [xmm7] 28 [mm0] 29 [mm1] 30 [mm2] 31 [mm3] 32 [mm4] 33 [mm5] 34 [mm6] 35 [mm7] 36 [r8] 37 [r9] 38 [r10] 39 [r11] 44 [xmm8] 45 [xmm9] 46 [xmm10] 47 [xmm11] 48 [xmm12] 49 [xmm13] 50 [xmm14] 51 [xmm15] 52 [xmm16] 53 [xmm17] 54 [xmm18] 55 [xmm19] 56 [xmm20] 57 [xmm21] 58 [xmm22] 59 [xmm23] 60 [xmm24] 61 [xmm25] 62 [xmm26] 63 [xmm27] 64 [xmm28] 65 [xmm29] 66 [xmm30] 67 [xmm31] 68 [k0] 69 [k1] 70 [k2] 71 [k3] 72 [k4] 73 [k5] 74 [k6] 75 [k7]
+;;  hardware regs used 	 7 [sp]
+;;  regular block artificial uses 	 7 [sp]
+;;  eh block artificial uses 	 7 [sp] 16 [argp]
+;;  entry block defs 	 0 [ax] 1 [dx] 2 [cx] 4 [si] 5 [di] 7 [sp] 20 [xmm0] 21 [xmm1] 22 [xmm2] 23 [xmm3] 24 [xmm4] 25 [xmm5] 26 [xmm6] 27 [xmm7] 36 [r8] 37 [r9]
+;;  exit block uses 	 0 [ax] 7 [sp]
+;;  regs ever live 	 0 [ax] 4 [si]
+;;  ref usage 	r0={2d,2u} r1={1d} r2={1d} r4={1d,1u} r5={1d} r7={1d,2u} r20={1d} r21={1d} r22={1d} r23={1d} r24={1d} r25={1d} r26={1d} r27={1d} r36={1d} r37={1d} 
+;;    total ref usage 22{17d,5u,0e} in 3{3 regular + 0 call} insns.
+(note 1 0 24 NOTE_INSN_DELETED)
+(insn 24 1 6 2 (unspec_volatile [
+            (const_int 0 [0])
+        ] UNSPECV_NOP_ENDBR) -1
+     (nil))
+(note 6 24 17 2 [bb 2] NOTE_INSN_BASIC_BLOCK)
+(note 17 6 3 2 NOTE_INSN_PROLOGUE_END)
+(note 3 17 5 2 NOTE_INSN_DELETED)
+(note 5 3 4 2 NOTE_INSN_FUNCTION_BEG)
+(insn:TI 4 5 13 2 (set (reg/v:QI 0 ax [orig:84 __c ] [84])
+        (reg:QI 4 si [87])) "/usr/include/c++/13/bits/locale_facets.h":1092:7 85 {*movqi_internal}
+     (expr_list:REG_DEAD (reg:QI 4 si [87])
+        (nil)))
+(insn 13 4 23 2 (use (reg/i:QI 0 ax)) "/usr/include/c++/13/bits/locale_facets.h":1093:21 -1
+     (nil))
+(note 23 13 19 2 NOTE_INSN_EPILOGUE_BEG)
+(jump_insn:TI 19 23 20 2 (simple_return) "/usr/include/c++/13/bits/locale_facets.h":1093:21 1026 {simple_return_internal}
+     (nil)
+ -> simple_return)
+(barrier 20 19 16)
+(note 16 20 0 NOTE_INSN_DELETED)
+
+;; Function main (main, funcdef_no=2057, decl_uid=50632, cgraph_uid=525, symbol_order=562) (executed once)
+
+scanning new insn with uid = 188.
+
+
+main
+
+Dataflow summary:
+;;  fully invalidated by EH 	 0 [ax] 1 [dx] 2 [cx] 4 [si] 5 [di] 8 [st] 9 [st(1)] 10 [st(2)] 11 [st(3)] 12 [st(4)] 13 [st(5)] 14 [st(6)] 15 [st(7)] 17 [flags] 18 [fpsr] 20 [xmm0] 21 [xmm1] 22 [xmm2] 23 [xmm3] 24 [xmm4] 25 [xmm5] 26 [xmm6] 27 [xmm7] 28 [mm0] 29 [mm1] 30 [mm2] 31 [mm3] 32 [mm4] 33 [mm5] 34 [mm6] 35 [mm7] 36 [r8] 37 [r9] 38 [r10] 39 [r11] 44 [xmm8] 45 [xmm9] 46 [xmm10] 47 [xmm11] 48 [xmm12] 49 [xmm13] 50 [xmm14] 51 [xmm15] 52 [xmm16] 53 [xmm17] 54 [xmm18] 55 [xmm19] 56 [xmm20] 57 [xmm21] 58 [xmm22] 59 [xmm23] 60 [xmm24] 61 [xmm25] 62 [xmm26] 63 [xmm27] 64 [xmm28] 65 [xmm29] 66 [xmm30] 67 [xmm31] 68 [k0] 69 [k1] 70 [k2] 71 [k3] 72 [k4] 73 [k5] 74 [k6] 75 [k7]
+;;  hardware regs used 	 7 [sp]
+;;  regular block artificial uses 	 7 [sp]
+;;  eh block artificial uses 	 7 [sp] 16 [argp]
+;;  entry block defs 	 0 [ax] 1 [dx] 2 [cx] 3 [bx] 4 [si] 5 [di] 6 [bp] 7 [sp] 20 [xmm0] 21 [xmm1] 22 [xmm2] 23 [xmm3] 24 [xmm4] 25 [xmm5] 26 [xmm6] 27 [xmm7] 36 [r8] 37 [r9]
+;;  exit block uses 	 0 [ax] 3 [bx] 6 [bp] 7 [sp]
+;;  regs ever live 	 0 [ax] 1 [dx] 2 [cx] 3 [bx] 4 [si] 5 [di] 6 [bp] 7 [sp] 17 [flags]
+;;  ref usage 	r0={20d,16u,1e} r1={13d,6u} r2={10d,2u} r3={3d,4u,1e} r4={19d,6u} r5={15d,6u} r6={3d,8u,1e} r7={7d,37u} r8={8d} r9={8d} r10={8d} r11={8d} r12={8d} r13={8d} r14={8d} r15={8d} r17={24d,9u} r18={8d} r20={9d} r21={9d} r22={9d} r23={9d} r24={9d} r25={9d} r26={9d} r27={9d} r28={8d} r29={8d} r30={8d} r31={8d} r32={8d} r33={8d} r34={8d} r35={8d} r36={9d} r37={9d} r38={8d} r39={8d} r44={8d} r45={8d} r46={8d} r47={8d} r48={8d} r49={8d} r50={8d} r51={8d} r52={8d} r53={8d} r54={8d} r55={8d} r56={8d} r57={8d} r58={8d} r59={8d} r60={8d} r61={8d} r62={8d} r63={8d} r64={8d} r65={8d} r66={8d} r67={8d} r68={8d} r69={8d} r70={8d} r71={8d} r72={8d} r73={8d} r74={8d} r75={8d} 
+;;    total ref usage 709{612d,94u,3e} in 67{59 regular + 8 call} insns.
+(note 1 0 188 NOTE_INSN_DELETED)
+(insn 188 1 9 2 (unspec_volatile [
+            (const_int 0 [0])
+        ] UNSPECV_NOP_ENDBR) -1
+     (nil))
+(note 9 188 2 2 [bb 2] NOTE_INSN_BASIC_BLOCK)
+(note 2 9 163 2 NOTE_INSN_FUNCTION_BEG)
+(insn/f:TI 163 2 13 2 (set (mem:DI (pre_dec:DI (reg/f:DI 7 sp)) [0  S8 A8])
+        (reg:DI 6 bp)) "lab1.cpp":4:12 56 {*pushdi2_rex64}
+     (expr_list:REG_DEAD (reg:DI 6 bp)
+        (nil)))
+(insn 13 163 164 2 (set (reg/f:DI 5 di [104])
+        (symbol_ref:DI ("_ZSt3cin") [flags 0x40]  <var_decl 0x7fb00fecb6c0 cin>)) "lab1.cpp":9:12 82 {*movdi_internal}
+     (expr_list:REG_EQUIV (symbol_ref:DI ("_ZSt3cin") [flags 0x40]  <var_decl 0x7fb00fecb6c0 cin>)
+        (nil)))
+(insn/f:TI 164 13 165 2 (set (mem:DI (pre_dec:DI (reg/f:DI 7 sp)) [0  S8 A8])
+        (reg:DI 3 bx)) "lab1.cpp":4:12 56 {*pushdi2_rex64}
+     (expr_list:REG_DEAD (reg:DI 3 bx)
+        (nil)))
+(insn/f:TI 165 164 166 2 (parallel [
+            (set (reg/f:DI 7 sp)
+                (plus:DI (reg/f:DI 7 sp)
+                    (const_int -24 [0xffffffffffffffe8])))
+            (clobber (reg:CC 17 flags))
+            (clobber (mem:BLK (scratch) [0  A8]))
+        ]) "lab1.cpp":4:12 1364 {pro_epilogue_adjust_stack_add_di}
+     (expr_list:REG_UNUSED (reg:CC 17 flags)
+        (expr_list:REG_CFA_ADJUST_CFA (set (reg/f:DI 7 sp)
+                (plus:DI (reg/f:DI 7 sp)
+                    (const_int -24 [0xffffffffffffffe8])))
+            (nil))))
+(note 166 165 4 2 NOTE_INSN_PROLOGUE_END)
+(insn:TI 4 166 162 2 (parallel [
+            (set (mem/v/f/c:DI (plus:DI (reg/f:DI 7 sp)
+                        (const_int 8 [0x8])) [14 D.54863+0 S8 A64])
+                (unspec:DI [
+                        (mem/v/f:DI (const_int 40 [0x28]) [9 MEM[(<address-space-1> long unsigned int *)40B]+0 S8 A64 AS1])
+                    ] UNSPEC_SP_SET))
+            (set (reg:DI 0 ax [122])
+                (const_int 0 [0]))
+            (clobber (reg:CC 17 flags))
+        ]) "lab1.cpp":4:12 1382 {stack_protect_set_1_di}
+     (expr_list:REG_UNUSED (reg:CC 17 flags)
+        (expr_list:REG_UNUSED (reg:DI 0 ax [122])
+            (nil))))
+(insn 162 4 15 2 (set (reg/f:DI 4 si [103])
+        (plus:DI (reg/f:DI 7 sp)
+            (const_int 4 [0x4]))) "lab1.cpp":9:12 241 {*leadi}
+     (nil))
+(call_insn:TI 15 162 16 2 (set (reg:DI 0 ax)
+        (call (mem:QI (symbol_ref:DI ("_ZNSirsERi") [flags 0x41]  <function_decl 0x7fb0101f8e00 operator>>>) [0 operator>> S1 A8])
+            (const_int 0 [0]))) "lab1.cpp":9:12 1013 {*call_value}
+     (expr_list:REG_DEAD (reg:DI 5 di)
+        (expr_list:REG_DEAD (reg:DI 4 si)
+            (expr_list:REG_UNUSED (reg:DI 0 ax)
+                (expr_list:REG_CALL_DECL (symbol_ref:DI ("_ZNSirsERi") [flags 0x41]  <function_decl 0x7fb0101f8e00 operator>>>)
+                    (nil)))))
+    (expr_list:DI (use (reg:DI 5 di))
+        (expr_list:DI (use (reg:DI 4 si))
+            (nil))))
+(insn 16 15 19 2 (set (reg:SI 1 dx [orig:98 n.0_37 ] [98])
+        (mem/c:SI (plus:DI (reg/f:DI 7 sp)
+                (const_int 4 [0x4])) [5 n+0 S4 A32])) "lab1.cpp":14:14 83 {*movsi_internal}
+     (nil))
+(insn:TI 19 16 20 2 (set (reg:CCGC 17 flags)
+        (compare:CCGC (reg:SI 1 dx [orig:98 n.0_37 ] [98])
+            (const_int 1 [0x1]))) "lab1.cpp":14:14 11 {*cmpsi_1}
+     (nil))
+(jump_insn 20 19 21 2 (set (pc)
+        (if_then_else (le (reg:CCGC 17 flags)
+                (const_int 0 [0]))
+            (label_ref:DI 98)
+            (pc))) "lab1.cpp":14:14 995 {*jcc}
+     (expr_list:REG_DEAD (reg:CCGC 17 flags)
+        (int_list:REG_BR_PROB 118111604 (nil)))
+ -> 98)
+(note 21 20 113 3 [bb 3] NOTE_INSN_BASIC_BLOCK)
+(note 113 21 114 3 NOTE_INSN_DELETED)
+(note 114 113 160 3 NOTE_INSN_DELETED)
+(insn:TI 160 114 186 3 (set (reg:SI 2 cx [orig:100 _45 ] [100])
+        (plus:SI (reg:SI 1 dx [orig:98 n.0_37 ] [98])
+            (const_int 1 [0x1]))) 240 {*leasi}
+     (nil))
+(insn 186 160 5 3 (parallel [
+            (set (reg:CCZ 17 flags)
+                (compare:CCZ (and:SI (reg:SI 1 dx [orig:98 n.0_37 ] [98])
+                        (const_int 1 [0x1]))
+                    (const_int 0 [0])))
+            (set (reg:SI 1 dx [orig:98 n.0_37 ] [98])
+                (and:SI (reg:SI 1 dx [orig:98 n.0_37 ] [98])
+                    (const_int 1 [0x1])))
+        ]) 574 {*andsi_2}
+     (expr_list:REG_UNUSED (reg:SI 1 dx [orig:98 n.0_37 ] [98])
+        (nil)))
+(insn 5 186 6 3 (set (reg/v:SI 4 si [orig:86 f ] [86])
+        (const_int 1 [0x1])) "lab1.cpp":12:7 83 {*movsi_internal}
+     (expr_list:REG_EQUAL (const_int 1 [0x1])
+        (nil)))
+(insn 6 5 129 3 (set (reg/v:SI 0 ax [orig:84 i ] [84])
+        (const_int 2 [0x2])) "lab1.cpp":11:7 83 {*movsi_internal}
+     (expr_list:REG_EQUAL (const_int 2 [0x2])
+        (nil)))
+(jump_insn:TI 129 6 122 3 (set (pc)
+        (if_then_else (ne (reg:CCZ 17 flags)
+                (const_int 0 [0]))
+            (label_ref:DI 26)
+            (pc))) 995 {*jcc}
+     (expr_list:REG_DEAD (reg:CCZ 17 flags)
+        (int_list:REG_BR_PROB 536870918 (nil)))
+ -> 26)
+(note 122 129 119 4 [bb 4] NOTE_INSN_BASIC_BLOCK)
+(insn:TI 119 122 118 4 (set (reg/v:SI 0 ax [orig:84 i ] [84])
+        (const_int 3 [0x3])) "lab1.cpp":16:11 83 {*movsi_internal}
+     (nil))
+(insn 118 119 120 4 (set (reg/v:SI 4 si [orig:86 f ] [86])
+        (const_int 2 [0x2])) "lab1.cpp":15:11 83 {*movsi_internal}
+     (nil))
+(insn:TI 120 118 121 4 (set (reg:CCZ 17 flags)
+        (compare:CCZ (reg/v:SI 0 ax [orig:84 i ] [84])
+            (reg:SI 2 cx [orig:100 _45 ] [100]))) "lab1.cpp":14:14 11 {*cmpsi_1}
+     (nil))
+(jump_insn 121 120 26 4 (set (pc)
+        (if_then_else (eq (reg:CCZ 17 flags)
+                (const_int 0 [0]))
+            (label_ref:DI 29)
+            (pc))) "lab1.cpp":14:14 995 {*jcc}
+     (expr_list:REG_DEAD (reg:CCZ 17 flags)
+        (int_list:REG_BR_PROB 118111604 (nil)))
+ -> 29)
+(code_label 26 121 23 5 5 (nil) [2 uses])
+(note 23 26 24 5 [bb 5] NOTE_INSN_BASIC_BLOCK)
+(insn:TI 24 23 159 5 (parallel [
+            (set (reg/v:SI 4 si [orig:86 f ] [86])
+                (mult:SI (reg/v:SI 4 si [orig:86 f ] [86])
+                    (reg/v:SI 0 ax [orig:84 i ] [84])))
+            (clobber (reg:CC 17 flags))
+        ]) "lab1.cpp":15:11 469 {*mulsi3_1}
+     (expr_list:REG_UNUSED (reg:CC 17 flags)
+        (nil)))
+(insn 159 24 133 5 (set (reg:SI 1 dx [118])
+        (plus:SI (reg/v:SI 0 ax [orig:84 i ] [84])
+            (const_int 1 [0x1]))) "lab1.cpp":16:11 240 {*leasi}
+     (nil))
+(insn 133 159 132 5 (parallel [
+            (set (reg/v:SI 0 ax [orig:84 i ] [84])
+                (plus:SI (reg/v:SI 0 ax [orig:84 i ] [84])
+                    (const_int 2 [0x2])))
+            (clobber (reg:CC 17 flags))
+        ]) "lab1.cpp":16:11 246 {*addsi_1}
+     (expr_list:REG_UNUSED (reg:CC 17 flags)
+        (nil)))
+(insn:TI 132 133 134 5 (parallel [
+            (set (reg/v:SI 4 si [orig:86 f ] [86])
+                (mult:SI (reg/v:SI 4 si [orig:86 f ] [86])
+                    (reg:SI 1 dx [118])))
+            (clobber (reg:CC 17 flags))
+        ]) "lab1.cpp":15:11 469 {*mulsi3_1}
+     (expr_list:REG_DEAD (reg:SI 1 dx [118])
+        (expr_list:REG_UNUSED (reg:CC 17 flags)
+            (nil))))
+(insn 134 132 135 5 (set (reg:CCZ 17 flags)
+        (compare:CCZ (reg/v:SI 0 ax [orig:84 i ] [84])
+            (reg:SI 2 cx [orig:100 _45 ] [100]))) "lab1.cpp":14:14 11 {*cmpsi_1}
+     (nil))
+(jump_insn 135 134 29 5 (set (pc)
+        (if_then_else (ne (reg:CCZ 17 flags)
+                (const_int 0 [0]))
+            (label_ref:DI 26)
+            (pc))) "lab1.cpp":14:14 995 {*jcc}
+     (expr_list:REG_DEAD (reg:CCZ 17 flags)
+        (int_list:REG_BR_PROB 955630228 (nil)))
+ -> 26)
+(code_label 29 135 30 6 4 (nil) [2 uses])
+(note 30 29 32 6 [bb 6] NOTE_INSN_BASIC_BLOCK)
+(insn:TI 32 30 34 6 (set (reg/f:DI 5 di [105])
+        (symbol_ref:DI ("_ZSt4cout") [flags 0x40]  <var_decl 0x7fb00fecb750 cout>)) "lab1.cpp":19:13 82 {*movdi_internal}
+     (expr_list:REG_EQUIV (symbol_ref:DI ("_ZSt4cout") [flags 0x40]  <var_decl 0x7fb00fecb750 cout>)
+        (nil)))
+(call_insn:TI 34 32 35 6 (set (reg:DI 0 ax)
+        (call (mem:QI (symbol_ref:DI ("_ZNSolsEi") [flags 0x41]  <function_decl 0x7fb010190000 operator<<>) [0 operator<< S1 A8])
+            (const_int 0 [0]))) "lab1.cpp":19:13 1013 {*call_value}
+     (expr_list:REG_DEAD (reg:DI 5 di)
+        (expr_list:REG_DEAD (reg:SI 4 si)
+            (expr_list:REG_CALL_DECL (symbol_ref:DI ("_ZNSolsEi") [flags 0x41]  <function_decl 0x7fb010190000 operator<<>)
+                (nil))))
+    (expr_list:DI (use (reg:DI 5 di))
+        (expr_list:SI (use (reg:SI 4 si))
+            (nil))))
+(insn:TI 35 34 36 6 (set (reg/f:DI 3 bx [orig:85 _8 ] [85])
+        (reg:DI 0 ax [119])) "lab1.cpp":19:13 82 {*movdi_internal}
+     (nil))
+(insn 36 35 37 6 (set (reg/f:DI 0 ax [orig:106 _8->_vptr.basic_ostream ] [106])
+        (mem/f:DI (reg/f:DI 0 ax [orig:85 _8 ] [85]) [2 _8->_vptr.basic_ostream+0 S8 A64])) "/usr/include/c++/13/ostream":736:39 82 {*movdi_internal}
+     (expr_list:REG_EQUIV (mem/f:DI (reg/f:DI 3 bx [orig:85 _8 ] [85]) [2 _8->_vptr.basic_ostream+0 S8 A64])
+        (nil)))
+(insn:TI 37 36 38 6 (set (reg:DI 0 ax [orig:107 MEM[(long int *)_13 + -24B] ] [107])
+        (mem:DI (plus:DI (reg/f:DI 0 ax [orig:106 _8->_vptr.basic_ostream ] [106])
+                (const_int -24 [0xffffffffffffffe8])) [9 MEM[(long int *)_13 + -24B]+0 S8 A64])) 82 {*movdi_internal}
+     (nil))
+(insn:TI 38 37 39 6 (set (reg/f:DI 6 bp [orig:93 _21 ] [93])
+        (mem/f:DI (plus:DI (plus:DI (reg/f:DI 3 bx [orig:85 _8 ] [85])
+                    (reg:DI 0 ax [orig:107 MEM[(long int *)_13 + -24B] ] [107]))
+                (const_int 240 [0xf0])) [6 MEM[(const struct __ctype_type * *)_16 + 240B]+0 S8 A64])) 82 {*movdi_internal}
+     (expr_list:REG_DEAD (reg:DI 0 ax [orig:107 MEM[(long int *)_13 + -24B] ] [107])
+        (nil)))
+(insn:TI 39 38 40 6 (set (reg:CCZ 17 flags)
+        (compare:CCZ (reg/f:DI 6 bp [orig:93 _21 ] [93])
+            (const_int 0 [0]))) "/usr/include/c++/13/bits/basic_ios.h":49:7 8 {*cmpdi_ccno_1}
+     (nil))
+(jump_insn 40 39 51 6 (set (pc)
+        (if_then_else (eq (reg:CCZ 17 flags)
+                (const_int 0 [0]))
+            (label_ref:DI 181)
+            (pc))) "/usr/include/c++/13/bits/basic_ios.h":49:7 995 {*jcc}
+     (expr_list:REG_DEAD (reg:CCZ 17 flags)
+        (int_list:REG_BR_PROB 429500 (nil)))
+ -> 181)
+(note 51 40 52 7 [bb 7] NOTE_INSN_BASIC_BLOCK)
+(insn:TI 52 51 53 7 (set (reg:CCZ 17 flags)
+        (compare:CCZ (mem:QI (plus:DI (reg/f:DI 6 bp [orig:93 _21 ] [93])
+                    (const_int 56 [0x38])) [0 MEM[(const struct ctype *)_21]._M_widen_ok+0 S1 A64])
+            (const_int 0 [0]))) "/usr/include/c++/13/bits/locale_facets.h":882:2 5 {*cmpqi_ccno_1}
+     (nil))
+(jump_insn:TI 53 52 54 7 (set (pc)
+        (if_then_else (eq (reg:CCZ 17 flags)
+                (const_int 0 [0]))
+            (label_ref 58)
+            (pc))) "/usr/include/c++/13/bits/locale_facets.h":882:2 995 {*jcc}
+     (expr_list:REG_DEAD (reg:CCZ 17 flags)
+        (int_list:REG_BR_PROB 524845004 (nil)))
+ -> 58)
+(note 54 53 55 8 [bb 8] NOTE_INSN_BASIC_BLOCK)
+(insn:TI 55 54 72 8 (set (reg:SI 4 si)
+        (sign_extend:SI (mem:QI (plus:DI (reg/f:DI 6 bp [orig:93 _21 ] [93])
+                    (const_int 67 [0x43])) [0 MEM[(const struct ctype *)_21]._M_widen[10]+0 S1 A8]))) "/usr/include/c++/13/bits/locale_facets.h":883:51 167 {extendqisi2}
+     (expr_list:REG_DEAD (reg/f:DI 6 bp [orig:93 _21 ] [93])
+        (nil)))
+(code_label 72 55 73 9 9 (nil) [2 uses])
+(note 73 72 76 9 [bb 9] NOTE_INSN_BASIC_BLOCK)
+(insn:TI 76 73 77 9 (set (reg:DI 5 di)
+        (reg/f:DI 3 bx [orig:85 _8 ] [85])) "/usr/include/c++/13/ostream":736:19 discrim 1 82 {*movdi_internal}
+     (expr_list:REG_DEAD (reg/f:DI 3 bx [orig:85 _8 ] [85])
+        (nil)))
+(call_insn:TI 77 76 78 9 (set (reg:DI 0 ax)
+        (call (mem:QI (symbol_ref:DI ("_ZNSo3putEc") [flags 0x41]  <function_decl 0x7fb010190a00 put>) [0 put S1 A8])
+            (const_int 0 [0]))) "/usr/include/c++/13/ostream":736:19 discrim 1 1013 {*call_value}
+     (expr_list:REG_DEAD (reg:DI 5 di)
+        (expr_list:REG_DEAD (reg:SI 4 si)
+            (expr_list:REG_CALL_DECL (symbol_ref:DI ("_ZNSo3putEc") [flags 0x41]  <function_decl 0x7fb010190a00 put>)
+                (nil))))
+    (expr_list:DI (use (reg:DI 5 di))
+        (expr_list:SI (use (reg:SI 4 si))
+            (nil))))
+(insn:TI 78 77 80 9 (set (reg/f:DI 5 di [orig:92 _19 ] [92])
+        (reg:DI 0 ax [121])) "/usr/include/c++/13/ostream":736:19 discrim 1 82 {*movdi_internal}
+     (expr_list:REG_DEAD (reg:DI 0 ax [121])
+        (nil)))
+(call_insn:TI 80 78 86 9 (set (reg:DI 0 ax)
+        (call (mem:QI (symbol_ref:DI ("_ZNSo5flushEv") [flags 0x41]  <function_decl 0x7fb010190c00 flush>) [0 flush S1 A8])
+            (const_int 0 [0]))) "/usr/include/c++/13/ostream":758:24 1013 {*call_value}
+     (expr_list:REG_DEAD (reg:DI 5 di)
+        (expr_list:REG_UNUSED (reg:DI 0 ax)
+            (expr_list:REG_CALL_DECL (symbol_ref:DI ("_ZNSo5flushEv") [flags 0x41]  <function_decl 0x7fb010190c00 flush>)
+                (nil))))
+    (expr_list:DI (use (reg:DI 5 di))
+        (nil)))
+(insn:TI 86 80 87 9 (parallel [
+            (set (reg:CCZ 17 flags)
+                (unspec:CCZ [
+                        (mem/v/f/c:DI (plus:DI (reg/f:DI 7 sp)
+                                (const_int 8 [0x8])) [14 D.54863+0 S8 A64])
+                        (mem/v/f:DI (const_int 40 [0x28]) [9 MEM[(<address-space-1> long unsigned int *)40B]+0 S8 A64 AS1])
+                    ] UNSPEC_SP_TEST))
+            (clobber (reg:DI 0 ax [124]))
+        ]) "lab1.cpp":21:1 1387 {stack_protect_test_1_di}
+     (expr_list:REG_UNUSED (reg:DI 0 ax [124])
+        (nil)))
+(jump_insn 87 86 106 9 (set (pc)
+        (if_then_else (ne (reg:CCZ 17 flags)
+                (const_int 0 [0]))
+            (label_ref:DI 176)
+            (pc))) "lab1.cpp":21:1 995 {*jcc}
+     (expr_list:REG_DEAD (reg:CCZ 17 flags)
+        (int_list:REG_BR_PROB 429500 (nil)))
+ -> 176)
+(note 106 87 187 10 [bb 10] NOTE_INSN_BASIC_BLOCK)
+(note 187 106 168 10 NOTE_INSN_EPILOGUE_BEG)
+(insn/f:TI 168 187 179 10 (parallel [
+            (set (reg/f:DI 7 sp)
+                (plus:DI (reg/f:DI 7 sp)
+                    (const_int 24 [0x18])))
+            (clobber (reg:CC 17 flags))
+            (clobber (mem:BLK (scratch) [0  A8]))
+        ]) "lab1.cpp":21:1 1364 {pro_epilogue_adjust_stack_add_di}
+     (expr_list:REG_UNUSED (reg:CC 17 flags)
+        (expr_list:REG_CFA_ADJUST_CFA (set (reg/f:DI 7 sp)
+                (plus:DI (reg/f:DI 7 sp)
+                    (const_int 24 [0x18])))
+            (nil))))
+(insn 179 168 92 10 (parallel [
+            (set (reg:DI 0 ax)
+                (const_int 0 [0]))
+            (clobber (reg:CC 17 flags))
+        ]) "lab1.cpp":21:1 72 {*movdi_xor}
+     (expr_list:REG_UNUSED (reg:CC 17 flags)
+        (nil)))
+(insn 92 179 169 10 (use (reg/i:SI 0 ax)) "lab1.cpp":21:1 -1
+     (nil))
+(insn/f:TI 169 92 170 10 (set (reg:DI 3 bx)
+        (mem:DI (post_inc:DI (reg/f:DI 7 sp)) [0  S8 A8])) "lab1.cpp":21:1 64 {*popdi1}
+     (expr_list:REG_CFA_ADJUST_CFA (set (reg/f:DI 7 sp)
+            (plus:DI (reg/f:DI 7 sp)
+                (const_int 8 [0x8])))
+        (nil)))
+(insn/f 170 169 171 10 (set (reg:DI 6 bp)
+        (mem:DI (post_inc:DI (reg/f:DI 7 sp)) [0  S8 A8])) "lab1.cpp":21:1 64 {*popdi1}
+     (expr_list:REG_CFA_ADJUST_CFA (set (reg/f:DI 7 sp)
+            (plus:DI (reg/f:DI 7 sp)
+                (const_int 8 [0x8])))
+        (nil)))
+(jump_insn:TI 171 170 174 10 (simple_return) "lab1.cpp":21:1 1026 {simple_return_internal}
+     (nil)
+ -> simple_return)
+(barrier 174 171 58)
+(code_label 58 174 59 11 8 (nil) [1 uses])
+(note 59 58 60 11 [bb 11] NOTE_INSN_BASIC_BLOCK)
+(insn:TI 60 59 61 11 (set (reg:DI 5 di)
+        (reg/f:DI 6 bp [orig:93 _21 ] [93])) "/usr/include/c++/13/bits/locale_facets.h":884:21 82 {*movdi_internal}
+     (nil))
+(call_insn:TI 61 60 62 11 (call (mem:QI (symbol_ref:DI ("_ZNKSt5ctypeIcE13_M_widen_initEv") [flags 0x41]  <function_decl 0x7fb010329300 _M_widen_init>) [0 _M_widen_init S1 A8])
+        (const_int 0 [0])) "/usr/include/c++/13/bits/locale_facets.h":884:21 1002 {*call}
+     (expr_list:REG_DEAD (reg:DI 5 di)
+        (expr_list:REG_CALL_DECL (symbol_ref:DI ("_ZNKSt5ctypeIcE13_M_widen_initEv") [flags 0x41]  <function_decl 0x7fb010329300 _M_widen_init>)
+            (nil)))
+    (expr_list:DI (use (reg:DI 5 di))
+        (nil)))
+(insn 62 61 8 11 (set (reg/f:DI 0 ax [orig:109 MEM[(const struct ctype *)_21].D.43629._vptr.facet ] [109])
+        (mem/f:DI (reg/f:DI 6 bp [orig:93 _21 ] [93]) [2 MEM[(const struct ctype *)_21].D.43629._vptr.facet+0 S8 A64])) "/usr/include/c++/13/bits/locale_facets.h":885:23 82 {*movdi_internal}
+     (expr_list:REG_EQUIV (mem/f:DI (reg/f:DI 6 bp [orig:93 _21 ] [93]) [2 MEM[(const struct ctype *)_21].D.43629._vptr.facet+0 S8 A64])
+        (nil)))
+(insn 8 62 157 11 (set (reg:SI 4 si)
+        (const_int 10 [0xa])) "/usr/include/c++/13/bits/locale_facets.h":885:23 83 {*movsi_internal}
+     (nil))
+(insn 157 8 63 11 (set (reg/f:DI 1 dx [110])
+        (symbol_ref/i:DI ("_ZNKSt5ctypeIcE8do_widenEc") [flags 0x3]  <function_decl 0x7fb01031ee00 do_widen>)) 82 {*movdi_internal}
+     (expr_list:REG_EQUIV (symbol_ref/i:DI ("_ZNKSt5ctypeIcE8do_widenEc") [flags 0x3]  <function_decl 0x7fb01031ee00 do_widen>)
+        (nil)))
+(insn:TI 63 157 65 11 (set (reg/f:DI 0 ax [orig:97 _35 ] [97])
+        (mem/f:DI (plus:DI (reg/f:DI 0 ax [orig:109 MEM[(const struct ctype *)_21].D.43629._vptr.facet ] [109])
+                (const_int 48 [0x30])) [4 MEM[(int (*) () *)_34 + 48B]+0 S8 A64])) "/usr/include/c++/13/bits/locale_facets.h":885:23 82 {*movdi_internal}
+     (nil))
+(insn:TI 65 63 66 11 (set (reg:CCZ 17 flags)
+        (compare:CCZ (reg/f:DI 0 ax [orig:97 _35 ] [97])
+            (reg/f:DI 1 dx [110]))) 12 {*cmpdi_1}
+     (expr_list:REG_DEAD (reg/f:DI 1 dx [110])
+        (expr_list:REG_EQUAL (compare:CCZ (reg/f:DI 0 ax [orig:97 _35 ] [97])
+                (symbol_ref/i:DI ("_ZNKSt5ctypeIcE8do_widenEc") [flags 0x3]  <function_decl 0x7fb01031ee00 do_widen>))
+            (nil))))
+(jump_insn 66 65 67 11 (set (pc)
+        (if_then_else (eq (reg:CCZ 17 flags)
+                (const_int 0 [0]))
+            (label_ref:DI 72)
+            (pc))) 995 {*jcc}
+     (expr_list:REG_DEAD (reg:CCZ 17 flags)
+        (int_list:REG_BR_PROB 858993468 (nil)))
+ -> 72)
+(note 67 66 68 12 [bb 12] NOTE_INSN_BASIC_BLOCK)
+(insn:TI 68 67 69 12 (set (reg:SI 4 si)
+        (const_int 10 [0xa])) "/usr/include/c++/13/bits/locale_facets.h":885:23 83 {*movsi_internal}
+     (nil))
+(insn 69 68 70 12 (set (reg:DI 5 di)
+        (reg/f:DI 6 bp [orig:93 _21 ] [93])) "/usr/include/c++/13/bits/locale_facets.h":885:23 82 {*movdi_internal}
+     (expr_list:REG_DEAD (reg/f:DI 6 bp [orig:93 _21 ] [93])
+        (nil)))
+(call_insn:TI 70 69 71 12 (set (reg:QI 0 ax)
+        (call (mem:QI (reg/f:DI 0 ax [orig:97 _35 ] [97]) [0 *OBJ_TYPE_REF(_35;_21->6B) S1 A8])
+            (const_int 0 [0]))) "/usr/include/c++/13/bits/locale_facets.h":885:23 1013 {*call_value}
+     (expr_list:REG_DEAD (reg:DI 5 di)
+        (expr_list:REG_DEAD (reg:SI 4 si)
+            (expr_list:REG_CALL_DECL (nil)
+                (nil))))
+    (expr_list:DI (use (reg:DI 5 di))
+        (expr_list:SI (use (reg:SI 4 si))
+            (nil))))
+(insn:TI 71 70 182 12 (set (reg:SI 4 si)
+        (sign_extend:SI (reg:QI 0 ax [120]))) "/usr/include/c++/13/bits/locale_facets.h":885:23 167 {extendqisi2}
+     (expr_list:REG_DEAD (reg:QI 0 ax [120])
+        (nil)))
+(jump_insn 182 71 183 12 (set (pc)
+        (label_ref 72)) 996 {jump}
+     (nil)
+ -> 72)
+(barrier 183 182 98)
+(code_label 98 183 97 13 11 (nil) [1 uses])
+(note 97 98 7 13 [bb 13] NOTE_INSN_BASIC_BLOCK)
+(insn:TI 7 97 184 13 (set (reg/v:SI 4 si [orig:86 f ] [86])
+        (const_int 1 [0x1])) "lab1.cpp":12:7 83 {*movsi_internal}
+     (nil))
+(jump_insn 184 7 185 13 (set (pc)
+        (label_ref 29)) 996 {jump}
+     (nil)
+ -> 29)
+(barrier 185 184 176)
+(code_label 176 185 105 14 20 (nil) [2 uses])
+(note 105 176 88 14 [bb 14] NOTE_INSN_BASIC_BLOCK)
+(call_insn:TI 88 105 89 14 (call (mem:QI (symbol_ref:DI ("__stack_chk_fail") [flags 0x41]  <function_decl 0x7fb00fdc5600 __stack_chk_fail>) [0 __stack_chk_fail S1 A8])
+        (const_int 0 [0])) "lab1.cpp":21:1 1002 {*call}
+     (expr_list:REG_CALL_DECL (symbol_ref:DI ("__stack_chk_fail") [flags 0x41]  <function_decl 0x7fb00fdc5600 __stack_chk_fail>)
+        (expr_list:REG_ARGS_SIZE (const_int 0 [0])
+            (expr_list:REG_NORETURN (const_int 0 [0])
+                (expr_list:REG_EH_REGION (const_int 0 [0])
+                    (nil)))))
+    (nil))
+(barrier 89 88 181)
+(code_label 181 89 41 15 21 (nil) [1 uses])
+(note 41 181 43 15 [bb 15] NOTE_INSN_BASIC_BLOCK)
+(insn:TI 43 41 44 15 (parallel [
+            (set (reg:CCZ 17 flags)
+                (unspec:CCZ [
+                        (mem/v/f/c:DI (plus:DI (reg/f:DI 7 sp)
+                                (const_int 8 [0x8])) [14 D.54863+0 S8 A64])
+                        (mem/v/f:DI (const_int 40 [0x28]) [9 MEM[(<address-space-1> long unsigned int *)40B]+0 S8 A64 AS1])
+                    ] UNSPEC_SP_TEST))
+            (clobber (reg:DI 0 ax [123]))
+        ]) "/usr/include/c++/13/bits/basic_ios.h":50:18 1387 {stack_protect_test_1_di}
+     (expr_list:REG_UNUSED (reg:DI 0 ax [123])
+        (nil)))
+(jump_insn 44 43 104 15 (set (pc)
+        (if_then_else (ne (reg:CCZ 17 flags)
+                (const_int 0 [0]))
+            (label_ref:DI 176)
+            (pc))) "/usr/include/c++/13/bits/basic_ios.h":50:18 995 {*jcc}
+     (expr_list:REG_DEAD (reg:CCZ 17 flags)
+        (int_list:REG_BR_PROB 429500 (nil)))
+ -> 176)
+(note 104 44 48 16 [bb 16] NOTE_INSN_BASIC_BLOCK)
+(call_insn:TI 48 104 49 16 (call (mem:QI (symbol_ref:DI ("_ZSt16__throw_bad_castv") [flags 0x41]  <function_decl 0x7fb011771100 __throw_bad_cast>) [0 __throw_bad_cast S1 A8])
+        (const_int 0 [0])) "/usr/include/c++/13/bits/basic_ios.h":50:18 1002 {*call}
+     (expr_list:REG_CALL_DECL (symbol_ref:DI ("_ZSt16__throw_bad_castv") [flags 0x41]  <function_decl 0x7fb011771100 __throw_bad_cast>)
+        (expr_list:REG_ARGS_SIZE (const_int 0 [0])
+            (expr_list:REG_NORETURN (const_int 0 [0])
+                (nil))))
+    (nil))
+(barrier 49 48 158)
+(note 158 49 0 NOTE_INSN_DELETED)

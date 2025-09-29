@@ -1,0 +1,342 @@
+
+;; Function std::basic_ostream<char>::operator<< (_ZNSolsEPFRSoS_E, funcdef_no=2313, decl_uid=47902, cgraph_uid=781, symbol_order=818)
+
+
+Analyzing function body size: std::basic_ostream<_CharT, _Traits>::__ostream_type& std::basic_ostream<_CharT, _Traits>::operator<<(__ostream_type& (*)(__ostream_type&)) [with _CharT = char; _Traits = std::char_traits<char>]/818
+
+IPA function summary for std::basic_ostream<_CharT, _Traits>::__ostream_type& std::basic_ostream<_CharT, _Traits>::operator<<(__ostream_type& (*)(__ostream_type&)) [with _CharT = char; _Traits = std::char_traits<char>]/818 inlinable
+  global time:     19.000000
+  self size:       8
+  global size:     8
+  min size:       0
+  self stack:      0
+  global stack:    0
+    size:0.000000, time:0.000000
+    size:3.000000, time:2.000000,  executed if:(not inlined)
+  calls:
+    indirect call loop depth: 0 freq:1.00 size: 5 time: 17
+
+struct __ostream_type & std::basic_ostream<char>::operator<< (struct basic_ostream * const this, struct __ostream_type & (*<T7eb4>) (struct __ostream_type &) __pf)
+{
+  struct __ostream_type & _5;
+
+  <bb 2> [local count: 1073741824]:
+  _5 = __pf_1(D) (this_3(D));
+  return _5;
+
+}
+
+
+
+;; Function std::flush<char, std::char_traits<char> > (_ZSt5flushIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_, funcdef_no=2416, decl_uid=48124, cgraph_uid=884, symbol_order=921)
+
+
+Analyzing function body size: std::basic_ostream<_CharT, _Traits>& std::flush(basic_ostream<_CharT, _Traits>&) [with _CharT = char; _Traits = char_traits<char>]/921
+
+IPA function summary for std::basic_ostream<_CharT, _Traits>& std::flush(basic_ostream<_CharT, _Traits>&) [with _CharT = char; _Traits = char_traits<char>]/921 inlinable
+  global time:     14.000000
+  self size:       6
+  global size:     6
+  min size:       0
+  self stack:      0
+  global stack:    0
+    size:0.000000, time:0.000000
+    size:3.000000, time:2.000000,  executed if:(not inlined)
+  calls:
+    std::basic_ostream<_CharT, _Traits>& std::basic_ostream<_CharT, _Traits>::flush() [with _CharT = char; _Traits = std::char_traits<char>]/1233 function body not available
+      freq:1.00 loop depth: 0 size: 3 time: 12
+
+struct basic_ostream & std::flush<char, std::char_traits<char> > (struct basic_ostream & __os)
+{
+  struct basic_ostream & _4;
+
+  <bb 2> [local count: 1073741824]:
+  _4 = std::basic_ostream<char>::flush (__os_2(D));
+  return _4;
+
+}
+
+
+
+;; Function std::ctype<char>::widen (_ZNKSt5ctypeIcE5widenEc, funcdef_no=1805, decl_uid=43499, cgraph_uid=510, symbol_order=546)
+
+
+Analyzing function body size: std::ctype<char>::char_type std::ctype<char>::widen(char) const/546
+		Accounting address calculation.
+
+IPA function summary for std::ctype<char>::char_type std::ctype<char>::widen(char) const/546 inlinable
+  global time:     12.376800
+  self size:       12
+  global size:     19
+  min size:       0
+  self stack:      0
+  global stack:    0
+    size:0.000000, time:0.000000
+    size:3.000000, time:2.000000,  executed if:(not inlined)
+    size:0.500000, time:0.500000,  executed if:(not inlined),  nonconst if:(op0[ref offset: 448] changed) && (not inlined)
+    size:2.500000, time:2.500000,  nonconst if:(op0[ref offset: 448] changed)
+    size:0.500000, time:0.255600,  executed if:(op0[ref offset: 448] != 0) && (not inlined)
+    size:0.500000, time:0.255600,  executed if:(op0[ref offset: 448] != 0)
+    size:1.000000, time:0.511200,  executed if:(op0[ref offset: 448] != 0),  nonconst if:(op1 changed) && (op0[ref offset: 448] != 0)
+  calls:
+    std::ctype<char>::char_type std::ctype<char>::_ZNKSt5ctypeIcE5widenEc.part.0(char) const/1234 function not considered for inlining
+      freq:0.49 loop depth: 0 size: 4 time: 13 callee size: 6 stack: 0 predicate: (op0[ref offset: 448] == 0)
+
+char_type std::ctype<char>::widen (const struct ctype * const this, char __c)
+{
+  char _1;
+  unsigned char __c.1_2;
+  int _3;
+  int _4;
+  char_type _5;
+  char _9;
+  char_type _10;
+
+  <bb 2> [local count: 1073741824]:
+  _1 = this_7(D)->_M_widen_ok;
+  if (_1 != 0)
+    goto <bb 3>; [51.12%]
+  else
+    goto <bb 4>; [48.88%]
+
+  <bb 3> [local count: 548896825]:
+  __c.1_2 = (unsigned char) __c_8(D);
+  _3 = (int) __c.1_2;
+  _10 = this_7(D)->_M_widen[_3];
+  goto <bb 5>; [100.00%]
+
+  <bb 4> [local count: 524845000]:
+  _4 = (int) __c_8(D);
+  _9 = std::ctype<char>::_ZNKSt5ctypeIcE5widenEc.part.0 (this_7(D), _4);
+
+  <bb 5> [local count: 1073741824]:
+  # _5 = PHI <_10(3), _9(4)>
+  return _5;
+
+}
+
+
+
+;; Function std::ctype<char>::do_widen (_ZNKSt5ctypeIcE8do_widenEc, funcdef_no=1810, decl_uid=43557, cgraph_uid=515, symbol_order=551)
+
+
+Analyzing function body size: virtual std::ctype<char>::char_type std::ctype<char>::do_widen(char) const/551
+
+IPA function summary for virtual std::ctype<char>::char_type std::ctype<char>::do_widen(char) const/551 inlinable
+  global time:     2.000000
+  self size:       3
+  global size:     3
+  min size:       0
+  self stack:      0
+  global stack:    0
+    size:0.000000, time:0.000000
+    size:3.000000, time:2.000000,  executed if:(not inlined)
+  calls:
+
+char_type std::ctype<char>::do_widen (const struct ctype * const this, char __c)
+{
+  <bb 2> [local count: 1073741824]:
+  return __c_1(D);
+
+}
+
+
+
+;; Function main (main, funcdef_no=2057, decl_uid=50632, cgraph_uid=525, symbol_order=562) (executed once)
+
+
+Analyzing function body size: int main()/562
+
+IPA function summary for int main()/562 inlinable
+  global time:     81.454546
+  self size:       17
+  global size:     20
+  min size:       0
+  self stack:      4
+  global stack:    4
+    size:5.000000, time:43.454546
+    size:3.000000, time:2.000000,  executed if:(not inlined)
+  calls:
+    std::basic_ostream<_CharT, _Traits>& std::endl(basic_ostream<_CharT, _Traits>&) [with _CharT = char; _Traits = char_traits<char>]/817 function not considered for inlining
+      freq:1.00 loop depth: 0 size: 2 time: 11
+    std::basic_ostream<_CharT, _Traits>& std::basic_ostream<_CharT, _Traits>::operator<<(int) [with _CharT = char; _Traits = std::char_traits<char>]/1227 function body not available
+      freq:1.00 loop depth: 0 size: 4 time: 13
+       op0 is compile time invariant
+    std::basic_istream<_CharT, _Traits>& std::basic_istream<_CharT, _Traits>::operator>>(int&) [with _CharT = char; _Traits = std::char_traits<char>]/1225 function body not available
+      freq:1.00 loop depth: 0 size: 3 time: 12
+       op0 is compile time invariant
+       op1 is compile time invariant
+       op1 points to local or readonly memory
+
+int main ()
+{
+  int f;
+  int n;
+  int i;
+  int n.0_1;
+  struct basic_ostream & _8;
+
+  <bb 2> [local count: 118111600]:
+  std::basic_istream<char>::operator>> (&cin, &n);
+  goto <bb 4>; [100.00%]
+
+  <bb 3> [local count: 955630225]:
+  f_10 = i_2 * f_3;
+  i_11 = i_2 + 1;
+
+  <bb 4> [local count: 1073741824]:
+  # i_2 = PHI <2(2), i_11(3)>
+  # f_3 = PHI <1(2), f_10(3)>
+  n.0_1 = n;
+  if (n.0_1 >= i_2)
+    goto <bb 3>; [89.00%]
+  else
+    goto <bb 5>; [11.00%]
+
+  <bb 5> [local count: 118111600]:
+  # f_4 = PHI <f_3(4)>
+  _8 = std::basic_ostream<char>::operator<< (&cout, f_4);
+  std::endl<char, std::char_traits<char> > (_8);
+  n ={v} {CLOBBER(eol)};
+  return 0;
+
+}
+
+
+
+;; Function std::__check_facet<std::ctype<char> > (_ZSt13__check_facetISt5ctypeIcEERKT_PS3_, funcdef_no=2484, decl_uid=53998, cgraph_uid=952, symbol_order=989)
+
+
+Analyzing function body size: const _Facet& std::__check_facet(const _Facet*) [with _Facet = ctype<char>]/989
+
+IPA function summary for const _Facet& std::__check_facet(const _Facet*) [with _Facet = ctype<char>]/989 inlinable
+  global time:     4.003200
+  self size:       6
+  global size:     6
+  min size:       0
+  self stack:      0
+  global stack:    0
+    size:0.000000, time:0.000000
+    size:2.000000, time:0.000000,  executed if:(not inlined)
+    size:2.000000, time:2.000000,  nonconst if:(op0 changed)
+    size:1.000000, time:1.999200,  executed if:(op0 != 0B) && (not inlined)
+  calls:
+    void std::__throw_bad_cast()/1231 function body not available
+      freq:0.00 loop depth: 0 size: 1 time: 10 predicate: (op0 == 0B)
+
+const struct ctype & std::__check_facet<std::ctype<char> > (const struct ctype * __f)
+{
+  <bb 2> [local count: 1073741824]:
+  if (__f_1(D) == 0B)
+    goto <bb 3>; [0.04%]
+  else
+    goto <bb 4>; [99.96%]
+
+  <bb 3> [local count: 429496]:
+  std::__throw_bad_cast ();
+
+  <bb 4> [local count: 1073312329]:
+  return __f_1(D);
+
+}
+
+
+
+;; Function std::basic_ios<char>::widen (_ZNKSt9basic_iosIcSt11char_traitsIcEE5widenEc, funcdef_no=2415, decl_uid=47119, cgraph_uid=883, symbol_order=920)
+
+
+Analyzing function body size: std::basic_ios<_CharT, _Traits>::char_type std::basic_ios<_CharT, _Traits>::widen(char) const [with _CharT = char; _Traits = std::char_traits<char>]/920
+
+IPA function summary for std::basic_ios<_CharT, _Traits>::char_type std::basic_ios<_CharT, _Traits>::widen(char) const [with _CharT = char; _Traits = std::char_traits<char>]/920 inlinable
+  global time:     17.998000
+  self size:       11
+  global size:     11
+  min size:       0
+  self stack:      0
+  global stack:    0
+    size:0.000000, time:0.000000
+    size:2.000000, time:0.000000,  executed if:(not inlined)
+    size:0.500000, time:0.500000,  executed if:(not inlined),  nonconst if:(op0[ref offset: 1920] changed) && (not inlined)
+    size:2.500000, time:2.500000,  nonconst if:(op0[ref offset: 1920] changed)
+    size:1.000000, time:1.999200,  executed if:(op0[ref offset: 1920] != 0B) && (not inlined)
+  calls:
+    std::ctype<char>::char_type std::ctype<char>::widen(char) const/546 function not considered for inlining
+      freq:1.00 loop depth: 0 size: 4 time: 13 callee size: 6 stack: 0 predicate: (op0[ref offset: 1920] != 0B)
+    void std::__throw_bad_cast()/1231 function body not available
+      freq:0.00 loop depth: 0 size: 1 time: 10 predicate: (op0[ref offset: 1920] == 0B)
+
+char_type std::basic_ios<char>::widen (const struct basic_ios * const this, char __c)
+{
+  const struct __ctype_type * _1;
+  int _2;
+  char_type _7;
+
+  <bb 2> [local count: 1073741824]:
+  _1 = this_4(D)->_M_ctype;
+  if (_1 == 0B)
+    goto <bb 3>; [0.04%]
+  else
+    goto <bb 4>; [99.96%]
+
+  <bb 3> [local count: 429496]:
+  std::__throw_bad_cast ();
+
+  <bb 4> [local count: 1073312329]:
+  _2 = (int) __c_5(D);
+  _7 = std::ctype<char>::widen (_1, _2);
+  return _7;
+
+}
+
+
+
+;; Function std::endl<char, std::char_traits<char> > (_ZSt4endlIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_, funcdef_no=2312, decl_uid=48114, cgraph_uid=780, symbol_order=817)
+
+
+Analyzing function body size: std::basic_ostream<_CharT, _Traits>& std::endl(basic_ostream<_CharT, _Traits>&) [with _CharT = char; _Traits = char_traits<char>]/817
+
+IPA function summary for std::basic_ostream<_CharT, _Traits>& std::endl(basic_ostream<_CharT, _Traits>&) [with _CharT = char; _Traits = char_traits<char>]/817 inlinable
+  global time:     43.000000
+  self size:       17
+  global size:     18
+  min size:       0
+  self stack:      0
+  global stack:    0
+    size:2.000000, time:2.000000
+    size:3.000000, time:2.000000,  executed if:(not inlined)
+    size:0.500000, time:0.500000,  executed if:(not inlined),  nonconst if:(op0[ref offset: 0] changed) && (not inlined)
+    size:0.500000, time:0.500000,  nonconst if:(op0[ref offset: 0] changed)
+  calls:
+    std::basic_ostream<_CharT, _Traits>& std::basic_ostream<_CharT, _Traits>::flush() [with _CharT = char; _Traits = std::char_traits<char>]/1233 function body not available
+      freq:1.00 loop depth: 0 size: 3 time: 12
+    std::basic_ostream<_CharT, _Traits>& std::basic_ostream<_CharT, _Traits>::put(char_type) [with _CharT = char; _Traits = std::char_traits<char>]/1230 function body not available
+      freq:1.00 loop depth: 0 size: 4 time: 13
+    std::basic_ios<_CharT, _Traits>::char_type std::basic_ios<_CharT, _Traits>::widen(char) const [with _CharT = char; _Traits = std::char_traits<char>]/920 function not considered for inlining
+      freq:1.00 loop depth: 0 size: 4 time: 13 callee size: 5 stack: 0
+       op1 is compile time invariant
+
+struct basic_ostream & std::endl<char, std::char_traits<char> > (struct basic_ostream & __os)
+{
+  int (*) () * _1;
+  long int _2;
+  sizetype _3;
+  struct basic_ios * _4;
+  int _5;
+  char _9;
+  struct basic_ostream & _11;
+  struct basic_ostream & _12;
+
+  <bb 2> [local count: 1073741824]:
+  _1 = __os_7(D)->_vptr.basic_ostream;
+  _2 = MEM[(long int *)_1 + -24B];
+  _3 = (sizetype) _2;
+  _4 = __os_7(D) + _3;
+  _9 = std::basic_ios<char>::widen (_4, 10);
+  _5 = (int) _9;
+  _11 = std::basic_ostream<char>::put (__os_7(D), _5);
+  _12 = std::basic_ostream<char>::flush (_11);
+  return _12;
+
+}
+
+

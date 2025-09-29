@@ -1,0 +1,261 @@
+digraph "lab1.cpp.261r.cse1" {
+overlap=false;
+subgraph "cluster_std::ctype<char>::do_widen" {
+	style="dashed";
+	color="black";
+	label="std::ctype<char>::do_widen ()";
+	fn_1810_basic_block_0 [shape=Mdiamond,style=filled,fillcolor=white,label="ENTRY"];
+
+	fn_1810_basic_block_1 [shape=Mdiamond,style=filled,fillcolor=white,label="EXIT"];
+
+	fn_1810_basic_block_2 [shape=record,style=filled,fillcolor=lightgrey,label="{COUNT:1073741824\ \ \ \ 6:\ NOTE_INSN_BASIC_BLOCK\ 2\l\
+|\ \ \ \ 3:\ r85:SI=si:SI\l\
+\ \ \ \ \ \ REG_DEAD\ si:SI\l\
+|\ \ \ \ 4:\ r84:QI=r85:SI#0\l\
+\ \ \ \ \ \ REG_DEAD\ r85:SI\l\
+|\ \ \ \ 5:\ NOTE_INSN_FUNCTION_BEG\l\
+|\ \ \ \ 8:\ r82:QI=r85:SI#0\l\
+\ \ \ \ \ \ REG_DEAD\ r84:QI\l\
+|\ \ \ 12:\ ax:QI=r84:QI\l\
+\ \ \ \ \ \ REG_DEAD\ r82:QI\l\
+|\ \ \ 13:\ use\ ax:QI\l\
+}"];
+
+	fn_1810_basic_block_0:s -> fn_1810_basic_block_2:n [style="solid,bold",color=black,weight=100,constraint=true,label="[100%]"];
+	fn_1810_basic_block_2:s -> fn_1810_basic_block_1:n [style="solid,bold",color=black,weight=100,constraint=true,label="[100%]"];
+	fn_1810_basic_block_0:s -> fn_1810_basic_block_1:n [style="invis",constraint=true];
+}
+subgraph "cluster_main" {
+	style="dashed";
+	color="black";
+	label="main ()";
+	subgraph cluster_2057_1 {
+	style="filled";
+	color="darkgreen";
+	fillcolor="grey88";
+	label="loop 1";
+	labeljust=l;
+	penwidth=2;
+	fn_2057_basic_block_4 [shape=record,style=filled,fillcolor=lightgrey,label="{COUNT:955630225\ \ \ 26:\ L26:\l\
+|\ \ \ 23:\ NOTE_INSN_BASIC_BLOCK\ 4\l\
+|\ \ \ 24:\ \{r86:SI=r86:SI*r84:SI;clobber\ flags:CC;\}\l\
+\ \ \ \ \ \ REG_UNUSED\ flags:CC\l\
+|\ \ \ 25:\ \{r84:SI=r84:SI+0x1;clobber\ flags:CC;\}\l\
+\ \ \ \ \ \ REG_UNUSED\ flags:CC\l\
+|\ \ \ 27:\ flags:CCZ=cmp(r84:SI,r100:SI)\l\
+|\ \ \ 28:\ pc=\{(flags:CCZ!=0)?L26:pc\}\l\
+\ \ \ \ \ \ REG_DEAD\ flags:CCZ\l\
+\ \ \ \ \ \ REG_BR_PROB\ 955630228\l\
+}"];
+
+	}
+	fn_2057_basic_block_0 [shape=Mdiamond,style=filled,fillcolor=white,label="ENTRY"];
+
+	fn_2057_basic_block_1 [shape=Mdiamond,style=filled,fillcolor=white,label="EXIT"];
+
+	fn_2057_basic_block_2 [shape=record,style=filled,fillcolor=lightgrey,label="{COUNT:118111600\ \ \ \ 9:\ NOTE_INSN_BASIC_BLOCK\ 2\l\
+|\ \ \ \ 2:\ NOTE_INSN_FUNCTION_BEG\l\
+|\ \ \ \ 3:\ r102:DI=0x28\l\
+|\ \ \ \ 4:\ \{[frame:DI-0x8]=unspec[[r102:DI]]\ 85;scratch=0;clobber\ flags:CC;\}\l\
+\ \ \ \ \ \ REG_DEAD\ r102:DI\l\
+\ \ \ \ \ \ REG_UNUSED\ flags:CC\l\
+|\ \ \ 11:\ \{r103:DI=frame:DI-0xc;clobber\ flags:CC;\}\l\
+\ \ \ \ \ \ REG_UNUSED\ flags:CC\l\
+|\ \ \ 12:\ si:DI=r103:DI\l\
+\ \ \ \ \ \ REG_EQUAL\ frame:DI-0xc\l\
+\ \ \ \ \ \ REG_DEAD\ r103:DI\l\
+|\ \ \ 13:\ r104:DI=`_ZSt3cin'\l\
+|\ \ \ 14:\ di:DI=r104:DI\l\
+\ \ \ \ \ \ REG_DEAD\ r104:DI\l\
+\ \ \ \ \ \ REG_EQUAL\ `_ZSt3cin'\l\
+|\ \ \ 15:\ ax:DI=call\ [`_ZNSirsERi']\ argc:0\l\
+\ \ \ \ \ \ REG_DEAD\ di:DI\l\
+\ \ \ \ \ \ REG_DEAD\ si:DI\l\
+\ \ \ \ \ \ REG_UNUSED\ ax:DI\l\
+\ \ \ \ \ \ REG_CALL_DECL\ `_ZNSirsERi'\l\
+|\ \ \ 16:\ r98:SI=[frame:DI-0xc]\l\
+|\ \ \ 19:\ flags:CCGC=cmp(r98:SI,0x1)\l\
+|\ \ \ 20:\ pc=\{(flags:CCGC\<=0)?L98:pc\}\l\
+\ \ \ \ \ \ REG_DEAD\ flags:CCGC\l\
+\ \ \ \ \ \ REG_BR_PROB\ 118111604\l\
+}"];
+
+	fn_2057_basic_block_3 [shape=record,style=filled,fillcolor=lightgrey,label="{COUNT:105119324\ \ \ 21:\ NOTE_INSN_BASIC_BLOCK\ 3\l\
+|\ \ \ 22:\ \{r100:SI=r98:SI+0x1;clobber\ flags:CC;\}\l\
+\ \ \ \ \ \ REG_DEAD\ r98:SI\l\
+\ \ \ \ \ \ REG_UNUSED\ flags:CC\l\
+|\ \ \ \ 5:\ r86:SI=0x1\l\
+|\ \ \ \ 6:\ r84:SI=0x2\l\
+}"];
+
+	fn_2057_basic_block_5 [shape=record,style=filled,fillcolor=lightgrey,label="{COUNT:12992276\ \ \ 98:\ L98:\l\
+|\ \ \ 97:\ NOTE_INSN_BASIC_BLOCK\ 5\l\
+|\ \ \ \ 7:\ r86:SI=0x1\l\
+}"];
+
+	fn_2057_basic_block_6 [shape=record,style=filled,fillcolor=lightgrey,label="{COUNT:118111600\ \ \ 29:\ L29:\l\
+|\ \ \ 30:\ NOTE_INSN_BASIC_BLOCK\ 6\l\
+|\ \ \ 31:\ si:SI=r86:SI\l\
+\ \ \ \ \ \ REG_DEAD\ r86:SI\l\
+|\ \ \ 32:\ r105:DI=`_ZSt4cout'\l\
+|\ \ \ 33:\ di:DI=r105:DI\l\
+\ \ \ \ \ \ REG_DEAD\ r105:DI\l\
+\ \ \ \ \ \ REG_EQUAL\ `_ZSt4cout'\l\
+|\ \ \ 34:\ ax:DI=call\ [`_ZNSolsEi']\ argc:0\l\
+\ \ \ \ \ \ REG_DEAD\ di:DI\l\
+\ \ \ \ \ \ REG_DEAD\ si:SI\l\
+\ \ \ \ \ \ REG_CALL_DECL\ `_ZNSolsEi'\l\
+|\ \ \ 35:\ r85:DI=ax:DI\l\
+\ \ \ \ \ \ REG_DEAD\ ax:DI\l\
+|\ \ \ 36:\ r106:DI=[r85:DI]\l\
+|\ \ \ 37:\ r107:DI=[r106:DI-0x18]\l\
+\ \ \ \ \ \ REG_DEAD\ r106:DI\l\
+|\ \ \ 38:\ r93:DI=[r85:DI+r107:DI+0xf0]\l\
+\ \ \ \ \ \ REG_DEAD\ r107:DI\l\
+|\ \ \ 39:\ flags:CCZ=cmp(r93:DI,0)\l\
+|\ \ \ 40:\ pc=\{(flags:CCZ!=0)?L50:pc\}\l\
+\ \ \ \ \ \ REG_DEAD\ flags:CCZ\l\
+\ \ \ \ \ \ REG_BR_PROB\ 1073312332\l\
+}"];
+
+	fn_2057_basic_block_7 [shape=record,style=filled,fillcolor=lightgrey,label="{COUNT:47245\ \ \ 41:\ NOTE_INSN_BASIC_BLOCK\ 7\l\
+|\ \ \ 42:\ r108:DI=0x28\l\
+|\ \ \ 43:\ \{flags:CCZ=unspec[[frame:DI-0x8],[r108:DI]]\ 86;clobber\ scratch;\}\l\
+\ \ \ \ \ \ REG_DEAD\ r108:DI\l\
+|\ \ \ 44:\ pc=\{(flags:CCZ==0)?L47:pc\}\l\
+\ \ \ \ \ \ REG_DEAD\ flags:CCZ\l\
+\ \ \ \ \ \ REG_BR_PROB\ 1073312332\l\
+}"];
+
+	fn_2057_basic_block_8 [shape=record,style=filled,fillcolor=lightgrey,label="{COUNT:19\ \ 103:\ NOTE_INSN_BASIC_BLOCK\ 8\l\
+|\ \ \ 45:\ call\ [`__stack_chk_fail']\ argc:0\l\
+\ \ \ \ \ \ REG_CALL_DECL\ `__stack_chk_fail'\l\
+\ \ \ \ \ \ REG_ARGS_SIZE\ 0\l\
+\ \ \ \ \ \ REG_NORETURN\ 0\l\
+\ \ \ \ \ \ REG_EH_REGION\ 0\l\
+}"];
+
+	fn_2057_basic_block_9 [shape=record,style=filled,fillcolor=lightgrey,label="{COUNT:47226\ \ \ 47:\ L47:\l\
+|\ \ 104:\ NOTE_INSN_BASIC_BLOCK\ 9\l\
+|\ \ \ 48:\ call\ [`_ZSt16__throw_bad_castv']\ argc:0\l\
+\ \ \ \ \ \ REG_CALL_DECL\ `_ZSt16__throw_bad_castv'\l\
+\ \ \ \ \ \ REG_ARGS_SIZE\ 0\l\
+\ \ \ \ \ \ REG_NORETURN\ 0\l\
+}"];
+
+	fn_2057_basic_block_10 [shape=record,style=filled,fillcolor=lightgrey,label="{COUNT:118064356\ \ \ 50:\ L50:\l\
+|\ \ \ 51:\ NOTE_INSN_BASIC_BLOCK\ 10\l\
+|\ \ \ 52:\ flags:CCZ=cmp([r93:DI+0x38],0)\l\
+|\ \ \ 53:\ pc=\{(flags:CCZ==0)?L58:pc\}\l\
+\ \ \ \ \ \ REG_DEAD\ flags:CCZ\l\
+\ \ \ \ \ \ REG_BR_PROB\ 524845004\l\
+}"];
+
+	fn_2057_basic_block_11 [shape=record,style=filled,fillcolor=lightgrey,label="{COUNT:60354499\ \ \ 54:\ NOTE_INSN_BASIC_BLOCK\ 11\l\
+|\ \ \ 55:\ r95:QI=[r93:DI+0x43]\l\
+\ \ \ \ \ \ REG_DEAD\ r93:DI\l\
+}"];
+
+	fn_2057_basic_block_12 [shape=record,style=filled,fillcolor=lightgrey,label="{COUNT:57709857\ \ \ 58:\ L58:\l\
+|\ \ \ 59:\ NOTE_INSN_BASIC_BLOCK\ 12\l\
+|\ \ \ 60:\ di:DI=r93:DI\l\
+|\ \ \ 61:\ call\ [`_ZNKSt5ctypeIcE13_M_widen_initEv']\ argc:0\l\
+\ \ \ \ \ \ REG_DEAD\ di:DI\l\
+\ \ \ \ \ \ REG_CALL_DECL\ `_ZNKSt5ctypeIcE13_M_widen_initEv'\l\
+|\ \ \ 62:\ r109:DI=[r93:DI]\l\
+|\ \ \ 63:\ r97:DI=[r109:DI+0x30]\l\
+\ \ \ \ \ \ REG_DEAD\ r109:DI\l\
+|\ \ \ 64:\ r110:DI=`_ZNKSt5ctypeIcE8do_widenEc'\l\
+|\ \ \ 65:\ flags:CCZ=cmp(r97:DI,r110:DI)\l\
+\ \ \ \ \ \ REG_DEAD\ r110:DI\l\
+|\ \ \ 66:\ pc=\{(flags:CCZ==0)?L102:pc\}\l\
+\ \ \ \ \ \ REG_DEAD\ flags:CCZ\l\
+\ \ \ \ \ \ REG_BR_PROB\ 858993468\l\
+}"];
+
+	fn_2057_basic_block_13 [shape=record,style=filled,fillcolor=lightgrey,label="{COUNT:11541971\ \ \ 67:\ NOTE_INSN_BASIC_BLOCK\ 13\l\
+|\ \ \ 68:\ si:SI=0xa\l\
+|\ \ \ 69:\ di:DI=r93:DI\l\
+\ \ \ \ \ \ REG_DEAD\ r93:DI\l\
+|\ \ \ 70:\ ax:QI=call\ [r97:DI]\ argc:0\l\
+\ \ \ \ \ \ REG_DEAD\ r97:DI\l\
+\ \ \ \ \ \ REG_DEAD\ di:DI\l\
+\ \ \ \ \ \ REG_DEAD\ si:SI\l\
+\ \ \ \ \ \ REG_CALL_DECL\ (nil)\l\
+|\ \ \ 71:\ r95:QI=ax:QI\l\
+\ \ \ \ \ \ REG_DEAD\ ax:QI\l\
+}"];
+
+	fn_2057_basic_block_14 [shape=record,style=filled,fillcolor=lightgrey,label="{COUNT:46167886\ \ 102:\ L102:\l\
+|\ \ 101:\ NOTE_INSN_BASIC_BLOCK\ 14\l\
+|\ \ \ \ 8:\ r95:QI=0xa\l\
+}"];
+
+	fn_2057_basic_block_15 [shape=record,style=filled,fillcolor=lightgrey,label="{COUNT:118064356\ \ \ 72:\ L72:\l\
+|\ \ \ 73:\ NOTE_INSN_BASIC_BLOCK\ 15\l\
+|\ \ \ 74:\ r111:SI=sign_extend(r95:QI)\l\
+\ \ \ \ \ \ REG_DEAD\ r95:QI\l\
+|\ \ \ 75:\ si:SI=r111:SI\l\
+\ \ \ \ \ \ REG_DEAD\ r111:SI\l\
+|\ \ \ 76:\ di:DI=r85:DI\l\
+\ \ \ \ \ \ REG_DEAD\ r85:DI\l\
+|\ \ \ 77:\ ax:DI=call\ [`_ZNSo3putEc']\ argc:0\l\
+\ \ \ \ \ \ REG_DEAD\ di:DI\l\
+\ \ \ \ \ \ REG_DEAD\ si:SI\l\
+\ \ \ \ \ \ REG_CALL_DECL\ `_ZNSo3putEc'\l\
+|\ \ \ 78:\ r92:DI=ax:DI\l\
+\ \ \ \ \ \ REG_DEAD\ ax:DI\l\
+|\ \ \ 79:\ di:DI=r92:DI\l\
+\ \ \ \ \ \ REG_DEAD\ r92:DI\l\
+|\ \ \ 80:\ ax:DI=call\ [`_ZNSo5flushEv']\ argc:0\l\
+\ \ \ \ \ \ REG_DEAD\ di:DI\l\
+\ \ \ \ \ \ REG_UNUSED\ ax:DI\l\
+\ \ \ \ \ \ REG_CALL_DECL\ `_ZNSo5flushEv'\l\
+|\ \ \ 81:\ r101:SI=0\l\
+|\ \ \ 85:\ r113:DI=0x28\l\
+|\ \ \ 86:\ \{flags:CCZ=unspec[[frame:DI-0x8],[r113:DI]]\ 86;clobber\ scratch;\}\l\
+\ \ \ \ \ \ REG_DEAD\ r113:DI\l\
+|\ \ \ 87:\ pc=\{(flags:CCZ==0)?L90:pc\}\l\
+\ \ \ \ \ \ REG_DEAD\ flags:CCZ\l\
+\ \ \ \ \ \ REG_BR_PROB\ 1073312332\l\
+}"];
+
+	fn_2057_basic_block_16 [shape=record,style=filled,fillcolor=lightgrey,label="{COUNT:47226\ \ 105:\ NOTE_INSN_BASIC_BLOCK\ 16\l\
+|\ \ \ 88:\ call\ [`__stack_chk_fail']\ argc:0\l\
+\ \ \ \ \ \ REG_CALL_DECL\ `__stack_chk_fail'\l\
+\ \ \ \ \ \ REG_ARGS_SIZE\ 0\l\
+\ \ \ \ \ \ REG_NORETURN\ 0\l\
+\ \ \ \ \ \ REG_EH_REGION\ 0\l\
+}"];
+
+	fn_2057_basic_block_17 [shape=record,style=filled,fillcolor=lightgrey,label="{COUNT:118017130\ \ \ 90:\ L90:\l\
+|\ \ 106:\ NOTE_INSN_BASIC_BLOCK\ 17\l\
+|\ \ \ 91:\ ax:SI=0\l\
+\ \ \ \ \ \ REG_DEAD\ r101:SI\l\
+|\ \ \ 92:\ use\ ax:SI\l\
+}"];
+
+	fn_2057_basic_block_0:s -> fn_2057_basic_block_2:n [style="solid,bold",color=black,weight=100,constraint=true,label="[100%]"];
+	fn_2057_basic_block_2:s -> fn_2057_basic_block_3:n [style="solid,bold",color=black,weight=100,constraint=true,label="[89%]"];
+	fn_2057_basic_block_2:s -> fn_2057_basic_block_5:n [style="solid,bold",color=black,weight=10,constraint=true,label="[11%]"];
+	fn_2057_basic_block_3:s -> fn_2057_basic_block_4:n [style="solid,bold",color=black,weight=100,constraint=true,label="[100%]"];
+	fn_2057_basic_block_4:s -> fn_2057_basic_block_4:n [style="dotted,bold",color=blue,weight=10,constraint=false,label="[89%]"];
+	fn_2057_basic_block_4:s -> fn_2057_basic_block_6:n [style="solid,bold",color=black,weight=100,constraint=true,label="[11%]"];
+	fn_2057_basic_block_5:s -> fn_2057_basic_block_6:n [style="solid,bold",color=black,weight=100,constraint=true,label="[100%]"];
+	fn_2057_basic_block_6:s -> fn_2057_basic_block_7:n [style="solid,bold",color=black,weight=100,constraint=true,label="[0%]"];
+	fn_2057_basic_block_6:s -> fn_2057_basic_block_10:n [style="solid,bold",color=black,weight=10,constraint=true,label="[99%]"];
+	fn_2057_basic_block_7:s -> fn_2057_basic_block_9:n [style="solid,bold",color=black,weight=10,constraint=true,label="[99%]"];
+	fn_2057_basic_block_7:s -> fn_2057_basic_block_8:n [style="solid,bold",color=black,weight=100,constraint=true,label="[0%]"];
+	fn_2057_basic_block_10:s -> fn_2057_basic_block_11:n [style="solid,bold",color=black,weight=100,constraint=true,label="[51%]"];
+	fn_2057_basic_block_10:s -> fn_2057_basic_block_12:n [style="solid,bold",color=black,weight=10,constraint=true,label="[48%]"];
+	fn_2057_basic_block_11:s -> fn_2057_basic_block_15:n [style="solid,bold",color=black,weight=100,constraint=true,label="[100%]"];
+	fn_2057_basic_block_12:s -> fn_2057_basic_block_14:n [style="solid,bold",color=black,weight=10,constraint=true,label="[80%]"];
+	fn_2057_basic_block_12:s -> fn_2057_basic_block_13:n [style="solid,bold",color=black,weight=100,constraint=true,label="[20%]"];
+	fn_2057_basic_block_13:s -> fn_2057_basic_block_15:n [style="solid,bold",color=black,weight=100,constraint=true,label="[100%]"];
+	fn_2057_basic_block_14:s -> fn_2057_basic_block_15:n [style="solid,bold",color=black,weight=100,constraint=true,label="[100%]"];
+	fn_2057_basic_block_15:s -> fn_2057_basic_block_17:n [style="solid,bold",color=black,weight=10,constraint=true,label="[99%]"];
+	fn_2057_basic_block_15:s -> fn_2057_basic_block_16:n [style="solid,bold",color=black,weight=100,constraint=true,label="[0%]"];
+	fn_2057_basic_block_17:s -> fn_2057_basic_block_1:n [style="solid,bold",color=black,weight=100,constraint=true,label="[100%]"];
+	fn_2057_basic_block_0:s -> fn_2057_basic_block_1:n [style="invis",constraint=true];
+}
+}
